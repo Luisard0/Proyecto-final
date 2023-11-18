@@ -55,13 +55,28 @@ string get_palabraAdivinada(const string& palabra_secreta, const vector<char>& l
     return cadena;
 }
 
+//Devuleve una cadena con las letras disponibles
+string get_letrasDisponibles(const vector<char>& letras_adivinadas){
+    /*
+    letras_adivinadas: vector (de caracteres), cuales letras han sido adivinadas
+    Devuelve: string (de letras), comprendido de letras que representan cuales letras aun no han sido adivinadas
+    */
+   string abecedario = "abcdefghijklmnopqrstuvwxyz"; //sin ñ
+   for (char letra:letras_adivinadas){
+    if (isalpha(letra)){ //si letra está en abecedario actualizamos 
+        size_t pos = abecedario.find(letra);
+        if (pos != string::npos){
+            abecedario.erase(pos,1);
+        }
+    }
+   }
+   return abecedario;
+}
+
 int main()
 {
-    string palabra_secreta = "python";
-    vector<char> letras_adivinadas = {'p','y','t'};
-
-    string resultado = get_palabraAdivinada(palabra_secreta, letras_adivinadas);
-
-    cout<<"Letras adivinadas: "<<resultado<<endl;
+    vector<char> letras_adivinadas = {};
+    string letrasDisponibles = get_letrasDisponibles(letras_adivinadas);
+    cout<<"Letras disponibles: "<<letrasDisponibles<<endl;
     return 0;
 }
