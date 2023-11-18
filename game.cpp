@@ -9,7 +9,7 @@ using namespace std;
 string choose_palabra(const vector<string>& listaPalabras){
     /*
     listaPalabras (vector de strings): lista de palabras (strings)
-    Devuelve una palabra aleatoria de la lista de palabras
+    Devuelve: palabra aleatoria de la lista de palabras
     */
     srand(static_cast<unsigned int>(time(0)));
     int randomIndex = rand() % listaPalabras.size();
@@ -23,24 +23,45 @@ bool palabraAdivinada(const string& palabra_secreta, const vector<char>& letras_
      se asume que todas las letras son minusculas
     letras_adivinadas: vector (de caracteres), letras que ya han sido adivinadas;
      se asume que todas las letras son minusculas
-    Devuelve un booleano, Verdadero si todas las letras de palabra_secreta están en letras_adivinadas,
+    Devuelve: booleano, Verdadero si todas las letras de palabra_secreta están en letras_adivinadas,
     de otra manera Falso.
     */
     vector<char> lista;
         for (char letter : palabra_secreta) {
         if (find(letras_adivinadas.begin(), letras_adivinadas.end(), letter) != letras_adivinadas.end()) {
             lista.push_back(letter);
-        }
+            }
         }
     return palabra_secreta.length()==lista.size();
 }
 
+//Devuelve una cadena comprendida por guiones bajos y letras de la palabra que se intenta adivinar
+string get_palabraAdivinada(const string& palabra_secreta, const vector<char>& letras_adivinadas){
+    /*
+    palabra_secreta: string, palabra que el usuario está adivinando
+    letras_adivinadas: vector (de caracteres), letras que ya han sido adivinadas
+    Devuelve: string, comprendido de letras y guiones bajos (_) y espacios, que representan 
+     que letras de palabra_secreta se han adivinado hasta ahora
+
+    */
+   string cadena="";
+   for (char letra: palabra_secreta){
+    if (find(letras_adivinadas.begin(), letras_adivinadas.end(), letra) != letras_adivinadas.end()){
+        cadena+=letra;
+    }else{
+        cadena+="_ ";
+    }
+   }
+    return cadena;
+}
+
 int main()
 {
-    string palabrasecreta = "python";
-    vector<char> letrasAdivinadas={'p','y','t','h','o','n'};
-    bool adivinada = palabraAdivinada(palabrasecreta,letrasAdivinadas);
+    string palabra_secreta = "python";
+    vector<char> letras_adivinadas = {'p','y','t'};
 
-    cout<<"Palabra adivinada? "<<(adivinada ? "Si":"No")<<endl;
+    string resultado = get_palabraAdivinada(palabra_secreta, letras_adivinadas);
+
+    cout<<"Letras adivinadas: "<<resultado<<endl;
     return 0;
 }
