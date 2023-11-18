@@ -4,13 +4,9 @@
 #include <stdlib.h>
 #include <algorithm>
 using namespace std;
-
+//--------- Hangman game -------------------
 //Escoge una palbra de un vector de palabras
 string choose_palabra(const vector<string>& listaPalabras){
-    /*
-    listaPalabras (vector de strings): lista de palabras (strings)
-    Devuelve: palabra aleatoria de la lista de palabras
-    */
     srand(static_cast<unsigned int>(time(0)));
     int randomIndex = rand() % listaPalabras.size();
     return listaPalabras[randomIndex];
@@ -18,14 +14,6 @@ string choose_palabra(const vector<string>& listaPalabras){
 
 //Reviza si la palabra ha sido adivinada
 bool palabraAdivinada(const string& palabra_secreta, const vector<char>& letras_adivinadas){
-    /*
-    palabra secreta: string, la palabra que el usuario está adivinando; 
-     se asume que todas las letras son minusculas
-    letras_adivinadas: vector (de caracteres), letras que ya han sido adivinadas;
-     se asume que todas las letras son minusculas
-    Devuelve: booleano, Verdadero si todas las letras de palabra_secreta están en letras_adivinadas,
-    de otra manera Falso.
-    */
     vector<char> lista;
         for (char letter : palabra_secreta) {
         if (find(letras_adivinadas.begin(), letras_adivinadas.end(), letter) != letras_adivinadas.end()) {
@@ -37,13 +25,6 @@ bool palabraAdivinada(const string& palabra_secreta, const vector<char>& letras_
 
 //Devuelve una cadena comprendida por guiones bajos y letras de la palabra que se intenta adivinar
 string get_palabraAdivinada(const string& palabra_secreta, const vector<char>& letras_adivinadas){
-    /*
-    palabra_secreta: string, palabra que el usuario está adivinando
-    letras_adivinadas: vector (de caracteres), letras que ya han sido adivinadas
-    Devuelve: string, comprendido de letras y guiones bajos (_) y espacios, que representan 
-     que letras de palabra_secreta se han adivinado hasta ahora
-
-    */
    string cadena="";
    for (char letra: palabra_secreta){
     if (find(letras_adivinadas.begin(), letras_adivinadas.end(), letra) != letras_adivinadas.end()){
@@ -57,10 +38,6 @@ string get_palabraAdivinada(const string& palabra_secreta, const vector<char>& l
 
 //Devuleve una cadena con las letras disponibles
 string get_letrasDisponibles(const vector<char>& letras_adivinadas){
-    /*
-    letras_adivinadas: vector (de caracteres), cuales letras han sido adivinadas
-    Devuelve: string (de letras), comprendido de letras que representan cuales letras aun no han sido adivinadas
-    */
    string abecedario = "abcdefghijklmnopqrstuvwxyz"; //sin ñ
    for (char letra:letras_adivinadas){
     if (isalpha(letra)){ //si letra está en abecedario actualizamos 
@@ -194,11 +171,144 @@ void hangman(const string& palabra_secreta){
         }cout<<"-----------------------------\n";
     }
 }
+//----------hangman game ---------------------
+
+//------Piedra, papel o tijeras game----------
+
+// Decide que va a jugar (1:Piedra, 2: Papel, 3: Tijeras)
+int manoUsuario(){
+    int eleccion;
+
+    while (true){
+        cout<<"Elige una opcion (1: Piedra, 2: Papel, 3: Tijeras):  \n";
+        cin>>eleccion;
+
+        if (eleccion == 1 || eleccion==2 || eleccion==3){
+            break;
+        }else{
+            cout<<"Opcion no valida :/\n";
+        }
+        
+    }
+    return eleccion;
+}
+
+//La computadora escoge que va a jugar (1:Piedra, 2: Papel, 3:Tijera)
+int manoComputadora(){
+    //Genera número aleatorio entre 1 y 4
+    return rand() % 4 + 1;
+}
+
+//Determina quien es el ganador basado en las reglas del juego, verdadero si el usario gana, falso de otro modo
+bool determinarGanador(int usuario, int computadora){
+    cout<<"La computadora eligio: ";
+    switch (computadora)
+    {
+    case 1:
+        cout<<"Piedra\n";
+        break;
+    case 2:
+        cout<<"Papel\n";
+        break;
+    case 3:
+        cout<<"Tijera\n";
+        break;
+    case 4:
+        cout<<"Bomba Nuclear :3\n";
+        break;
+    default:
+        cout<<"Opcion aun no validada\n";
+        break;
+    }
+
+
+    cout<<"Tu elegiste: ";
+    switch (usuario)
+    {
+    case 1:
+        cout<<"Piedra\n";
+        break;
+    case 2:
+        cout<<"Papel\n";
+        break;
+    case 3:
+        cout<<"Tijera\n";
+        break;
+    default:
+        cout<<"Opcion aun no validada\n";
+        break;
+    }
+
+    //Determina ganador
+    if(usuario == computadora){
+        cout<<"Es un empate\n";
+        return false;
+    }else if ((usuario == 1 && computadora == 3) ||
+               (usuario == 2 && computadora == 1) ||
+               (usuario == 3 && computadora == 2)) {
+        cout << "¡Ganaste!" << endl;
+        return true;
+    } else {
+        cout << "¡La computadora gana!" << endl;
+        return false;
+    }
+}
+
+//Juego Piedra, Papel o Tiejeras, verdadero si logró ganar el juego, falso de otra manera
+bool piedraPapelTijeras(){
+    // Configurar la semilla para generar números aleatorios
+    srand(static_cast<unsigned int>(time(0)));
+    cout<<"---------------------------------\n";
+    cout << "\nBienvenido al juego de Piedra, Papel o Tijeras." << endl;
+    cout << "Victorias necesarias para ganar: 3"<<endl;
+    cout<<"Los empates seran considerados como derrotas :c"<<endl;
+    cout<<"---------------------------------";
+    int victorias = 0;
+    int round = 1; 
+    while (victorias<3){
+        cout<<"\nRound: "<< round<<endl;
+        round++;
+        if(victorias==2){
+            cout<<"Solo una victoria mas...:\n" ;
+        }else if (victorias>=0){
+            cout<<"Victorias actuales: "<<victorias<<endl;
+        }else{
+            cout<<"Perdiendo :c\n";
+        }
+        
+        int usuario = manoUsuario();
+        //int computadora = manoComputadora();
+        int computadora = 2;
+        if(determinarGanador(usuario,computadora)){
+            victorias++;
+        }else{
+            victorias--;
+        }
+
+        if(victorias<-1){
+            cout<<"Has sido derrotado :c\n";
+            break;
+        }
+        cout<<"---------------------------------\n";
+    }
+    cout<<"Gracias por jugar\n";
+    if(victorias==3){
+        return true;
+    }else{return false;
+    }
+    
+}
+
+//------piedra, papel o tijeras game----------
+
 
 
 int main()
 {
-    string palabraSecreta = "else";
-    hangman(palabraSecreta);
+    if (piedraPapelTijeras()){
+        cout<<"Reto superado\n";
+    }else{
+        cout<<"Reto no superado :c";
+    }
     return 0;
 }
