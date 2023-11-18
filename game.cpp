@@ -73,116 +73,132 @@ string get_letrasDisponibles(const vector<char>& letras_adivinadas){
    return abecedario;
 }
 
+//hangman (ahorcado)
 void hangman(const string& palabra_secreta){
-    /*
-    palabra_secreta: string, la palabra secreta a adivinar
-    
-    Empieza un juego interactivo del ahoracado
-
-    *Al inicio del juego, se le deja saber al usuario cuantas
-     letras tiene la palabra_secreta y con cuantos intentos empieza
-
-    *El usuario debería empezar con 6 intentos 
-
-    *Antes de cada round, se le muestra al usuario cuantos intentos le quedan y 
-     las letras que el usuario aun no ha adivinado
-    
-    *Pedirle al usuario una conjetura por ronda, solo letras
-
-    *El usuario debe recibir feedback inmediatamente despues de cada intento sobre si su intento 
-      aparece en la palabra de la computadora
-    
-    *Despues de cada intento, se le debe mostrar al usuario la palabra parcialmente adivinada
-    */
-
     int intentos = 6;
     int advertencias = 3;
     vector<char> letras_unicas;
     vector<char> lista_letras;
-    char vocales[]={'a','e','i','o','u'};
-    cout<<"Bienvenido al juego del ahorcado!!"<<endl;
-    size_t tamano = palabra_secreta.length();
-    cout<<"Estoy pensando en una palbra que tiene "<<tamano<<" letras\n";
-    cout<<"Te quedan "<<advertencias<<" advertencias\n";
-    cout<<"-------------------------------------------------------------------";
-
-    //letras unicas en la palabra para el score
-    for (char letra : palabra_secreta){
-        if (find(letras_unicas.begin(),letras_unicas.end(),letra) == letras_unicas.end()){
+    string vocales = "aeiou";
+    string guess;
+    cout<<"\nBienvenido al juego del ahoracado!!! \n";
+    cout<<"Estoy pensando en una palabra secreta que tiene "<<palabra_secreta.length()<<" letras\n";
+    cout<<"Te quedan "<<advertencias<<" advertencias.\n";
+    cout<<"Si la letra que pones no está en la palabra secreta y es una vocal pierdes dos intentos pero si es una consonante solo pierdes un solo intento\n";
+    cout<<"-----------------------------\n";
+    //Calcula las letras unicas de la palabra secreta
+    for(char letra : palabra_secreta){
+        if(find(letras_unicas.begin(), letras_unicas.end(), letra) == letras_unicas.end()){
             letras_unicas.push_back(letra);
         }
     }
-    //game
+
+    //Game
     while (true){
         //Validación del imput
         while (true){
             try{
-                if (intentos > 0){
+                if (intentos>0){
                     //Pide la letra
-                    cout<<"Te quedan "<<intentos<<" intentos"<<endl;
-                    cout<<"Letras disponibles:  "<<get_letrasDisponibles(lista_letras)<<endl;
-
-                    char guess;
-                    cout<<"Por favor, adivina una letra: ";
+                    cout<<"Te quedan "<<intentos<<" intentos\n";
+                    cout<<"Letras disponibles: "<<get_letrasDisponibles(lista_letras)<<endl;
+                    cout<<"Por favor, adivine una letra:  ";
                     cin>>guess;
 
-                    if (isalpha(guess)){
-                        guess = tolower(guess);
-
+                    //Pregunta si solo es un caracter
+                    if (guess.length() == 1){
                         if (advertencias > 0){
-                            if (find(lista_letras.begin(), lista_letras.end(), guess) != lista_letras.end()){
+                            //pregunta si la conjetura es una letra (ya sea mayuscula o minuscula)
+                            if (isalpha(guess[0])){
+                                //Pregunta si ya está en la lista de letras ya usadas
+                                if (find(lista_letras.begin(), lista_letras.end(), guess[0]) != lista_letras.end()){
+                                    advertencias--;
+                                    cout<<"Opps, Ya has usado esa letra. Te quedan "<<advertencias<<" advertencias restantes: \n";
+                                    cout<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
+                                    cout<<"-------------------------------------------------------------------"<<endl;
+                                    continue;
+                                }else{
+                                    guess[0] = tolower(guess[0]);
+                                    lista_letras.push_back(guess[0]);
+                                    break;
+                                }
+                            }else{
                                 advertencias--;
-                                cout<<"Opps, Ya has usado esa letra. Te quedan "<<advertencias<<" advertencias restantes\n";
-                                cout<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
-                                cout<<"-------------------------------------------------------------------"<<endl;
+                                cout<<"Opps !, "<<guess<<" no es valido. Te quedan "<<advertencias<<" advertencias:  "<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
+                                cout<<"-----------------------------\n";
                                 continue;
-                            }else{
-                                lista_letras.push_back(guess);
-                                break;
                             }
-                        }else{ //las advertencias son 0
-                            if (find(lista_letras.begin(), lista_letras.end(), guess) != lista_letras.end()){
-                                cout<<"Opps, ya has usado esa letra. Te has quedado sin advertencias, perderas un intento.\n";
-                                intentos--;
-                                cout<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
-                                cout<<"-------------------------------------------------------------------"<<endl;
-                                continue;
+                            
+                        }else{ //Las advertencias son 0
+                            if (isalpha(guess[0])){
+                                if (find(lista_letras.begin(), lista_letras.end(), guess[0]) != lista_letras.end()){
+                                    cout<<"Opps!, ya has usado esa letra. Te has quedado sin advertencias, perderas un intento\n";
+                                    intentos--;
+                                    cout<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
+                                    cout<<"-----------------------------\n";
+                                    continue;
+                                }else{
+                                    guess[0] = tolower(guess[0]);
+                                    lista_letras.push_back(guess[0]);
+                                    break;
+                                }
+                                
                             }else{
-                                lista_letras.push_back(guess);
-                                break;
+                                cout<<"Opps! "<<guess<<" no es valido. Has perdido tus advertencias entonces se te restará un intento\n";
+                                cout<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
+                                cout<<"-----------------------------\n";
+                                intentos--;
+                                continue;
                             }
                         }
                     }else{
-                        if (advertencias > 0){
-                            advertencias--;
-                            cout<<"Opps!! "<<guess<<" no es valido. Te quedan "<<advertencias<<" advertencias \n";
-                            cout<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
-                            cout<<"-------------------------------------------------------------------"<<endl;
-                            continue;
-                        }else{
-                            cout<<"Opps!! "<<guess<<" no es valido . Has perdido tus advertencias, entonces se te restará un intento. \n";
-                            cout<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
-                            cout<<"-------------------------------------------------------------------"<<endl;
-                            intentos--;
-                            continue;
-                        }
+                        cout<<"Solo se ascepta un caracter a la vez\n";
+                        continue;
                     }
                 }else{
-                    break;//se le acabaron los intentos en puros errores de dedo XD
+                    //Pierde por acabarse los intentos
+                    break;
                 }
-            }catch(...){
-                cerr<<"Error: validar entrada"<<endl;
             }
-        }
+            catch(...){
+                cout<<"Error: validación de input\n";
+            }
+            
+        }//termina la validación de input
+        
+        //Logica del juego
+
+        //Pierde porque se le acabaron los intentos
+        if (intentos == 0){
+            cout<<"Lo siento, se te han acabado los intentos. La palabra era: "<<palabra_secreta<<endl;
+            break;
+        }else if (palabra_secreta.find(guess[0]) != string::npos){
+            if (palabraAdivinada(palabra_secreta, lista_letras)){//pregunta si están todas las letras de la palabra secreta en la lista de letras ya adivinadas
+                cout<<"Muy bien: "<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
+                cout<<"-----------------------------\n";
+                cout<<"Felicidades, ganaste !!!\n";
+                //Score = intentos restantes * numero de letras unicas en la palabra secreta
+                int score = intentos * letras_unicas.size();
+                cout<<"Tu puntuacion final es: "<<score<<endl;
+                break;
+            }else{
+                cout<<"Muy bien: "<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;}
+        }else{ //Perdida de intentos por no adivinar la letra correcta
+            if (vocales.find(guess[0]) != string::npos){//si la conjetura es una vocal que no está en la palabra secreta pierde dos intentos
+                cout<<"Opps!!, "<<guess[0]<<" no esta en la palabra secreta  "<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
+                intentos-=2;
+            }else{ //si la conjetura es una consonante que no está en la palabra secreta pierde un solo intentos
+                cout<<"Opps!, "<<guess[0]<<" no esta en la palabra secreta  "<<get_palabraAdivinada(palabra_secreta, lista_letras)<<endl;
+                intentos-=1;
+            }   
+        }cout<<"-----------------------------\n";
     }
-    
-
-
 }
+
+
 int main()
 {
-    vector<char> letras_adivinadas = {};
-    string letrasDisponibles = get_letrasDisponibles(letras_adivinadas);
-    cout<<"Letras disponibles: "<<letrasDisponibles<<endl;
+    string palabraSecreta = "else";
+    hangman(palabraSecreta);
     return 0;
 }
