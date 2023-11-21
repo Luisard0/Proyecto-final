@@ -259,9 +259,10 @@ bool determinarGanador(int usuario, int computadora){
 }
 
 //Juego Piedra, Papel o Tiejeras, verdadero si logró ganar el juego, falso de otra manera
-bool piedraPapelTijeras(){
+bool piedraPapelTijeras(int dificultad){
     // Configurar la semilla para generar números aleatorios
     srand(static_cast<unsigned int>(time(0)));
+
     cout<<"---------------------------------\n";
     cout << "\nBienvenido al juego de Piedra, Papel o Tijeras." << endl;
     cout << "Victorias necesarias para ganar: 3"<<endl;
@@ -269,10 +270,20 @@ bool piedraPapelTijeras(){
     cout<<"---------------------------------";
     int victorias = 0;
     int round = 1; 
-    while (victorias<3){
+    int necesarias;
+
+
+    //Dependiendo de la dificultad se necesitarás más o menos victorias
+    if (dificultad==1){
+        necesarias=1;
+    }else{
+        necesarias=3;
+    }
+    
+    while (victorias<necesarias){
         cout<<"\nRound: "<< round<<endl;
         round++;
-        if(victorias==2){
+        if(victorias==necesarias-1){
             cout<<"Solo una victoria mas...:\n" ;
         }else if (victorias>=0){
             cout<<"Victorias actuales: "<<victorias<<endl;
@@ -326,10 +337,7 @@ int defensa(int turno){
     }
 }
 
-//Menu items
-
-
-// Batalla por turnos
+// Batalla por turnos, si gana true de otra forma false
 bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int sanasana,int sanasanaMAX,int repuestos, int ataqueMortal) {
     //Inicializa Items
     int vidaRana = sanasana;
@@ -360,7 +368,9 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
     int turno = 1;
     int op;//Opcion del jugador y el enemigo
     //Pelea a muerte
-    cout<<"La batalla contra "<<nomEnemigo<<" ha empezado\n";
+    cout<<"\n\n***************************************************\n";
+    cout<<"\tLa batalla contra "<<nomEnemigo<<" ha empezado\n";
+    cout<<"***************************************************\n";
 
     while (vidaUsuario > 0 && vidaComputadora > 0) {
         //Muestra información basica
@@ -371,9 +381,9 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
         //Round impar: turno del player, round par:  turno del enemigo
         if (turno%2 != 0){
             cout<<"\n\n\t\t>>>>> Tu turno <<<<<< \n";
-            cout<<"-------------------------------------------------\n";
-            cout<<"\t\tQue deseas hacer??\n\n1) Atacar\t\t\t2) Reforzar escudo\n3) Usar item\t\t\t4) Rendirse\n";
-            cout<<"-------------------------------------------------\n";
+            cout<<"------------------------------------------------------------------------------------\n";
+            cout<<"\t\tQue deseas hacer??\n\n1) Atacar\t\t\t2) Reforzar escudo\n\n3) Usar item\t\t\t4) Rendirse\n";
+            cout<<"------------------------------------------------------------------------------------\n{>>>} ";
             cin>>op;
             switch (op){
             case 1:
@@ -419,15 +429,16 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
                     cout<<"NO ha encontrado nada :/ \n\t[intenta comprar items en la tienda del menú principal]\n";
                     continue;
                 }else{
-                    cout<<"Encontro los siguientes Items: \n";
-                    cout<<"Escudos: "<<escudos<<"\t[Aumenta 50 puntos de defensa]\n";
-                    cout<<"Pocion de vida: "<<vidaRana<<"\t[Aumenta 25 puntos de vida]\n";
+                    cout<<"Encontro los siguientes Items: \n\n";
+                    cout<<"------------------------------------------------------------------------------------\n";
+                    cout<<"Escudos: "<<escudos<<"\t\t\t[Aumenta 50 puntos de defensa]\n";
+                    cout<<"Pocion de vida: "<<vidaRana<<"\t\t[Aumenta 25 puntos de vida]\n";
                     cout<<"Pocion de vida grande: "<<vidaSapo<<"\t[Aumenta 50 puntos de vida]\n";
-                    cout<<"Golpe definitivo: "<<golpeDefinitivo<<"\t[Ataque especial que inflije 100 puntos de ataque]\n";
+                    cout<<"Golpe definitivo: "<<golpeDefinitivo<<"\t\t[Ataque especial que inflije 100 puntos de ataque]\n";
                 }
-                cout<<"-------------------------------------------------\n";
-                cout<<"\t\tQue deseas hacer??\n1) Usar pocion de vida\t\t2) Usar poscion de vida grande\n3) Mejorar el escudo\t\t4) Regresar\t\t5) Ataque especial\n";
-                cout<<"-------------------------------------------------\n";
+                cout<<"------------------------------------------------------------------------------------\n";
+                cout<<"\t\tQue deseas hacer??\n\n1) Usar pocion de vida\t2) Usar poscion de vida grande\t3) Mejorar el escudo\n\n4) Ataque especial\t5) Regresar\n";
+                cout<<"------------------------------------------------------------------------------------\n{>>>} ";
                 cin>>op;
 
                 if(op == 1){
@@ -469,11 +480,8 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
                     }else{
                         cout<<"NO tienes escudos disponibles, adquierelos en la tienda principal\n";
                     }
+                
                 }else if (op==4){
-                    //Regresar
-                    cout<<"Te arrepientes de usar un item...\n";
-                    continue;
-                }else if (op==5){
 
                     if (golpeDefinitivo>0){
                         cout<<nomPersonaje<<" empieza a recitar un atiguo hechizo...\n";
@@ -481,11 +489,11 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
                             cout<<"El hechizo ha funcionado !!\n";
                             vidaComputadora-=100;
                             golpeDefinitivo--;
-                            cout<<nomPersonaje<<" acertó el golpe definitivo\n";
+                            cout<<nomPersonaje<<" acertó el golpe definitivo directamente sobre "<<nomEnemigo<<endl;
                         }else{
                             cout<<nomEnemigo<<" te guiña el ojo  UwU\n";
                             cout<<nomPersonaje<<" se sonrroja...\n";
-                            cout<<nomPersonaje<<" se ha distraido, en la confucion se termina hiriendo a si mismo\n";
+                            cout<<nomPersonaje<<" se ha distraido, en la confucion se termina hiriendo a si mismo [-50 de vida]\n";
                             vidaUsuario-=50;
                             if (vidaUsuario<=0){
                                 cout<<nomPersonaje<<" ha sido derrotado por una distraccion ... carnal(?)\n";
@@ -496,6 +504,11 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
                     }else{
                         cout<<"NO tienes mas ataque definitivos disponibles :/...\n";
                     }
+                }else if (op==5){
+                    //Regresar
+                    cout<<"Te arrepientes de usar un item...\n";
+                    cout<<"------------------------------------------------------------------------------------\n\n";
+                    continue;
                 }else{
                     cout<<"Opcion no valida... :/\n";
                     continue;
@@ -516,7 +529,7 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
             }
         }else{//turno del enemigo
             op= rand() % 5 + 1;
-            cout<<"\n\n\t\t>>>>> Turno de "<<nomEnemigo<<" <<<<<< \n\n";
+            cout<<"\n\n\t>>>>> Turno de "<<nomEnemigo<<" <<<<<< \n\n";
             switch (op)
             {
             case 1:
@@ -592,7 +605,7 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
                 if ((rand()%2 +1) % 2 == 0){
                     cout<<"Oh no, ha invocado el hechizo 'Piedra, papel o tijeras de la muerte'\n";
                     cout<<"Es un todo o nada, un hechizo simple pero increbrantable\n";
-                    if(piedraPapelTijeras()){
+                    if(piedraPapelTijeras(dificultad)){
                         cout<<"Felicidades, has ganado el Piedra papel o tijeras de la muerte\n";
                         vidaComputadora=0;
                     }else{
@@ -610,7 +623,7 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
                 break;
             }
         }
-        cout<<"_________________________________________________\n";
+        cout<<"____________________________________________________________________________________\n";
         turno++;
     }
 
@@ -624,28 +637,368 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
     }
 }
 
-int main()
-{   
+// Menú principal
+int menuPrincipal(){
+    int op;
+    cout<<"________________________________________________________\n";
+    cout<<"\nBienvenido al juego zzzzzzzzzzzzz\n\n";
+    cout<<"\t\t>>Menu principal<<\n";
+    while (true){
+        cout<<"________________________________________________________\n";
+        cout<<"Oprime:\n";
+        cout<<"[1] Para jugar\n";
+        cout<<"[2] Para ir a la tienda\n";
+        cout<<"[3] Para ajustar la dificultad\n";
+        cout<<"[4] Para salir del juego\n{>>>} ";
+        cin>>op;
+        if (op == 1){
+            return 1;
+        }else if (op == 2){
+            return 2;
+        }else if (op == 3){
+            return 3;
+        }else if (op == 4){
+            return 4;
+        }else{
+            cout<<"Opcion no valida\n";
+        }
+    }
+}
+
+int main(){   
     // vector<string> palabras={"platano","tact","else"};
     // string palabra =choose_palabra(palabras);
+    //Nombre del jugador
     string nPlayer = "Luis";
-    string nEnemy = "Empanada";
+    //string nEnemy = "Empanada";
+    //Variables
     int corazones = 3;
     int dificultad = 1; //Dificultad facil
-    int pociones = 2;
-    int pocionesMax = 2;
-    int escudos = 2;
-    int ataqueMortal = 3;
+    int monedas=1000;
+    //Items
+    int pociones = 0;
+    int pocionesMax = 0;
+    int escudos = 0;
+    int ataqueMortal = 0;
+    //Opcion del jugador
+    int op;
+    int opT;
+    //menú principal
+    while (true){
+        op = menuPrincipal();
+        switch (op){
+        case 1:
+            //Jugar
+            break;
+        case 2:
+            //Tienda
+                cout<<"____________________________________________________________\n";
+                cout<<"\tBienvenido a la tienda oficial del juego\n\n";
+                cout<<"Los objetos que compres se podran usar durante las batallas,\nuna vez terminada la pelea,volveran a estar disponibles \npara la siguiente batalla\n\n";
+                cout<<"____________________________________________________________\n";
+                while (true){ //tienda
+                    //Display
+                    cout<<"\t\t\t >> Tienda <<\n";
+                    cout<<"____________________________________________________________\n";
+                    cout<<"Monedas disponibles: "<<monedas<<endl;
+                    cout<<"------------------------------------------------------------\n";
+                    cout<<"Articulos disponibles: \n\n";
+                    cout<<"[1] Pocion de vida\t\t--- 5 monedas\n";
+                    cout<<"\tTienes: "<<pociones<<endl;
+                    cout<<"[2] Pocion de vida grande\t--- 10 monedas\n";
+                    cout<<"\tTienes: "<<pocionesMax<<endl;
+                    cout<<"[3] Escudos\t\t\t--- 15 monedas\n";
+                    cout<<"\tTienes: "<<escudos<<endl;
+                    cout<<"[4] Hechizo golpe definitivo\t--- 30 monedas\n";
+                    cout<<"\tTienes "<<ataqueMortal<<endl;
+                    cout<<"[5] Regresar al menu\n\n";
+                    cout<<"Que te gustaria adquirir??\n\n{>>>} ";
+                    cin>>op;
+                    //End Display
+                    if (op == 1){
+                        //Pociones, costo = 5 monedas
+                        if (monedas>0){
+                            cout<<"Muy bien, cuantas pociones quieres comprar??\n";
+                            while (true){ //valida el input
+                                cout<<"[1] Una (1)\t[2] Dos (2)\t[3] Cinco (5) \n\n[4] Diez (10)\t[5] Cancelar\n\n{>>>} ";
+                                cin>>opT;
+                                if (opT  == 1){
+                                    opT = 1;
+                                    break;
+                                }else if (opT == 2){
+                                    opT = 2;
+                                    break;
+                                }else if (opT == 3){
+                                    opT = 5;
+                                    break;
+                                }else if (opT == 4){
+                                    opT = 10;
+                                    break;
+                                }else if (opT == 5){
+                                    opT=-1;
+                                    cout<<"Se ha cancelado la compra...\n";
+                                    break;
+                                }   
+                            }//termina de validar el imput
+                            if (opT==-1){//se cancela la compra
+                                cout<<"Continuar comprando??\t[1] Si   [2]NO\n";
+                                cin>>opT;
+                                if (opT==1){
+                                    continue;//regresa al inicio de la tienda
+                                }else{
+                                    break;//regresa al menú principal                              
+                                }
+                            }
+                            
+                            //costo = opT * 5
+                            if ((monedas-(opT*5)) < 0 ){
+                                cout<<"NO tienes suficientes monedas, consigue mas venciendo a los enemigos en la historia principal\n";
+                            }else{
+                                monedas-= (opT*5);
+                                cout<<"Has comprado "<<opT<<" pociones\n";
+                                pociones+=opT;
+                                cout<<"Continuar comprando??\t[1] Si   [2]NO\n";
+                                cin>>opT;
+                                if (opT==1){
+                                    continue;
+                                }else{
+                                    break;
+                                }
+                            }
+                        }else{
+                            cout<<"No tienes monedas, puedes conseguir mas derrotando a enemigos de la historia\n";
+                            break;//sale de la tienda
+                        }
+                    }else if (op == 2){
+                        //Pocion de vida grande, costo = 10 monedas
+                        if (monedas>0){
+                            cout<<"Muy bien, cuantas pociones grandes quieres comprar??\n";
+                            while (true){ //valida el input
+                                cout<<"[1] Una (1)\t[2] Dos (2)\t[3] Cinco (5) \n\n[4] Diez (10)\t[5] Cancelar\n\n{>>>} ";
+                                cin>>opT;
+                                if (opT  == 1){
+                                    opT = 1;
+                                    break;
+                                }else if (opT == 2){
+                                    opT = 2;
+                                    break;
+                                }else if (opT == 3){
+                                    opT = 5;
+                                    break;
+                                }else if (opT == 4){
+                                    opT = 10;
+                                    break;
+                                }else if (opT == 5){
+                                    opT=-1;
+                                    cout<<"Se ha cancelado la compra...\n";
+                                    break;
+                                }   
+                            }//termina de validar el imput
+                            if (opT==-1){//se cancela la compra
+                                cout<<"Continuar comprando??\t[1] Si   [2]NO\n";
+                                cin>>opT;
+                                if (opT==1){
+                                    continue;//regresa al inicio de la tienda
+                                }else{
+                                    break;//regresa al menú principal                              
+                                }
+                            }
+                            
+                            //costo = opT * 10
+                            if ((monedas-(opT*10)) < 0 ){
+                                cout<<"NO tienes suficientes monedas, consigue mas venciendo a los enemigos en la historia principal\n";
+                            }else{
+                                monedas-= (opT*10);
+                                cout<<"Has comprado "<<opT<<" pociones grandes\n";
+                                pocionesMax+=opT;
+                                cout<<"Continuar comprando??\t[1] Si   [2]NO\n";
+                                cin>>opT;
+                                if (opT==1){
+                                    continue;
+                                }else{
+                                    break;
+                                }
+                            }
+                        }else{
+                            cout<<"No tienes monedas, puedes conseguir mas derrotando a enemigos de la historia\n";
+                            break;//sale de la tienda
+                        }
 
-    cout << "Corazones actuales: " << corazones << endl;
-    if (batallaPorTurnos(nPlayer, nEnemy,dificultad,pociones,pocionesMax,escudos,ataqueMortal))
-    {
-        cout << "Reto superado\n";
-    }else{
-        cout << "Reto no superado\n";
-        corazones--;
+
+                    }else if (op == 3){
+                        //Escudos, costo = 15
+                        if (monedas>0){
+                            cout<<"Muy bien, cuantos escudos quieres comprar??\n";
+                            while (true){ //valida el input
+                                cout<<"[1] Una (1)\t[2] Dos (2)\t[3] Cinco (5) \n\n[4] Diez (10)\t[5] Cancelar\n\n{>>>} ";
+                                cin>>opT;
+                                if (opT  == 1){
+                                    opT = 1;
+                                    break;
+                                }else if (opT == 2){
+                                    opT = 2;
+                                    break;
+                                }else if (opT == 3){
+                                    opT = 5;
+                                    break;
+                                }else if (opT == 4){
+                                    opT = 10;
+                                    break;
+                                }else if (opT == 5){
+                                    opT=-1;
+                                    cout<<"Se ha cancelado la compra...\n";
+                                    break;
+                                }   
+                            }//termina de validar el imput
+                            if (opT==-1){//se cancela la compra
+                                cout<<"Continuar comprando??\t[1] Si   [2]NO\n";
+                                cin>>opT;
+                                if (opT==1){
+                                    continue;//regresa al inicio de la tienda
+                                }else{
+                                    break;//regresa al menú principal                              
+                                }
+                            }
+                            
+                            //costo = opT * 15
+                            if ((monedas-(opT*15)) < 0 ){
+                                cout<<"NO tienes suficientes monedas, consigue mas venciendo a los enemigos en la historia principal\n";
+                            }else{
+                                monedas-= (opT*15);
+                                cout<<"Has comprado "<<opT<<" escudos\n";
+                                escudos+=opT;
+                                cout<<"Continuar comprando??\t[1] Si   [2]NO\n";
+                                cin>>opT;
+                                if (opT==1){
+                                    continue;
+                                }else{
+                                    break;
+                                }
+                            }
+                        }else{
+                            cout<<"No tienes monedas, puedes conseguir mas derrotando a enemigos de la historia\n";
+                            break;//sale de la tienda
+                        }
+                       
+                       
+                    }else if (op == 4){    
+                        //Hechizo golpe definitivo, costo = 30
+                        if (monedas>0){
+                            cout<<"Muy bien, cuantos hechizos 'golpe definitivo' quieres comprar??\n";
+                            while (true){ //valida el input
+                                cout<<"[1] Una (1)\t[2] Dos (2)\t[3] Cinco (5) \n\n[4] Diez (10)\t[5] Cancelar\n\n{>>>} ";
+                                cin>>opT;
+                                if (opT  == 1){
+                                    opT = 1;
+                                    break;
+                                }else if (opT == 2){
+                                    opT = 2;
+                                    break;
+                                }else if (opT == 3){
+                                    opT = 5;
+                                    break;
+                                }else if (opT == 4){
+                                    opT = 10;
+                                    break;
+                                }else if (opT == 5){
+                                    opT=-1;
+                                    cout<<"Se ha cancelado la compra...\n";
+                                    break;
+                                }   
+                            }//termina de validar el imput
+                            if (opT==-1){//se cancela la compra
+                                cout<<"Continuar comprando??\t[1] Si   [2]NO\n";
+                                cin>>opT;
+                                if (opT==1){
+                                    continue;//regresa al inicio de la tienda
+                                }else{
+                                    break;//regresa al menú principal                              
+                                }
+                            }
+                            
+                            //costo = opT * 30
+                            if ((monedas-(opT*30)) < 0 ){
+                                cout<<"NO tienes suficientes monedas, consigue mas venciendo a los enemigos en la historia principal\n";
+                            }else{
+                                monedas-= (opT*30);
+                                cout<<"Has comprado "<<opT<<" hechizos 'golpe definitivo'\n";
+                                ataqueMortal+=opT;
+                                cout<<"Continuar comprando??\t[1] Si   [2]NO\n";
+                                cin>>opT;
+                                if (opT==1){
+                                    continue;
+                                }else{
+                                    break;
+                                }
+                            }
+                        }else{
+                            cout<<"No tienes monedas, puedes conseguir mas derrotando a enemigos de la historia\n";
+                            break;//sale de la tienda
+                        }
+                    }else if (op == 5){
+                        //Se regresa al menú
+                        cout<<"Regresa pronto :D\n\n";
+                        break;
+                    }
+                    
+                    else{
+                        cout<<"Opcion no valida :/\n";
+                        continue;
+                    }
+                }
+            break;//breake de la tienda
+        case 3:
+            //Dificultad
+            cout<<"____________________________________________________________\n";
+            cout<<"\t\t\t>>> Dificultad <<<\n";
+            cout<<"____________________________________________________________\n";
+            cout<<"\t\t--- A D V E R T E N C I A ---\n\n";
+            cout<<"Por defecto, la dificultad esta en facil, sin embargo,\n";
+            cout<<"es posible cambiarla a dificil, los enemigos seran mas\n";
+            cout<<"dificiles de vencer pero obtendras mas monedas si ganas\n\n";
+            cout<<"Dificultad actual: ";
+            if(dificultad==1){
+                cout<<"Facil\n\n";
+            }else{
+                cout<<"Dificil\n\n";
+            }
+            cout<<"Cambiar dificultad??\n[1] Si\t[2] NO\n";
+            cin>>opT;
+            if (opT==1){
+                cout<<"[1] Facil\t\t[2] Dificil\n";
+                cin>>opT;
+                if (opT==2){
+                    dificultad = 2;
+                    cout<<"La dificultad ha cambiado a dificil...\n";
+                }else{
+                    cout<<"La dificultad ha cambiado a facil\n";
+                }
+                
+            }else{
+                cout<<"La dificultad continuara en ";
+                if (dificultad==1){
+                    cout<<"Facil\n";
+                }else{
+                    cout<<"Dificil\n";
+                }
+                
+            }
+            
+
+            break;//brake de la dificultad
+        case 4:
+            //Salir
+            break;
+        default:
+            //Validacion de entrada limitada a 4 casos en menuPrincipal()
+            cout<<"texto de relleno\n";
+            break;
+        }
+        //Case 4, salir del juego, aqui op = 4 para salir
+        if (op==4){
+            cout<<"Estas saliendo del juego...\n";
+            cout<<"Gracias por jugar";
+            break;
+        } 
     }
-    cout << "Corazones actuales: " << corazones<<endl;
-    
-    return 0;
 }
