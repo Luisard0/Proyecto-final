@@ -637,11 +637,12 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
     }
 }
 
+//---------Batalla por turnos game-------------
 // Menú principal
 int menuPrincipal(){
     int op;
     cout<<"________________________________________________________\n";
-    cout<<"\nBienvenido al juego zzzzzzzzzzzzz\n\n";
+    cout<<"\n\tEN BUSQUEDA DE LA PIEDRA FILOSOFAL\n\n";
     cout<<"\t\t>>Menu principal<<\n";
     while (true){
         cout<<"________________________________________________________\n";
@@ -665,11 +666,80 @@ int menuPrincipal(){
     }
 }
 
+//pedir Nombre del jugador
+string nomPlayer(){
+    string nombre;
+    try{
+        do{
+        cout<<"Por favor, ingresa tu nombre (maximo 10 caracteres): \n";
+        getline(cin, nombre);
+        if (nombre.length() > 10){
+            cout<<"El nombre ingresado tiene más de 10 caracteres. Intentalo de nuevo :D\n";
+        }
+        }while (nombre.length() > 10);
+        return nombre;
+    }catch(const std::exception& e){
+        std::cerr << e.what() << '\n';
+        cout<<"Error: validacion del nombrel\n";
+        return "";
+    }
+}
+
+void introduccion(string personaje){
+    cout<<"\t\tI N T R O D U C C I O N \n";
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+    cout<<"En las lejanas tierras donde lo que nunca muere y todo es ciclico\n";
+    cout<<"se extrañaba el olor de auguio insipido de almas mortales capaces de\n";
+    cout<<"aventurarse al olvido, al inicio y al mas alla de lo legendariamente y medievalmente\n";
+    cout<<"posible, es aqui que la historia de "<<personaje<<" comienza, pues se aventura en\n";
+    cout<<"busqueda de la PIEDRA FILOSOFAL, aquella piedra que es capaz de revivir a los muertos\n";
+    cout<<"y trasformar cualquier elemento en oro, --muy escaso en estos tiempos--\n.";
+    cout<<"Poco o nada se sabe sobre esta misteriosa piedra pues los Opus Magnum son castigados con\n";
+    cout<<"sanguinarias torturas que dan lugar a una semilla cultural prohibida por el haber del hombre.\n";
+    cout<<"El sangunario ESTADO ha empezado a notar cierta controvercia entre los erratas del pueblo\n";
+    cout<<"aquellos quienes dicen ser los poosedores de la verdad, que en realidad no son mas que un grupo\n";
+    cout<<"de blasfemos, practicantes del ocultismo y misas negras han empezado a ser perseguidos. \n";
+    cout<<"PRINGLES, lider del culto al necronomicon ha invitado al poosedor\n";
+    cout<<"de lo desconocido a trasmutar su alma pues en su afan de alcanzar la vida eterna descrita\n";
+    cout<<"en el libro prohibido a buscado de todas las formas posibles vivir eternamente. \n";
+    cout<<"Las malas lenguas suelen contar que su infancia fue dificil pues....\n";
+    cout<<"vio morir a cada uno de sus seres queridos, pudriendo cada vez mas su alma, sin embargo...\n";
+    cout<<"ha muerto recientemente, y ha dejado en una carta decretando que cualquiera que persiga esa piedra\n";
+    cout<<"sera maldecido por la eternidad, con el castigo de morir ciclicamente...\n";
+    cout<<"Pero a "<<personaje<<" realmente no le importa nada de esto, pues esta mañana\n";
+    cout<<"encontro un cartel de recompensa. Que aquel que sea poseedor de la piedra puede ser acredor\n";
+    cout<<"de 1,000,000,000,000,000,000,000,000,000,000,000,000,\n";
+    cout<<"de monedas reales, entregadas por el mismisimo ministro del SAT.\n";
+    cout<<" -- tal vez sea mucho para declarar --. Por todo esto, "<<personaje<<" se pone en marcha.\n";
+    cout<<" Despues de morir PRINGLES, los seguidores del necronomicon\n";
+    cout<<"Manifestaron ir tras tres lugares: Bosques perdidos, Reinos Zora y a las Ruinas del Abismo\n\n\n";
+
+
+}
+
+bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
+    cout<<"B O S Q U E S  P E R D I D O S \n\n";
+    
+}
+
+bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
+    cout<<"R E I N O S  Z O R A\n\n";
+}
+
+bool RuinasDelAbismo(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
+    cout<<"R U I N A S  D E L  A B I S M O \n\n";
+}
+
+void finalHistoria(){
+    cout<<"F I N A L ";
+}
+
+
 int main(){   
     // vector<string> palabras={"platano","tact","else"};
     // string palabra =choose_palabra(palabras);
     //Nombre del jugador
-    string nPlayer = "Luis";
+    string jugador = nomPlayer();
     //string nEnemy = "Empanada";
     //Variables
     int corazones = 3;
@@ -683,12 +753,141 @@ int main(){
     //Opcion del jugador
     int op;
     int opT;
+    int opJ;
+    //otras opciones
+    int cho1;
+    int cho2;
+    //Progreso
+    int progreso = 0;
     //menú principal
     while (true){
         op = menuPrincipal();
+
         switch (op){
         case 1:
-            //Jugar
+            //---------Pre game----------------------------------------------------
+            cout<<"Antes de  empezar...\n\n";
+            cout<<"____________________________________________________________\n";
+            cout<<"\t\tAlgunas estadisticas de "<<jugador<<"\n";
+            cout<<"____________________________________________________________\n";
+            cout<<"Corazones: \t"<<corazones<<endl;
+            cout<<"Dificultad: \t";
+            if (dificultad == 1){
+                cout<<"Facil\n";
+            }else{cout<<"Dificil\n";}
+            cout<<"Monedas: \t"<<monedas<<"\n\n";
+            cout<<"____________________________________________________________\n";
+            cout<<"\tAlgunos objetos disponibles de: "<<jugador<<"\n";
+            cout<<"____________________________________________________________\n";
+            cout<<"Pociones = "<<pociones<<endl;
+            cout<<"Pociones grandes = "<<pocionesMax<<endl;
+            cout<<"Escudos = "<<escudos<<endl;
+            cout<<"Hechizo 'golpe definitivo' = "<<ataqueMortal<<endl;
+            cout<<"____________________________________________________________\n";
+            cout<<"\n\n";
+            cout<<"Recuerda que puedes comprar mas items en la tienda\n";
+            cout<<"Estas seguro de empezar tu aventura?\n\t[1] SI \t[2] NO\n";
+            cin >> opJ;
+            //---------Pre game----------------------------------------------------
+            if (opJ == 1){
+                introduccion(jugador);
+                while (true)
+                {
+                    cout<<"A que lugar te gustaria ir??\n\n[1] Bosques perdidos\n[2] Reino Zora\n[3] Ruinas del abismo\n";
+                    cin>>cho1;
+                    if (cho1 == 1){
+                        if(BosquesPerdidos(jugador, dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Bosques perdidos superados\n";
+                            if (dificultad==1){
+                                cout<<"Has recibido 300 monedas\n";
+                                monedas+=300;
+                            }else{
+                                cout<<"Has recibido 500 monedas";
+                                monedas+=500;
+                            }
+                            progreso++;
+                            break;
+                        }else{
+                            cout<<"Bosques perdidos no superados\n";
+                            cout<<"Volver a intentar??\n[1]Si\t[2] NO\n";
+                            cin>>cho2;
+                            if (cho2 == 1){
+                                continue;
+                            }else{
+                                break;
+                            }
+                        }
+                    }else if (cho1 == 2){
+                        if (ReinosZora(jugador, dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Reinos Zora superados\n";
+                            if (dificultad==1){
+                                cout<<"Has recibido 300 monedas\n";
+                                monedas+=300;
+                            }else{
+                                cout<<"Has recibido 500 monedas";
+                                monedas+=500;
+                            }
+                            progreso++;
+                            break;
+                        }else{
+                            cout<<"Reinos Zora no superados\n";
+                            cout<<"Volver a intentar??\n[1] Si \t[2] No\n";
+                            cin>>cho2;
+                            if (cho2 == 1){
+                                continue;
+                            }else{
+                                break;
+                            }
+                            
+                        }
+                    }else if (cho1 == 3){
+                        if (RuinasDelAbismo(jugador, dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Ruinas del Abismo superadas\n";
+                            if (dificultad == 1){
+                                cout<<"Has recibido 300 monedas\n";
+                                monedas+=300;
+                            }else{
+                                cout<<"Has recibido 500 monedas\n";
+                                monedas+=500;
+                            }
+                            progreso++;
+                            break;
+                        }else{
+                            cout<<"Ruinas del Abismo no superadas\n";
+                            cout<<"Volver a intentar??\n[1] Si\t[2] No\n";
+                            cin>>cho2;
+                            if (cho2 == 1){
+                                continue;
+                            }else{
+                                break;
+                            }
+                            
+                        }
+                        
+
+                        
+                    }else{
+                        cout<<"Opcion no valida\n";
+                    }
+                
+                }
+                if (progreso == 3){
+                    finalHistoria();
+                    cout<<"Felicidades por completar el juego, has recibido 1000 para cada item del juego ";
+                    pociones+=1000;
+                    pocionesMax+=1000;
+                    escudos+=1000;
+                    ataqueMortal+=1000;
+                    monedas+=1000;
+                }
+                
+                
+            }else{
+                cout<<"Regresa cuando estes listo :D\n";
+                break;
+            }
+            
+
             break;
         case 2:
             //Tienda
@@ -883,6 +1082,7 @@ int main(){
                        
                     }else if (op == 4){    
                         //Hechizo golpe definitivo, costo = 30
+                        op = -1;
                         if (monedas>0){
                             cout<<"Muy bien, cuantos hechizos 'golpe definitivo' quieres comprar??\n";
                             while (true){ //valida el input
@@ -984,7 +1184,6 @@ int main(){
                 
             }
             
-
             break;//brake de la dificultad
         case 4:
             //Salir
