@@ -686,6 +686,7 @@ string nomPlayer(){
 }
 
 void introduccion(string personaje){
+    cout<<"-----------------------------------------------------------------------------------------------\n";
     cout<<"\t\tI N T R O D U C C I O N \n";
     cout<<"-----------------------------------------------------------------------------------------------\n";
     cout<<"En las lejanas tierras donde lo que nunca muere y todo es ciclico\n";
@@ -713,13 +714,1528 @@ void introduccion(string personaje){
     cout<<" -- tal vez sea mucho para declarar --. Por todo esto, "<<personaje<<" se pone en marcha.\n";
     cout<<" Despues de morir PRINGLES, los seguidores del necronomicon\n";
     cout<<"Manifestaron ir tras tres lugares: Bosques perdidos, Reinos Zora y a las Ruinas del Abismo\n\n\n";
-
-
+    cout<<"-----------------------------------------------------------------------------------------------\n";
 }
 
 bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
-    cout<<"B O S Q U E S  P E R D I D O S \n\n";
+    int op1, op2, op3, op4, op5;
+    int corazones = 3;
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+    cout<<"\tB O S Q U E S  P E R D I D O S \n\n";
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+    cout<<"Despues de caminar varias horas "<<personaje<<" encuentra a los miticos BOSQUES PERDIDOS\n";
+    cout<<"Un lugar mas parecido a un laberinto que a un bosque, donde todos los que se atreven a cruzarlo\n";
+    cout<<"terminan siendo comidos por el olvido. Cuenta la leyenda que detras de ese bosque se halla la \n";
+    cout<<"cueva de un poderoso dragon llamado JUMEX, este dragon atesora con mucho recelo un tesoro \n";
+    cout<<"aun desconocido, un posible lugar para allar la PIEDRA FILOSOFAL\n";
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+    cout<<"Al llegar a la entrada de los bosques perdidos "<<personaje<<" se encuentra con un FINN, el alcon\n";
+    cout<<"FINN: LLegar al final debes si la recompensa quieres...jeje\n";
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+    while (corazones > 0){
+        cout<<"-----------------------------------------------------------------------------------------------\n";
+        cout<<"Recorriendo el inicio del coludido laberinto arboral, encuentras a un Oso que habla (si, un oso)\n";
+        cout<<"Oso: Hey bro, no puede pasar por aqui, este es el bosque que le pertenece a los animales\n";
+        cout<<"\tpero aqui entre nosotros puedo dejarte pasar por algunas monedas...jeje... oso corruptoso\n\n";
+        cout<<"---------------------------------------------------------------------------------------------------------\n";
+        cout<<"Que quieres hacer??\n[1] Pelear contra el oso\t[2] Hablar\t[3] Pagar\n\n";
+        cin>>op1;
+        switch (op1)
+        {
+        case 1://Primera decicion
+            //Pelear contra el oso
+            cout<<"Has decidido pelear contra el oso\n";
+            cout<<"Oso: Te eseñaré porqué me dicen el Oso cariñoso...jeje\n";
+            if (batallaPorTurnos(personaje,"Oso corruptoso", dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                cout<<"Oso: Veo que sabes lo que haces, pero ten cuidado al seguir por este camino, uno nunca sabe\n";
+                cout<<"\thasta donde lo puede llevar los vicios :c\n";
+
+            }else{
+                cout<<"Oso: Juas juas, soy el Oso Corruptoso y la corrupcion ganó de nuevo...jeje\n";
+                cout<<"Derrotado decides pagar...con uno de tus corazones...\n";
+                corazones--;
+                cout<<"Corazones actuales: "<<corazones<<endl;
+                if (corazones<=0){
+                    return false;
+                }
+                
+            }
+            //End OSO
+
+            cout<<"---------------------------------------------------------------------------------------------------------\n";
+            cout<<personaje<<" se adentra aún más en el bosque y a lo lejos escucha una peleea, al parecer es entre un\n";
+            cout<<"ratón y una serpiente, los movimientos rapidos del ratón despistan un poco a la serpiente pero no se\n";
+            cout<<"deja intimidar por nada del mundo, finalmente, logra encajar una mordida abrazadora en la espina dorsal\n";
+            cout<<"del ratón, empezando el proceso de licuacion de organos para posteriormente absorverlos a travez\n";
+            cout<<"de sus colmillos.\n";
+            cout<<"-----------------------------------------------------------------------------------------------------------\n";
+            cout<<"Te acercas sigilosamente, pero la serpiente se acerca a ti rapidamente...\n";
+            cout<<"Serpiente: A donde crees que ibasssss, si desearme un buen probechosssssss??, en este bosque la gente que se\n";
+            cout<<"\tpierdessss, es deborada por alguna variante mía, pero más o menos letal, al parecer te llegó un poco tarde\n";
+            cout<<"el mensaje sobre la hora de comer, pero ya que estas aqui, no me dejas otra alternativasssss...\n";
+            cout<<"-----------------------------------------------------------------------------------------------------------\n";
+            
+            while (corazones > 0){
+                cout<<"Serpiente Indú te queda viendo fijamente, que quieres hacer??\n\n[1] Pelear\n[2] Hablar\n[3] Pagar\n\n";
+                cin>>op2;
+                switch (op2)
+                {
+                case 1:
+                    //Pelea contra serpiente indu
+                    cout<<personaje<<" se acerca con determinacion...\n";
+                    cout<<"Serpiente Indú, veo lo que intentasssss, veo a travezzzzz de tu ser, tus pecadossssss, tu hisssstoria, nada increible\n";
+                    cout<<"\tessssspero hallassss traido algun antiveneno si no ve preparandote para una gran agonia\n";
+                    if(batallaPorTurnos(personaje, "Serpiente Indú", dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                        cout<<"Serpiente Indú: Sssii, es cierto no lo que cuentan por ahí, malaventuraos los seguidores de la avaricia y la codicia\n";
+                    }else{
+                        cout<<"Serpiente Indú: Que es lo que veo?? otro ser arrastrandose y suplicando por su perdon por estar en el momento y lugar\n";
+                        cout<<"\tequivocado??. Creo que ya sabes como es esto, tengo que arrebatarte ese calido corazon con mis frias escamassss\n";
+                        corazones--;
+                        cout<<"Corazones actuales: "<<corazones<<endl;
+                        if (corazones<=0){
+                            return false;
+                        }
+                        
+                    }
+                    //End serpiente indú
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<personaje<<" empieza a desmotivarse por todo el asunto de si realmente vale la pena seguir en busqueda de\n";
+                    cout<<"esa tal piedra, pero sin embargo decide no rendirse y procurar seguir adelante con sus motivaciones, \n";
+                    cout<<"ese prestamos a los burgueses no se va a pagar solo.\n";
+                    cout<<"El bosque a pesar de ser un lugar bastante obtuso sigue siendo una de las grandes obras magnas de la naturaleza\n";
+                    cout<<"en los antiguos libros de hechizos y magias paganas, se dice que los origenes del bosque son indecifrables.\n";
+                    cout<<"Las primeras investigaciones que se hicieron sobre el bosque fue sobre muestras de cortesas de arbol,\n";
+                    cout<<"pues los aros de los troncos revelaría con certeza su edad y a partir de ahí estimarian tiempos junto con\n";
+                    cout<<"otras muestras del sedimento y del micelio blanco que crece alrededor del perimetro del boosque, pero que \n";
+                    cout<<"sin embargo, al intentar partir los arboles, estos parecian indestructibles, ni con la fuerza de 20 hombres\n";
+                    cout<<"era capaz de fragmentarse un solo pedazo de madera, al parecer los arboles secretaban naturalemente\n";
+                    cout<<"una especie de baba pegajosa que puede ser usada como catalizador alquimico, incluso hay registros de que\n";
+                    cout<<"al ser ingerido puede hacer que la persona persiva \"otra vida\", pues se asegura que puedes experimentar\n";
+                    cout<<"otra vida muy distinta a la propia, con entornos y consecuecias diferentes salvo una sola constante\n";
+                    cout<<"el NECRONOMICON.\n";
+                    cout<<personaje<<" se sube a la copa de un arbol, intentando ver el final del bosque, pero este parece no terminar,\n";
+                    cout<<"para no perderse, empieza a marcar los arboles por donde ya ha pasado, sin embargo, empieza a notar algo extraño\n";
+                    cout<<"Los arboles que al principio solo tenian una marca vuelven a aparecer "<<personaje<<" empieza a sospechar sobre si\n";
+                    cout<<"ha estado caminando en ciculos, hasta que...encuentra un patron en los arboles: forman tren hileras\n";
+                    cout<<"el clima empieza a mostrar una cara gris, y algunas gotas se empiezan a persivir, buscando donde refugiarse\n";
+                    cout<<"encuentra un techo de hojas, es como si alguien estuviera viviendo ahí, durante un tiempo...\n";
+                    cout<<"DESCONOCIDO: Hey, que haces durmiendo ahí, uno ya no puede ir por algunos conejos sin que le roben su refugio\n";
+                    cout<<"\tsé que el bosque parece interminable pero hay lugar para ambos, vale?, te dejaré quedarte pero nada de timos\n";
+                    cout<<"\tsoy el ultimo protector que queda del dragon JUMEX, ese dragon se apoderó de todos los frutos del bosque \n";
+                    cout<<"\tdesde hace un tiempo, desde entonces solo nos queda matarnos entre nosotros, los habitantes del Bosque Perdido\n";
+                    cout<<"\tha decir verdad, los bucles entre arboles son bastante común entre mas te acercas al dragon, de vez en cuando\n";
+                    cout<<"\tcuando el clima cambia el dragon pierde un poco de magia y tranquiliza la randomizacion del bosque. En fin, duerme.\n";
+                    cout<<"\n\nAl día siguiente "<<personaje<<" le dió las gracias por su hospitalidad al ser Anaranjado Manchinegro.\n";
+                    cout<<"Dandole adios a KKKKKN\n";
+                    cout<<personaje<<" comieza a perder la determinacion, pero se acuerda del dinero por la PIEDRA FILOSOFAL y se le pasa\n";
+                    cout<<"Despues de haber caminado durante 3 dias y 3 noches,"<<personaje<<" finalmente encuentra el templo del Dragon JUMEX\n";
+                    cout<<"el templo es una esctructura monolitica de forma piramida invertida, con rios por algunas salidas del templo\n";
+                    cout<<"y desgastado por el tiempo. Al seguir caminando, "<<personaje<<" se encuentra con un viejo conocido, KKKKKN,\n";
+                    cout<<"KKKKKN: Sabría que vendrias, pero no pensé que llegarías tan lejos, como sabras es mi deber proteger a este dragon\n";
+                    cout<<"\tle debo la vida de mis seres queridos, cuando la nacion enemiga de mi pueblo atacó, JUMEX, en su grandeza,\n";
+                    cout<<"dió la cara y con sus llamaradas elimino al ejercito enemigo. Ese día, toda mi generacion le juró lealtad junto\n";
+                    cout<<"con algunas otras familias. Pero ahora solo quedo yo, y no dejaré que sigas avanzando...\n";
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear";
+                    cin>>op4;
+                    while (corazones>0)
+                    {
+                        //Pelea, Pelea, Pelea
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
+                            cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
+                            cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
+                            cout<<"En medio de la agonía de KKKKKN, reune pocas de sus fuerzas, se arrebata su unico corazon del pecho\n";
+                            cout<<"y te lo ofrese como trofeo...simplemente lo aceptas.\n";
+                            corazones+=1;
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                        }else{
+                            cout<<"KKKKKN: La sangre de otro mortal vuelve a manchar mi espada de sangre, que con aquejo y remordimiento\n";
+                            cout<<"\nespero que la proxima vez pueda encontrar la paz\n";
+                            corazones-=0;
+                            if (corazones-=0){
+                                return false;
+                            }
+                        }
+                        //End KKKKKN
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                        cout<<personaje<<" ha recorrido bastante el suelo que hoy tiene lugar a un templo sagrado y protegido por un linaje\n";
+                        cout<<"de guardianes tratando de encontrar la paz en su deber, en un juramento, en un una idea.\n";
+                        cout<<"Al adentrarse en el gran templo, las cosas parecen estar muy abandonadas, los pisos con cubiertos por gruesas\n";
+                        cout<<"y pesadas capas de polvo formando un aura de abandono profundo, sin embargo tras caminar un tiempo\n";
+                        cout<<"se logran ver algunas huellas que se repiten a si mismas, al parecer son las huellas de un Jaguar\n";
+                        cout<<"parece ser que KKKKKN recorria constantemente los pasillos vacios y oscuros, así que "<<personaje<<"decide \n";
+                        cout<<"seguir el rastro, mientras sigue las marcas en el piso, se pueden apreciar en los muros una cierta leyenda\n";
+                        cout<<"al parecer los muros fueron pintados con un estilo muy ruprestre, no se logra ver muy bien, el paso del tiempo\n";
+                        cout<<"ha hecho que se borre la pintura pero parcialmente se puede apreciar una especia de dragon blanco\n";
+                        cout<<"de ojos azules saliendo del Sol en direccion para un grupo de personas, tambien hay una rota, falta un fragmento\n";
+                        cout<<"solo se logra ver lo que parece una persona alzando algo....tal vez no sea importante...\n";
+                        cout<<"A lo lejos se escucha un rugido temible, seguido de un golpe constante, un compas confuso de flauta se logra\n";
+                        cout<<"distinguir, al ritmo se suma algunos tambores muy tribales, arpas y algunos instrumentos de cuerda.\n";
+                        cout<<personaje<<" decide seguir la musica, sube unas escaleras en forma de caracol de una aparente torre y llega a \n ";
+                        cout<<"una camara en donde resuena los tambores, ahí ve un dragon blanco dormido, una gran hoguera y los musicos\n";
+                        cout<<"disfrutando la complicidad, la union y el rito. De repente, un grupo encapuchado empieza a escoger personas\n";
+                        cout<<"aparentemente al azar, usan una especie de rampa imprivizada y lo dejan caer a la boca del dragon quien\n";
+                        cout<<"instintivamente abrió el hocico, dejando algunas llamas en el aire. Las personas encapuchadas vuelven a escoger\n";
+                        cout<<"personas, separando a una familia, se llevan a una madre y a su hija, el padre implora que las dejen en paz\n";
+                        cout<<"entre gritos y sollozos, la hija se libera por un instante y luego dejan caer a la madre a la boca del dragon\n";
+                        cout<<"mientras la madre cae, la hija corre a los brazos del padre, el padre enfurecido, en un movimiento rapido\n";
+                        cout<<"carga a su hija y le arrebata un leño a la hoguera, su mirada lo dice todo, solo quire salir de ahí\n";
+                        cout<<"Entre lagrimas, la hija pregunta por su madre, aún no comprende que acaba de pasar, simplemente no lo asimila\n";
+                        cout<<"el padre al verse acorralado, decide subir por la rampa y saltar, el dragon abre la boca pero es tarde\n";
+                        cout<<"el padre le ha clavado un leño en su ojo izquierdo. Con el ojo enrojesido el Gran Dragon Blanco se levanta\n";
+                        cout<<"Y muestra su imponente forma, dando un rugido muy feroz, capaz de sacar volando a todo el culto, el padre\n";
+                        cout<<"logra verte y en un breve momento de contacto visual, desaparece...El Dragon intenta volar, sin embargo tiene\n";
+                        cout<<"una de sus alas rotas ya, desconocido es si aun su equilibro en orden está, al intentar levantarse no logra superar\n";
+                        cout<<"los 10 segundos seguidos en una pocicion estable. Una corroida sustancia es expulsada de su boca. El legendario\n";
+                        cout<<"dragon está muriendo. JUMEX, nota tu presencia, alcanza a verte con el rabillo de su ojo aun en paz\n";
+                        cout<<personaje<<" decide acercase con determinacion...El momento se detiene, los flujos de agua cayendo se detienen\n";
+                        cout<<"y el tiempo lo hace tambien, escuha una extraña voz agrietada y corrompida\n";
+                        cout<<"\nJUMEX, el gran dragon de ojos azules: Estas aquí por esa baratija de piedra, cierto?? Bueno, tengo malas noticias\n";
+                        cout<<"\tesa cosa nunca existió, solo fueron inventos de gente rechazada por la sociedad inventó, el sistema les falló\n";
+                        cout<<"\tcomo puedes ver ahora los grupos de extraños me llaman una leyenda, pero que soy si no otro dragon\n";
+                        cout<<"\tlas historias que se cuentan de mi, son solo grandes enagenaciones de mitos revueltos en la mente\n";
+                        cout<<"\thumana, un parasito social que solo aferra a los más necesitados a un puño de promesas vacias\n ";
+                        cout<<"\tPero, ya estoy cansado de todo esto, necesito descansar, necesito encontrar el equilibrio, pero qué clase de\n";
+                        cout<<"\tequilibrio puede conseguir una lagartija gigante??. Te lo suplico, por favor acaba conmigo, solo quiero morir\n";
+                        cout<<"\tdeseo salir de este mundo que me ha hecho tanto daño.Harias eso por mi??\n";
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n\n";
+                        cout<<"Que deseas hacer??\n\n[1] Matar\t[2] Pelear\t[3] Perdonar\n\n";
+                        cin>>op5;
+                        if (op5==1){
+                            cout<<personaje<<" toma su espada, desevaina la hoja, toma un respiro, hinhala, exhala, encuentra determinacion en\n";
+                            cout<<"sus acciones y...\n";
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: espera, que estoy haciendo??Dejandome matar por una persona que\n";
+                            cout<<"\tno tiene la menor idea de mis heroicos actos, de mi legado, de mi ser...no, un Dragon de mi linaje\n";
+                            cout<<"\tno puede morir de esta forma tan patetica. Preparate para nuestra pelea, será de las cosas más dificiles que\n";
+                            cout<<"hayas hecho nunca...muah...jjajajaja..coff.cofff...\n";
+                        }else if (op5==2){
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: a veces, y solo a veces son necesarias las peleas pero esta vez será\n";
+                            cout<<"\talgo muy sensillo,pero...por qué debería serlo, por qué me tengo tando desprecio a mi mismo??\n";
+                            cout<<"\tOlvidalo por completo, PREPARATE A SER CARBONNIZADO JAJAJAJAJAJA\n";
+                        }else{
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
+                            cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
+                            cout<<"coff...coff....\n";
+                        }
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
+                            cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
+                            cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
+                            cout<<"JUMEX, EL GRAN DRAGON BLANCO DE OJOS AZULES muere\n";
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                            return true;
+
+                        }else{
+                            cout<<"Te lo dije, un gran ser como yo es imposible de matar...espero que la proxima vez sea distinto, aqui estaré\n";
+                            cout<<personaje<<" tirado en el suelo y sufriendo de agonia, mira al dragon y da su ultimo suspiro....has muerto\n";
+                            cout<<"El dragon se come tu cadaver y con ello, todos tus corazones\n";
+                            corazones = 0;
+                            cout<<"Corazones actuales"<<corazones<<endl;
+                            return false;
+
+                        }
+                    }
+                    //End dragon y Bosques Perdidos
+                    break;
+                case 2:
+                    //Habla con serpiente Indú
+                    cout<<"Serpiente Indú: Espera, no queriassss quitarme mi comida???, Debisste haberlo mencionado antesss, todo esto es un simple mal\n";
+                    cout<<"\tentendidosss, de ser por mi, puedes pasar a dodne quieras, en este bosque las cosas son más simples de lo que parece\n";
+                    cout<<"Serpiente Indú, te ha dejado pasar sin aparentemente ningun problema\n";
+                    cout<<"Corazones actuales: "<<corazones<<endl;
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    
+                    //End serpiente indú
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<personaje<<" empieza a desmotivarse por todo el asunto de si realmente vale la pena seguir en busqueda de\n";
+                    cout<<"esa tal piedra, pero sin embargo decide no rendirse y procurar seguir adelante con sus motivaciones, \n";
+                    cout<<"ese prestamos a los burgueses no se va a pagar solo.\n";
+                    cout<<"El bosque a pesar de ser un lugar bastante obtuso sigue siendo una de las grandes obras magnas de la naturaleza\n";
+                    cout<<"en los antiguos libros de hechizos y magias paganas, se dice que los origenes del bosque son indecifrables.\n";
+                    cout<<"Las primeras investigaciones que se hicieron sobre el bosque fue sobre muestras de cortesas de arbol,\n";
+                    cout<<"pues los aros de los troncos revelaría con certeza su edad y a partir de ahí estimarian tiempos junto con\n";
+                    cout<<"otras muestras del sedimento y del micelio blanco que crece alrededor del perimetro del boosque, pero que \n";
+                    cout<<"sin embargo, al intentar partir los arboles, estos parecian indestructibles, ni con la fuerza de 20 hombres\n";
+                    cout<<"era capaz de fragmentarse un solo pedazo de madera, al parecer los arboles secretaban naturalemente\n";
+                    cout<<"una especie de baba pegajosa que puede ser usada como catalizador alquimico, incluso hay registros de que\n";
+                    cout<<"al ser ingerido puede hacer que la persona persiva \"otra vida\", pues se asegura que puedes experimentar\n";
+                    cout<<"otra vida muy distinta a la propia, con entornos y consecuecias diferentes salvo una sola constante\n";
+                    cout<<"el NECRONOMICON.\n";
+                    cout<<personaje<<" se sube a la copa de un arbol, intentando ver el final del bosque, pero este parece no terminar,\n";
+                    cout<<"para no perderse, empieza a marcar los arboles por donde ya ha pasado, sin embargo, empieza a notar algo extraño\n";
+                    cout<<"Los arboles que al principio solo tenian una marca vuelven a aparecer "<<personaje<<" empieza a sospechar sobre si\n";
+                    cout<<"ha estado caminando en ciculos, hasta que...encuentra un patron en los arboles: forman tren hileras\n";
+                    cout<<"el clima empieza a mostrar una cara gris, y algunas gotas se empiezan a persivir, buscando donde refugiarse\n";
+                    cout<<"encuentra un techo de hojas, es como si alguien estuviera viviendo ahí, durante un tiempo...\n";
+                    cout<<"DESCONOCIDO: Hey, que haces durmiendo ahí, uno ya no puede ir por algunos conejos sin que le roben su refugio\n";
+                    cout<<"\tsé que el bosque parece interminable pero hay lugar para ambos, vale?, te dejaré quedarte pero nada de timos\n";
+                    cout<<"\tsoy el ultimo protector que queda del dragon JUMEX, ese dragon se apoderó de todos los frutos del bosque \n";
+                    cout<<"\tdesde hace un tiempo, desde entonces solo nos queda matarnos entre nosotros, los habitantes del Bosque Perdido\n";
+                    cout<<"\tha decir verdad, los bucles entre arboles son bastante común entre mas te acercas al dragon, de vez en cuando\n";
+                    cout<<"\tcuando el clima cambia el dragon pierde un poco de magia y tranquiliza la randomizacion del bosque. En fin, duerme.\n";
+                    cout<<"\n\nAl día siguiente "<<personaje<<" le dió las gracias por su hospitalidad al ser Anaranjado Manchinegro.\n";
+                    cout<<"Dandole adios a KKKKKN\n";
+                    cout<<personaje<<" comieza a perder la determinacion, pero se acuerda del dinero por la PIEDRA FILOSOFAL y se le pasa\n";
+                    cout<<"Despues de haber caminado durante 3 dias y 3 noches,"<<personaje<<" finalmente encuentra el templo del Dragon JUMEX\n";
+                    cout<<"el templo es una esctructura monolitica de forma piramida invertida, con rios por algunas salidas del templo\n";
+                    cout<<"y desgastado por el tiempo. Al seguir caminando, "<<personaje<<" se encuentra con un viejo conocido, KKKKKN,\n";
+                    cout<<"KKKKKN: Sabría que vendrias, pero no pensé que llegarías tan lejos, como sabras es mi deber proteger a este dragon\n";
+                    cout<<"\tle debo la vida de mis seres queridos, cuando la nacion enemiga de mi pueblo atacó, JUMEX, en su grandeza,\n";
+                    cout<<"dió la cara y con sus llamaradas elimino al ejercito enemigo. Ese día, toda mi generacion le juró lealtad junto\n";
+                    cout<<"con algunas otras familias. Pero ahora solo quedo yo, y no dejaré que sigas avanzando...\n";
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear\n";
+                    cin>>op4;
+                    while (corazones>0)
+                    {
+                        //Pelea, Pelea, Pelea
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
+                            cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
+                            cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
+                            cout<<"En medio de la agonía de KKKKKN, reune pocas de sus fuerzas, se arrebata su unico corazon del pecho\n";
+                            cout<<"y te lo ofrese como trofeo...simplemente lo aceptas.\n";
+                            corazones+=1;
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                        }else{
+                            cout<<"KKKKKN: La sangre de otro mortal vuelve a manchar mi espada de sangre, que con aquejo y remordimiento\n";
+                            cout<<"\nespero que la proxima vez pueda encontrar la paz\n";
+                            corazones-=0;
+                            if (corazones-=0){
+                                return false;
+                            }
+                        }
+                        //End KKKKKN
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                        cout<<personaje<<" ha recorrido bastante el suelo que hoy tiene lugar a un templo sagrado y protegido por un linaje\n";
+                        cout<<"de guardianes tratando de encontrar la paz en su deber, en un juramento, en un una idea.\n";
+                        cout<<"Al adentrarse en el gran templo, las cosas parecen estar muy abandonadas, los pisos con cubiertos por gruesas\n";
+                        cout<<"y pesadas capas de polvo formando un aura de abandono profundo, sin embargo tras caminar un tiempo\n";
+                        cout<<"se logran ver algunas huellas que se repiten a si mismas, al parecer son las huellas de un Jaguar\n";
+                        cout<<"parece ser que KKKKKN recorria constantemente los pasillos vacios y oscuros, así que "<<personaje<<"decide \n";
+                        cout<<"seguir el rastro, mientras sigue las marcas en el piso, se pueden apreciar en los muros una cierta leyenda\n";
+                        cout<<"al parecer los muros fueron pintados con un estilo muy ruprestre, no se logra ver muy bien, el paso del tiempo\n";
+                        cout<<"ha hecho que se borre la pintura pero parcialmente se puede apreciar una especia de dragon blanco\n";
+                        cout<<"de ojos azules saliendo del Sol en direccion para un grupo de personas, tambien hay una rota, falta un fragmento\n";
+                        cout<<"solo se logra ver lo que parece una persona alzando algo....tal vez no sea importante...\n";
+                        cout<<"A lo lejos se escucha un rugido temible, seguido de un golpe constante, un compas confuso de flauta se logra\n";
+                        cout<<"distinguir, al ritmo se suma algunos tambores muy tribales, arpas y algunos instrumentos de cuerda.\n";
+                        cout<<personaje<<" decide seguir la musica, sube unas escaleras en forma de caracol de una aparente torre y llega a \n ";
+                        cout<<"una camara en donde resuena los tambores, ahí ve un dragon blanco dormido, una gran hoguera y los musicos\n";
+                        cout<<"disfrutando la complicidad, la union y el rito. De repente, un grupo encapuchado empieza a escoger personas\n";
+                        cout<<"aparentemente al azar, usan una especie de rampa imprivizada y lo dejan caer a la boca del dragon quien\n";
+                        cout<<"instintivamente abrió el hocico, dejando algunas llamas en el aire. Las personas encapuchadas vuelven a escoger\n";
+                        cout<<"personas, separando a una familia, se llevan a una madre y a su hija, el padre implora que las dejen en paz\n";
+                        cout<<"entre gritos y sollozos, la hija se libera por un instante y luego dejan caer a la madre a la boca del dragon\n";
+                        cout<<"mientras la madre cae, la hija corre a los brazos del padre, el padre enfurecido, en un movimiento rapido\n";
+                        cout<<"carga a su hija y le arrebata un leño a la hoguera, su mirada lo dice todo, solo quire salir de ahí\n";
+                        cout<<"Entre lagrimas, la hija pregunta por su madre, aún no comprende que acaba de pasar, simplemente no lo asimila\n";
+                        cout<<"el padre al verse acorralado, decide subir por la rampa y saltar, el dragon abre la boca pero es tarde\n";
+                        cout<<"el padre le ha clavado un leño en su ojo izquierdo. Con el ojo enrojesido el Gran Dragon Blanco se levanta\n";
+                        cout<<"Y muestra su imponente forma, dando un rugido muy feroz, capaz de sacar volando a todo el culto, el padre\n";
+                        cout<<"logra verte y en un breve momento de contacto visual, desaparece...El Dragon intenta volar, sin embargo tiene\n";
+                        cout<<"una de sus alas rotas ya, desconocido es si aun su equilibro en orden está, al intentar levantarse no logra superar\n";
+                        cout<<"los 10 segundos seguidos en una pocicion estable. Una corroida sustancia es expulsada de su boca. El legendario\n";
+                        cout<<"dragon está muriendo. JUMEX, nota tu presencia, alcanza a verte con el rabillo de su ojo aun en paz\n";
+                        cout<<personaje<<" decide acercase con determinacion...El momento se detiene, los flujos de agua cayendo se detienen\n";
+                        cout<<"y el tiempo lo hace tambien, escuha una extraña voz agrietada y corrompida\n";
+                        cout<<"\nJUMEX, el gran dragon de ojos azules: Estas aquí por esa baratija de piedra, cierto?? Bueno, tengo malas noticias\n";
+                        cout<<"\tesa cosa nunca existió, solo fueron inventos de gente rechazada por la sociedad inventó, el sistema les falló\n";
+                        cout<<"\tcomo puedes ver ahora los grupos de extraños me llaman una leyenda, pero que soy si no otro dragon\n";
+                        cout<<"\tlas historias que se cuentan de mi, son solo grandes enagenaciones de mitos revueltos en la mente\n";
+                        cout<<"\thumana, un parasito social que solo aferra a los más necesitados a un puño de promesas vacias\n ";
+                        cout<<"\tPero, ya estoy cansado de todo esto, necesito descansar, necesito encontrar el equilibrio, pero qué clase de\n";
+                        cout<<"\tequilibrio puede conseguir una lagartija gigante??. Te lo suplico, por favor acaba conmigo, solo quiero morir\n";
+                        cout<<"\tdeseo salir de este mundo que me ha hecho tanto daño.Harias eso por mi??\n";
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n\n";
+                        cout<<"Que deseas hacer??\n\n[1] Matar\t[2] Pelear\t[3] Perdonar\n\n";
+                        cin>>op5;
+                        if (op5==1){
+                            cout<<personaje<<" toma su espada, desevaina la hoja, toma un respiro, hinhala, exhala, encuentra determinacion en\n";
+                            cout<<"sus acciones y...\n";
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: espera, que estoy haciendo??Dejandome matar por una persona que\n";
+                            cout<<"\tno tiene la menor idea de mis heroicos actos, de mi legado, de mi ser...no, un Dragon de mi linaje\n";
+                            cout<<"\tno puede morir de esta forma tan patetica. Preparate para nuestra pelea, será de las cosas más dificiles que\n";
+                            cout<<"hayas hecho nunca...muah...jjajajaja..coff.cofff...\n";
+                        }else if (op5==2){
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: a veces, y solo a veces son necesarias las peleas pero esta vez será\n";
+                            cout<<"\talgo muy sensillo,pero...por qué debería serlo, por qué me tengo tando desprecio a mi mismo??\n";
+                            cout<<"\tOlvidalo por completo, PREPARATE A SER CARBONNIZADO JAJAJAJAJAJA\n";
+                        }else{
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
+                            cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
+                            cout<<"coff...coff....\n";
+                        }
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
+                            cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
+                            cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
+                            cout<<"JUMEX, EL GRAN DRAGON BLANCO DE OJOS AZULES muere\n";
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                            return true;
+
+                        }else{
+                            cout<<"Te lo dije, un gran ser como yo es imposible de matar...espero que la proxima vez sea distinto, aqui estaré\n";
+                            cout<<personaje<<" tirado en el suelo y sufriendo de agonia, mira al dragon y da su ultimo suspiro....has muerto\n";
+                            cout<<"El dragon se come tu cadaver y con ello, todos tus corazones\n";
+                            corazones = 0;
+                            cout<<"Corazones actuales"<<corazones<<endl;
+                            return false;
+
+                        }
+                    }
+                    //End dragon y Bosques Perdidos
+                    break;
+                case 3:
+                    //Pagar a serpiente indú
+                    cout<<"Serpiente Indú: Espera, qué se supone que haga yo con essssso, solo soy una serpiente de origen desconocido, lo siento pero\n";
+                    cout<<"\nno puedo dejarte hacer eso, total, ya cazé mi presa del día ...ssssss.sssss.ssss\n";
+                    cout<<"Corazones actuales: "<<corazones<<endl;
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    //End serpiente indú
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<personaje<<" empieza a desmotivarse por todo el asunto de si realmente vale la pena seguir en busqueda de\n";
+                    cout<<"esa tal piedra, pero sin embargo decide no rendirse y procurar seguir adelante con sus motivaciones, \n";
+                    cout<<"ese prestamos a los burgueses no se va a pagar solo.\n";
+                    cout<<"El bosque a pesar de ser un lugar bastante obtuso sigue siendo una de las grandes obras magnas de la naturaleza\n";
+                    cout<<"en los antiguos libros de hechizos y magias paganas, se dice que los origenes del bosque son indecifrables.\n";
+                    cout<<"Las primeras investigaciones que se hicieron sobre el bosque fue sobre muestras de cortesas de arbol,\n";
+                    cout<<"pues los aros de los troncos revelaría con certeza su edad y a partir de ahí estimarian tiempos junto con\n";
+                    cout<<"otras muestras del sedimento y del micelio blanco que crece alrededor del perimetro del boosque, pero que \n";
+                    cout<<"sin embargo, al intentar partir los arboles, estos parecian indestructibles, ni con la fuerza de 20 hombres\n";
+                    cout<<"era capaz de fragmentarse un solo pedazo de madera, al parecer los arboles secretaban naturalemente\n";
+                    cout<<"una especie de baba pegajosa que puede ser usada como catalizador alquimico, incluso hay registros de que\n";
+                    cout<<"al ser ingerido puede hacer que la persona persiva \"otra vida\", pues se asegura que puedes experimentar\n";
+                    cout<<"otra vida muy distinta a la propia, con entornos y consecuecias diferentes salvo una sola constante\n";
+                    cout<<"el NECRONOMICON.\n";
+                    cout<<personaje<<" se sube a la copa de un arbol, intentando ver el final del bosque, pero este parece no terminar,\n";
+                    cout<<"para no perderse, empieza a marcar los arboles por donde ya ha pasado, sin embargo, empieza a notar algo extraño\n";
+                    cout<<"Los arboles que al principio solo tenian una marca vuelven a aparecer "<<personaje<<" empieza a sospechar sobre si\n";
+                    cout<<"ha estado caminando en ciculos, hasta que...encuentra un patron en los arboles: forman tren hileras\n";
+                    cout<<"el clima empieza a mostrar una cara gris, y algunas gotas se empiezan a persivir, buscando donde refugiarse\n";
+                    cout<<"encuentra un techo de hojas, es como si alguien estuviera viviendo ahí, durante un tiempo...\n";
+                    cout<<"DESCONOCIDO: Hey, que haces durmiendo ahí, uno ya no puede ir por algunos conejos sin que le roben su refugio\n";
+                    cout<<"\tsé que el bosque parece interminable pero hay lugar para ambos, vale?, te dejaré quedarte pero nada de timos\n";
+                    cout<<"\tsoy el ultimo protector que queda del dragon JUMEX, ese dragon se apoderó de todos los frutos del bosque \n";
+                    cout<<"\tdesde hace un tiempo, desde entonces solo nos queda matarnos entre nosotros, los habitantes del Bosque Perdido\n";
+                    cout<<"\tha decir verdad, los bucles entre arboles son bastante común entre mas te acercas al dragon, de vez en cuando\n";
+                    cout<<"\tcuando el clima cambia el dragon pierde un poco de magia y tranquiliza la randomizacion del bosque. En fin, duerme.\n";
+                    cout<<"\n\nAl día siguiente "<<personaje<<" le dió las gracias por su hospitalidad al ser Anaranjado Manchinegro.\n";
+                    cout<<"Dandole adios a KKKKKN\n";
+                    cout<<personaje<<" comieza a perder la determinacion, pero se acuerda del dinero por la PIEDRA FILOSOFAL y se le pasa\n";
+                    cout<<"Despues de haber caminado durante 3 dias y 3 noches,"<<personaje<<" finalmente encuentra el templo del Dragon JUMEX\n";
+                    cout<<"el templo es una esctructura monolitica de forma piramida invertida, con rios por algunas salidas del templo\n";
+                    cout<<"y desgastado por el tiempo. Al seguir caminando, "<<personaje<<" se encuentra con un viejo conocido, KKKKKN,\n";
+                    cout<<"KKKKKN: Sabría que vendrias, pero no pensé que llegarías tan lejos, como sabras es mi deber proteger a este dragon\n";
+                    cout<<"\tle debo la vida de mis seres queridos, cuando la nacion enemiga de mi pueblo atacó, JUMEX, en su grandeza,\n";
+                    cout<<"dió la cara y con sus llamaradas elimino al ejercito enemigo. Ese día, toda mi generacion le juró lealtad junto\n";
+                    cout<<"con algunas otras familias. Pero ahora solo quedo yo, y no dejaré que sigas avanzando...\n";
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear\n";
+                    cin>>op4;
+                    while (corazones>0)
+                    {
+                        //Pelea, Pelea, Pelea
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
+                            cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
+                            cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
+                            cout<<"En medio de la agonía de KKKKKN, reune pocas de sus fuerzas, se arrebata su unico corazon del pecho\n";
+                            cout<<"y te lo ofrese como trofeo...simplemente lo aceptas.\n";
+                            corazones+=1;
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                        }else{
+                            cout<<"KKKKKN: La sangre de otro mortal vuelve a manchar mi espada de sangre, que con aquejo y remordimiento\n";
+                            cout<<"\nespero que la proxima vez pueda encontrar la paz\n";
+                            corazones-=0;
+                            if (corazones-=0){
+                                return false;
+                            }
+                        }
+                        //End KKKKKN
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                        cout<<personaje<<" ha recorrido bastante el suelo que hoy tiene lugar a un templo sagrado y protegido por un linaje\n";
+                        cout<<"de guardianes tratando de encontrar la paz en su deber, en un juramento, en un una idea.\n";
+                        cout<<"Al adentrarse en el gran templo, las cosas parecen estar muy abandonadas, los pisos con cubiertos por gruesas\n";
+                        cout<<"y pesadas capas de polvo formando un aura de abandono profundo, sin embargo tras caminar un tiempo\n";
+                        cout<<"se logran ver algunas huellas que se repiten a si mismas, al parecer son las huellas de un Jaguar\n";
+                        cout<<"parece ser que KKKKKN recorria constantemente los pasillos vacios y oscuros, así que "<<personaje<<"decide \n";
+                        cout<<"seguir el rastro, mientras sigue las marcas en el piso, se pueden apreciar en los muros una cierta leyenda\n";
+                        cout<<"al parecer los muros fueron pintados con un estilo muy ruprestre, no se logra ver muy bien, el paso del tiempo\n";
+                        cout<<"ha hecho que se borre la pintura pero parcialmente se puede apreciar una especia de dragon blanco\n";
+                        cout<<"de ojos azules saliendo del Sol en direccion para un grupo de personas, tambien hay una rota, falta un fragmento\n";
+                        cout<<"solo se logra ver lo que parece una persona alzando algo....tal vez no sea importante...\n";
+                        cout<<"A lo lejos se escucha un rugido temible, seguido de un golpe constante, un compas confuso de flauta se logra\n";
+                        cout<<"distinguir, al ritmo se suma algunos tambores muy tribales, arpas y algunos instrumentos de cuerda.\n";
+                        cout<<personaje<<" decide seguir la musica, sube unas escaleras en forma de caracol de una aparente torre y llega a \n ";
+                        cout<<"una camara en donde resuena los tambores, ahí ve un dragon blanco dormido, una gran hoguera y los musicos\n";
+                        cout<<"disfrutando la complicidad, la union y el rito. De repente, un grupo encapuchado empieza a escoger personas\n";
+                        cout<<"aparentemente al azar, usan una especie de rampa imprivizada y lo dejan caer a la boca del dragon quien\n";
+                        cout<<"instintivamente abrió el hocico, dejando algunas llamas en el aire. Las personas encapuchadas vuelven a escoger\n";
+                        cout<<"personas, separando a una familia, se llevan a una madre y a su hija, el padre implora que las dejen en paz\n";
+                        cout<<"entre gritos y sollozos, la hija se libera por un instante y luego dejan caer a la madre a la boca del dragon\n";
+                        cout<<"mientras la madre cae, la hija corre a los brazos del padre, el padre enfurecido, en un movimiento rapido\n";
+                        cout<<"carga a su hija y le arrebata un leño a la hoguera, su mirada lo dice todo, solo quire salir de ahí\n";
+                        cout<<"Entre lagrimas, la hija pregunta por su madre, aún no comprende que acaba de pasar, simplemente no lo asimila\n";
+                        cout<<"el padre al verse acorralado, decide subir por la rampa y saltar, el dragon abre la boca pero es tarde\n";
+                        cout<<"el padre le ha clavado un leño en su ojo izquierdo. Con el ojo enrojesido el Gran Dragon Blanco se levanta\n";
+                        cout<<"Y muestra su imponente forma, dando un rugido muy feroz, capaz de sacar volando a todo el culto, el padre\n";
+                        cout<<"logra verte y en un breve momento de contacto visual, desaparece...El Dragon intenta volar, sin embargo tiene\n";
+                        cout<<"una de sus alas rotas ya, desconocido es si aun su equilibro en orden está, al intentar levantarse no logra superar\n";
+                        cout<<"los 10 segundos seguidos en una pocicion estable. Una corroida sustancia es expulsada de su boca. El legendario\n";
+                        cout<<"dragon está muriendo. JUMEX, nota tu presencia, alcanza a verte con el rabillo de su ojo aun en paz\n";
+                        cout<<personaje<<" decide acercase con determinacion...El momento se detiene, los flujos de agua cayendo se detienen\n";
+                        cout<<"y el tiempo lo hace tambien, escuha una extraña voz agrietada y corrompida\n";
+                        cout<<"\nJUMEX, el gran dragon de ojos azules: Estas aquí por esa baratija de piedra, cierto?? Bueno, tengo malas noticias\n";
+                        cout<<"\tesa cosa nunca existió, solo fueron inventos de gente rechazada por la sociedad inventó, el sistema les falló\n";
+                        cout<<"\tcomo puedes ver ahora los grupos de extraños me llaman una leyenda, pero que soy si no otro dragon\n";
+                        cout<<"\tlas historias que se cuentan de mi, son solo grandes enagenaciones de mitos revueltos en la mente\n";
+                        cout<<"\thumana, un parasito social que solo aferra a los más necesitados a un puño de promesas vacias\n ";
+                        cout<<"\tPero, ya estoy cansado de todo esto, necesito descansar, necesito encontrar el equilibrio, pero qué clase de\n";
+                        cout<<"\tequilibrio puede conseguir una lagartija gigante??. Te lo suplico, por favor acaba conmigo, solo quiero morir\n";
+                        cout<<"\tdeseo salir de este mundo que me ha hecho tanto daño.Harias eso por mi??\n";
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n\n";
+                        cout<<"Que deseas hacer??\n\n[1] Matar\t[2] Pelear\t[3] Perdonar\n\n";
+                        cin>>op5;
+                        if (op5==1){
+                            cout<<personaje<<" toma su espada, desevaina la hoja, toma un respiro, hinhala, exhala, encuentra determinacion en\n";
+                            cout<<"sus acciones y...\n";
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: espera, que estoy haciendo??Dejandome matar por una persona que\n";
+                            cout<<"\tno tiene la menor idea de mis heroicos actos, de mi legado, de mi ser...no, un Dragon de mi linaje\n";
+                            cout<<"\tno puede morir de esta forma tan patetica. Preparate para nuestra pelea, será de las cosas más dificiles que\n";
+                            cout<<"hayas hecho nunca...muah...jjajajaja..coff.cofff...\n";
+                        }else if (op5==2){
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: a veces, y solo a veces son necesarias las peleas pero esta vez será\n";
+                            cout<<"\talgo muy sensillo,pero...por qué debería serlo, por qué me tengo tando desprecio a mi mismo??\n";
+                            cout<<"\tOlvidalo por completo, PREPARATE A SER CARBONNIZADO JAJAJAJAJAJA\n";
+                        }else{
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
+                            cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
+                            cout<<"coff...coff....\n";
+                        }
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
+                            cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
+                            cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
+                            cout<<"JUMEX, EL GRAN DRAGON BLANCO DE OJOS AZULES muere\n";
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                            return true;
+
+                        }else{
+                            cout<<"Te lo dije, un gran ser como yo es imposible de matar...espero que la proxima vez sea distinto, aqui estaré\n";
+                            cout<<personaje<<" tirado en el suelo y sufriendo de agonia, mira al dragon y da su ultimo suspiro....has muerto\n";
+                            cout<<"El dragon se come tu cadaver y con ello, todos tus corazones\n";
+                            corazones = 0;
+                            cout<<"Corazones actuales"<<corazones<<endl;
+                            return false;
+
+                        }
+                    }
+                    //End dragon y Bosques Perdidos
+                    break;
+
+                default:
+                    cout<<"Opcion no disponible\n";
+                    break;
+                }
+                
+            }
+            if (corazones<=0){
+                cout<<"Has perdido\n";
+            }
+            break;
+        case 2://Primera opcion
+            //Hablar con el oso
+            cout<<"---------------------------------------------------------------------------------------------------------\n";
+            cout<<"Oso: qué sucede, te dí tanto miedo como para atreverte a pelear conmigo??, vamos no soy un moustro\n";
+            cout<<"\to eso me han dicho, mamá dice que no hable de eso...jeje...\n";
+            cout<<"\testá bien, está bien, si adivinas mi color favorito te dejaré pasar, para no complicarte mucho\n";
+            cout<<"\tlas cosas solo te dire que es el resultado de combinar los colores rojo y amarillo\n\n";
+            cout<<"-----------------------------------------------------------------------------------------------\n";
+            cout<<"Qué respondes??\n\n[1] Naranja\n[2] Anaranjado\n[3] Narajo\n\n";
+            cin>>op2;
+            if(op2==2){
+                cout<<"Oso: Felicidades has adivinado mi color favorito, puedes pasar, supongo...jeje...:s\n";
+            }else{
+                cout<<"Oso: Opps, ese no es mi color favorito, a pesar de ser muy parecido... jeje...\n";
+                cout<<"\tcomo sea, eso de escoger colores no se le da a todos, en fin, supongo que entonces te dejaré\n";
+                cout<<"\tpasar, claro, antes te arrancaré uno de tus tres corazones, ya sabes, como sacrificio...jeje\n";
+                corazones--;
+                cout<<"Corazones actuales: "<<corazones<<endl;
+            }
+            //End OSO
+            cout<<"---------------------------------------------------------------------------------------------------------\n";
+            cout<<personaje<<" se adentra aún más en el bosque y a lo lejos escucha una peleea, al parecer es entre un\n";
+            cout<<"ratón y una serpiente, los movimientos rapidos del ratón despistan un poco a la serpiente pero no se\n";
+            cout<<"deja intimidar por nada del mundo, finalmente, logra encajar una mordida abrazadora en la espina dorsal\n";
+            cout<<"del ratón, empezando el proceso de licuacion de organos para posteriormente absorverlos a travez\n";
+            cout<<"de sus colmillos.";
+            cout<<"-----------------------------------------------------------------------------------------------------------\n";
+            cout<<"Te acercas sigilosamente, pero la serpiente se acerca a ti rapidamente...";
+            cout<<"Serpiente: A donde crees que ibasssss, si desearme un buen probechosssssss??, en este bosque la gente que se\n";
+            cout<<"\tpierdessss, es deborada por alguna variante mía, pero más o menos letal, al parecer te llegó un poco tarde\n";
+            cout<<"el mensaje sobre la hora de comer, pero ya que estas aqui, no me dejas otra alternativasssss...\n";
+            cout<<"-----------------------------------------------------------------------------------------------------------\n";
+            while (corazones > 0){
+                cout<<"Serpiente Indú te queda viendo fijamente, que quieres hacer??\n\n[1] Pelear\n[2] Hablar\n[3] Pagar\n\n";
+                cin>>op2;
+                switch (op2)
+                {
+                case 1:
+                    //Pelea contra serpiente indu
+                    cout<<personaje<<" se acerca con determinacion...\n";
+                    cout<<"Serpiente Indú, veo lo que intentasssss, veo a travezzzzz de tu ser, tus pecadossssss, tu hisssstoria, nada increible\n";
+                    cout<<"\tessssspero hallassss traido algun antiveneno si no ve preparandote para una gran agonia\n";
+                    if(batallaPorTurnos(personaje, "Serpiente Indú", dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                        cout<<"Serpiente Indú: Sssii, es cierto no lo que cuentan por ahí, malaventuraos los seguidores de la avaricia y la codicia\n";
+                    }else{
+                        cout<<"Serpiente Indú: Que es lo que veo?? otro ser arrastrandose y suplicando por su perdon por estar en el momento y lugar\n";
+                        cout<<"\tequivocado??. Creo que ya sabes como es esto, tengo que arrebatarte ese calido corazon con mis frias escamassss\n";
+                        corazones--;
+                        cout<<"Corazones actuales: "<<corazones<<endl;
+                    }
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    //End serpiente indú
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<personaje<<" empieza a desmotivarse por todo el asunto de si realmente vale la pena seguir en busqueda de\n";
+                    cout<<"esa tal piedra, pero sin embargo decide no rendirse y procurar seguir adelante con sus motivaciones, \n";
+                    cout<<"ese prestamos a los burgueses no se va a pagar solo.\n";
+                    cout<<"El bosque a pesar de ser un lugar bastante obtuso sigue siendo una de las grandes obras magnas de la naturaleza\n";
+                    cout<<"en los antiguos libros de hechizos y magias paganas, se dice que los origenes del bosque son indecifrables.\n";
+                    cout<<"Las primeras investigaciones que se hicieron sobre el bosque fue sobre muestras de cortesas de arbol,\n";
+                    cout<<"pues los aros de los troncos revelaría con certeza su edad y a partir de ahí estimarian tiempos junto con\n";
+                    cout<<"otras muestras del sedimento y del micelio blanco que crece alrededor del perimetro del boosque, pero que \n";
+                    cout<<"sin embargo, al intentar partir los arboles, estos parecian indestructibles, ni con la fuerza de 20 hombres\n";
+                    cout<<"era capaz de fragmentarse un solo pedazo de madera, al parecer los arboles secretaban naturalemente\n";
+                    cout<<"una especie de baba pegajosa que puede ser usada como catalizador alquimico, incluso hay registros de que\n";
+                    cout<<"al ser ingerido puede hacer que la persona persiva \"otra vida\", pues se asegura que puedes experimentar\n";
+                    cout<<"otra vida muy distinta a la propia, con entornos y consecuecias diferentes salvo una sola constante\n";
+                    cout<<"el NECRONOMICON.\n";
+                    cout<<personaje<<" se sube a la copa de un arbol, intentando ver el final del bosque, pero este parece no terminar,\n";
+                    cout<<"para no perderse, empieza a marcar los arboles por donde ya ha pasado, sin embargo, empieza a notar algo extraño\n";
+                    cout<<"Los arboles que al principio solo tenian una marca vuelven a aparecer "<<personaje<<" empieza a sospechar sobre si\n";
+                    cout<<"ha estado caminando en ciculos, hasta que...encuentra un patron en los arboles: forman tren hileras\n";
+                    cout<<"el clima empieza a mostrar una cara gris, y algunas gotas se empiezan a persivir, buscando donde refugiarse\n";
+                    cout<<"encuentra un techo de hojas, es como si alguien estuviera viviendo ahí, durante un tiempo...\n";
+                    cout<<"DESCONOCIDO: Hey, que haces durmiendo ahí, uno ya no puede ir por algunos conejos sin que le roben su refugio\n";
+                    cout<<"\tsé que el bosque parece interminable pero hay lugar para ambos, vale?, te dejaré quedarte pero nada de timos\n";
+                    cout<<"\tsoy el ultimo protector que queda del dragon JUMEX, ese dragon se apoderó de todos los frutos del bosque \n";
+                    cout<<"\tdesde hace un tiempo, desde entonces solo nos queda matarnos entre nosotros, los habitantes del Bosque Perdido\n";
+                    cout<<"\tha decir verdad, los bucles entre arboles son bastante común entre mas te acercas al dragon, de vez en cuando\n";
+                    cout<<"\tcuando el clima cambia el dragon pierde un poco de magia y tranquiliza la randomizacion del bosque. En fin, duerme.\n";
+                    cout<<"\n\nAl día siguiente "<<personaje<<" le dió las gracias por su hospitalidad al ser Anaranjado Manchinegro.\n";
+                    cout<<"Dandole adios a KKKKKN\n";
+                    cout<<personaje<<" comieza a perder la determinacion, pero se acuerda del dinero por la PIEDRA FILOSOFAL y se le pasa\n";
+                    cout<<"Despues de haber caminado durante 3 dias y 3 noches,"<<personaje<<" finalmente encuentra el templo del Dragon JUMEX\n";
+                    cout<<"el templo es una esctructura monolitica de forma piramida invertida, con rios por algunas salidas del templo\n";
+                    cout<<"y desgastado por el tiempo. Al seguir caminando, "<<personaje<<" se encuentra con un viejo conocido, KKKKKN,\n";
+                    cout<<"KKKKKN: Sabría que vendrias, pero no pensé que llegarías tan lejos, como sabras es mi deber proteger a este dragon\n";
+                    cout<<"\tle debo la vida de mis seres queridos, cuando la nacion enemiga de mi pueblo atacó, JUMEX, en su grandeza,\n";
+                    cout<<"dió la cara y con sus llamaradas elimino al ejercito enemigo. Ese día, toda mi generacion le juró lealtad junto\n";
+                    cout<<"con algunas otras familias. Pero ahora solo quedo yo, y no dejaré que sigas avanzando...\n";
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear\n";
+                    cin>>op4;
+                    while (corazones>0)
+                    {
+                        //Pelea, Pelea, Pelea
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
+                            cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
+                            cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
+                            cout<<"En medio de la agonía de KKKKKN, reune pocas de sus fuerzas, se arrebata su unico corazon del pecho\n";
+                            cout<<"y te lo ofrese como trofeo...simplemente lo aceptas.\n";
+                            corazones+=1;
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                        }else{
+                            cout<<"KKKKKN: La sangre de otro mortal vuelve a manchar mi espada de sangre, que con aquejo y remordimiento\n";
+                            cout<<"\nespero que la proxima vez pueda encontrar la paz\n";
+                            corazones-=0;
+                            if (corazones-=0){
+                                return false;
+                            }
+                        }
+                        //End KKKKKN
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                        cout<<personaje<<" ha recorrido bastante el suelo que hoy tiene lugar a un templo sagrado y protegido por un linaje\n";
+                        cout<<"de guardianes tratando de encontrar la paz en su deber, en un juramento, en un una idea.\n";
+                        cout<<"Al adentrarse en el gran templo, las cosas parecen estar muy abandonadas, los pisos con cubiertos por gruesas\n";
+                        cout<<"y pesadas capas de polvo formando un aura de abandono profundo, sin embargo tras caminar un tiempo\n";
+                        cout<<"se logran ver algunas huellas que se repiten a si mismas, al parecer son las huellas de un Jaguar\n";
+                        cout<<"parece ser que KKKKKN recorria constantemente los pasillos vacios y oscuros, así que "<<personaje<<"decide \n";
+                        cout<<"seguir el rastro, mientras sigue las marcas en el piso, se pueden apreciar en los muros una cierta leyenda\n";
+                        cout<<"al parecer los muros fueron pintados con un estilo muy ruprestre, no se logra ver muy bien, el paso del tiempo\n";
+                        cout<<"ha hecho que se borre la pintura pero parcialmente se puede apreciar una especia de dragon blanco\n";
+                        cout<<"de ojos azules saliendo del Sol en direccion para un grupo de personas, tambien hay una rota, falta un fragmento\n";
+                        cout<<"solo se logra ver lo que parece una persona alzando algo....tal vez no sea importante...\n";
+                        cout<<"A lo lejos se escucha un rugido temible, seguido de un golpe constante, un compas confuso de flauta se logra\n";
+                        cout<<"distinguir, al ritmo se suma algunos tambores muy tribales, arpas y algunos instrumentos de cuerda.\n";
+                        cout<<personaje<<" decide seguir la musica, sube unas escaleras en forma de caracol de una aparente torre y llega a \n ";
+                        cout<<"una camara en donde resuena los tambores, ahí ve un dragon blanco dormido, una gran hoguera y los musicos\n";
+                        cout<<"disfrutando la complicidad, la union y el rito. De repente, un grupo encapuchado empieza a escoger personas\n";
+                        cout<<"aparentemente al azar, usan una especie de rampa imprivizada y lo dejan caer a la boca del dragon quien\n";
+                        cout<<"instintivamente abrió el hocico, dejando algunas llamas en el aire. Las personas encapuchadas vuelven a escoger\n";
+                        cout<<"personas, separando a una familia, se llevan a una madre y a su hija, el padre implora que las dejen en paz\n";
+                        cout<<"entre gritos y sollozos, la hija se libera por un instante y luego dejan caer a la madre a la boca del dragon\n";
+                        cout<<"mientras la madre cae, la hija corre a los brazos del padre, el padre enfurecido, en un movimiento rapido\n";
+                        cout<<"carga a su hija y le arrebata un leño a la hoguera, su mirada lo dice todo, solo quire salir de ahí\n";
+                        cout<<"Entre lagrimas, la hija pregunta por su madre, aún no comprende que acaba de pasar, simplemente no lo asimila\n";
+                        cout<<"el padre al verse acorralado, decide subir por la rampa y saltar, el dragon abre la boca pero es tarde\n";
+                        cout<<"el padre le ha clavado un leño en su ojo izquierdo. Con el ojo enrojesido el Gran Dragon Blanco se levanta\n";
+                        cout<<"Y muestra su imponente forma, dando un rugido muy feroz, capaz de sacar volando a todo el culto, el padre\n";
+                        cout<<"logra verte y en un breve momento de contacto visual, desaparece...El Dragon intenta volar, sin embargo tiene\n";
+                        cout<<"una de sus alas rotas ya, desconocido es si aun su equilibro en orden está, al intentar levantarse no logra superar\n";
+                        cout<<"los 10 segundos seguidos en una pocicion estable. Una corroida sustancia es expulsada de su boca. El legendario\n";
+                        cout<<"dragon está muriendo. JUMEX, nota tu presencia, alcanza a verte con el rabillo de su ojo aun en paz\n";
+                        cout<<personaje<<" decide acercase con determinacion...El momento se detiene, los flujos de agua cayendo se detienen\n";
+                        cout<<"y el tiempo lo hace tambien, escuha una extraña voz agrietada y corrompida\n";
+                        cout<<"\nJUMEX, el gran dragon de ojos azules: Estas aquí por esa baratija de piedra, cierto?? Bueno, tengo malas noticias\n";
+                        cout<<"\tesa cosa nunca existió, solo fueron inventos de gente rechazada por la sociedad inventó, el sistema les falló\n";
+                        cout<<"\tcomo puedes ver ahora los grupos de extraños me llaman una leyenda, pero que soy si no otro dragon\n";
+                        cout<<"\tlas historias que se cuentan de mi, son solo grandes enagenaciones de mitos revueltos en la mente\n";
+                        cout<<"\thumana, un parasito social que solo aferra a los más necesitados a un puño de promesas vacias\n ";
+                        cout<<"\tPero, ya estoy cansado de todo esto, necesito descansar, necesito encontrar el equilibrio, pero qué clase de\n";
+                        cout<<"\tequilibrio puede conseguir una lagartija gigante??. Te lo suplico, por favor acaba conmigo, solo quiero morir\n";
+                        cout<<"\tdeseo salir de este mundo que me ha hecho tanto daño.Harias eso por mi??\n";
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n\n";
+                        cout<<"Que deseas hacer??\n\n[1] Matar\t[2] Pelear\t[3] Perdonar\n\n";
+                        cin>>op5;
+                        if (op5==1){
+                            cout<<personaje<<" toma su espada, desevaina la hoja, toma un respiro, hinhala, exhala, encuentra determinacion en\n";
+                            cout<<"sus acciones y...\n";
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: espera, que estoy haciendo??Dejandome matar por una persona que\n";
+                            cout<<"\tno tiene la menor idea de mis heroicos actos, de mi legado, de mi ser...no, un Dragon de mi linaje\n";
+                            cout<<"\tno puede morir de esta forma tan patetica. Preparate para nuestra pelea, será de las cosas más dificiles que\n";
+                            cout<<"hayas hecho nunca...muah...jjajajaja..coff.cofff...\n";
+                        }else if (op5==2){
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: a veces, y solo a veces son necesarias las peleas pero esta vez será\n";
+                            cout<<"\talgo muy sensillo,pero...por qué debería serlo, por qué me tengo tando desprecio a mi mismo??\n";
+                            cout<<"\tOlvidalo por completo, PREPARATE A SER CARBONNIZADO JAJAJAJAJAJA\n";
+                        }else{
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
+                            cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
+                            cout<<"coff...coff....\n";
+                        }
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
+                            cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
+                            cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
+                            cout<<"JUMEX, EL GRAN DRAGON BLANCO DE OJOS AZULES muere\n";
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                            return true;
+
+                        }else{
+                            cout<<"Te lo dije, un gran ser como yo es imposible de matar...espero que la proxima vez sea distinto, aqui estaré\n";
+                            cout<<personaje<<" tirado en el suelo y sufriendo de agonia, mira al dragon y da su ultimo suspiro....has muerto\n";
+                            cout<<"El dragon se come tu cadaver y con ello, todos tus corazones\n";
+                            corazones = 0;
+                            cout<<"Corazones actuales"<<corazones<<endl;
+                            return false;
+
+                        }
+                    }
+                    //End dragon y Bosques Perdidos
+
+                    break;
+                case 2:
+                    //Habla con serpiente Indú
+                    cout<<"Serpiente Indú: Espera, no queriassss quitarme mi comida???, Debisste haberlo mencionado antesss, todo esto es un simple mal\n";
+                    cout<<"\tentendidosss, de ser por mi, puedes pasar a dodne quieras, en este bosque las cosas son más simples de lo que parece\n";
+                    cout<<"Serpiente Indú, te ha dejado pasar sin aparentemente ningun problema\n";
+                    cout<<"Corazones actuales: "<<corazones<<endl;
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    //End serpiente indú
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<personaje<<" empieza a desmotivarse por todo el asunto de si realmente vale la pena seguir en busqueda de\n";
+                    cout<<"esa tal piedra, pero sin embargo decide no rendirse y procurar seguir adelante con sus motivaciones, \n";
+                    cout<<"ese prestamos a los burgueses no se va a pagar solo.\n";
+                    cout<<"El bosque a pesar de ser un lugar bastante obtuso sigue siendo una de las grandes obras magnas de la naturaleza\n";
+                    cout<<"en los antiguos libros de hechizos y magias paganas, se dice que los origenes del bosque son indecifrables.\n";
+                    cout<<"Las primeras investigaciones que se hicieron sobre el bosque fue sobre muestras de cortesas de arbol,\n";
+                    cout<<"pues los aros de los troncos revelaría con certeza su edad y a partir de ahí estimarian tiempos junto con\n";
+                    cout<<"otras muestras del sedimento y del micelio blanco que crece alrededor del perimetro del boosque, pero que \n";
+                    cout<<"sin embargo, al intentar partir los arboles, estos parecian indestructibles, ni con la fuerza de 20 hombres\n";
+                    cout<<"era capaz de fragmentarse un solo pedazo de madera, al parecer los arboles secretaban naturalemente\n";
+                    cout<<"una especie de baba pegajosa que puede ser usada como catalizador alquimico, incluso hay registros de que\n";
+                    cout<<"al ser ingerido puede hacer que la persona persiva \"otra vida\", pues se asegura que puedes experimentar\n";
+                    cout<<"otra vida muy distinta a la propia, con entornos y consecuecias diferentes salvo una sola constante\n";
+                    cout<<"el NECRONOMICON.\n";
+                    cout<<personaje<<" se sube a la copa de un arbol, intentando ver el final del bosque, pero este parece no terminar,\n";
+                    cout<<"para no perderse, empieza a marcar los arboles por donde ya ha pasado, sin embargo, empieza a notar algo extraño\n";
+                    cout<<"Los arboles que al principio solo tenian una marca vuelven a aparecer "<<personaje<<" empieza a sospechar sobre si\n";
+                    cout<<"ha estado caminando en ciculos, hasta que...encuentra un patron en los arboles: forman tren hileras\n";
+                    cout<<"el clima empieza a mostrar una cara gris, y algunas gotas se empiezan a persivir, buscando donde refugiarse\n";
+                    cout<<"encuentra un techo de hojas, es como si alguien estuviera viviendo ahí, durante un tiempo...\n";
+                    cout<<"DESCONOCIDO: Hey, que haces durmiendo ahí, uno ya no puede ir por algunos conejos sin que le roben su refugio\n";
+                    cout<<"\tsé que el bosque parece interminable pero hay lugar para ambos, vale?, te dejaré quedarte pero nada de timos\n";
+                    cout<<"\tsoy el ultimo protector que queda del dragon JUMEX, ese dragon se apoderó de todos los frutos del bosque \n";
+                    cout<<"\tdesde hace un tiempo, desde entonces solo nos queda matarnos entre nosotros, los habitantes del Bosque Perdido\n";
+                    cout<<"\tha decir verdad, los bucles entre arboles son bastante común entre mas te acercas al dragon, de vez en cuando\n";
+                    cout<<"\tcuando el clima cambia el dragon pierde un poco de magia y tranquiliza la randomizacion del bosque. En fin, duerme.\n";
+                    cout<<"\n\nAl día siguiente "<<personaje<<" le dió las gracias por su hospitalidad al ser Anaranjado Manchinegro.\n";
+                    cout<<"Dandole adios a KKKKKN\n";
+                    cout<<personaje<<" comieza a perder la determinacion, pero se acuerda del dinero por la PIEDRA FILOSOFAL y se le pasa\n";
+                    cout<<"Despues de haber caminado durante 3 dias y 3 noches,"<<personaje<<" finalmente encuentra el templo del Dragon JUMEX\n";
+                    cout<<"el templo es una esctructura monolitica de forma piramida invertida, con rios por algunas salidas del templo\n";
+                    cout<<"y desgastado por el tiempo. Al seguir caminando, "<<personaje<<" se encuentra con un viejo conocido, KKKKKN,\n";
+                    cout<<"KKKKKN: Sabría que vendrias, pero no pensé que llegarías tan lejos, como sabras es mi deber proteger a este dragon\n";
+                    cout<<"\tle debo la vida de mis seres queridos, cuando la nacion enemiga de mi pueblo atacó, JUMEX, en su grandeza,\n";
+                    cout<<"dió la cara y con sus llamaradas elimino al ejercito enemigo. Ese día, toda mi generacion le juró lealtad junto\n";
+                    cout<<"con algunas otras familias. Pero ahora solo quedo yo, y no dejaré que sigas avanzando...\n";
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear\n";
+                    cin>>op4;
+                    while (corazones>0)
+                    {
+                        //Pelea, Pelea, Pelea
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
+                            cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
+                            cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
+                            cout<<"En medio de la agonía de KKKKKN, reune pocas de sus fuerzas, se arrebata su unico corazon del pecho\n";
+                            cout<<"y te lo ofrese como trofeo...simplemente lo aceptas.\n";
+                            corazones+=1;
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                        }else{
+                            cout<<"KKKKKN: La sangre de otro mortal vuelve a manchar mi espada de sangre, que con aquejo y remordimiento\n";
+                            cout<<"\nespero que la proxima vez pueda encontrar la paz\n";
+                            corazones-=0;
+                            if (corazones-=0){
+                                return false;
+                            }
+                        }
+                        //End KKKKKN
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                        cout<<personaje<<" ha recorrido bastante el suelo que hoy tiene lugar a un templo sagrado y protegido por un linaje\n";
+                        cout<<"de guardianes tratando de encontrar la paz en su deber, en un juramento, en un una idea.\n";
+                        cout<<"Al adentrarse en el gran templo, las cosas parecen estar muy abandonadas, los pisos con cubiertos por gruesas\n";
+                        cout<<"y pesadas capas de polvo formando un aura de abandono profundo, sin embargo tras caminar un tiempo\n";
+                        cout<<"se logran ver algunas huellas que se repiten a si mismas, al parecer son las huellas de un Jaguar\n";
+                        cout<<"parece ser que KKKKKN recorria constantemente los pasillos vacios y oscuros, así que "<<personaje<<"decide \n";
+                        cout<<"seguir el rastro, mientras sigue las marcas en el piso, se pueden apreciar en los muros una cierta leyenda\n";
+                        cout<<"al parecer los muros fueron pintados con un estilo muy ruprestre, no se logra ver muy bien, el paso del tiempo\n";
+                        cout<<"ha hecho que se borre la pintura pero parcialmente se puede apreciar una especia de dragon blanco\n";
+                        cout<<"de ojos azules saliendo del Sol en direccion para un grupo de personas, tambien hay una rota, falta un fragmento\n";
+                        cout<<"solo se logra ver lo que parece una persona alzando algo....tal vez no sea importante...\n";
+                        cout<<"A lo lejos se escucha un rugido temible, seguido de un golpe constante, un compas confuso de flauta se logra\n";
+                        cout<<"distinguir, al ritmo se suma algunos tambores muy tribales, arpas y algunos instrumentos de cuerda.\n";
+                        cout<<personaje<<" decide seguir la musica, sube unas escaleras en forma de caracol de una aparente torre y llega a \n ";
+                        cout<<"una camara en donde resuena los tambores, ahí ve un dragon blanco dormido, una gran hoguera y los musicos\n";
+                        cout<<"disfrutando la complicidad, la union y el rito. De repente, un grupo encapuchado empieza a escoger personas\n";
+                        cout<<"aparentemente al azar, usan una especie de rampa imprivizada y lo dejan caer a la boca del dragon quien\n";
+                        cout<<"instintivamente abrió el hocico, dejando algunas llamas en el aire. Las personas encapuchadas vuelven a escoger\n";
+                        cout<<"personas, separando a una familia, se llevan a una madre y a su hija, el padre implora que las dejen en paz\n";
+                        cout<<"entre gritos y sollozos, la hija se libera por un instante y luego dejan caer a la madre a la boca del dragon\n";
+                        cout<<"mientras la madre cae, la hija corre a los brazos del padre, el padre enfurecido, en un movimiento rapido\n";
+                        cout<<"carga a su hija y le arrebata un leño a la hoguera, su mirada lo dice todo, solo quire salir de ahí\n";
+                        cout<<"Entre lagrimas, la hija pregunta por su madre, aún no comprende que acaba de pasar, simplemente no lo asimila\n";
+                        cout<<"el padre al verse acorralado, decide subir por la rampa y saltar, el dragon abre la boca pero es tarde\n";
+                        cout<<"el padre le ha clavado un leño en su ojo izquierdo. Con el ojo enrojesido el Gran Dragon Blanco se levanta\n";
+                        cout<<"Y muestra su imponente forma, dando un rugido muy feroz, capaz de sacar volando a todo el culto, el padre\n";
+                        cout<<"logra verte y en un breve momento de contacto visual, desaparece...El Dragon intenta volar, sin embargo tiene\n";
+                        cout<<"una de sus alas rotas ya, desconocido es si aun su equilibro en orden está, al intentar levantarse no logra superar\n";
+                        cout<<"los 10 segundos seguidos en una pocicion estable. Una corroida sustancia es expulsada de su boca. El legendario\n";
+                        cout<<"dragon está muriendo. JUMEX, nota tu presencia, alcanza a verte con el rabillo de su ojo aun en paz\n";
+                        cout<<personaje<<" decide acercase con determinacion...El momento se detiene, los flujos de agua cayendo se detienen\n";
+                        cout<<"y el tiempo lo hace tambien, escuha una extraña voz agrietada y corrompida\n";
+                        cout<<"\nJUMEX, el gran dragon de ojos azules: Estas aquí por esa baratija de piedra, cierto?? Bueno, tengo malas noticias\n";
+                        cout<<"\tesa cosa nunca existió, solo fueron inventos de gente rechazada por la sociedad inventó, el sistema les falló\n";
+                        cout<<"\tcomo puedes ver ahora los grupos de extraños me llaman una leyenda, pero que soy si no otro dragon\n";
+                        cout<<"\tlas historias que se cuentan de mi, son solo grandes enagenaciones de mitos revueltos en la mente\n";
+                        cout<<"\thumana, un parasito social que solo aferra a los más necesitados a un puño de promesas vacias\n ";
+                        cout<<"\tPero, ya estoy cansado de todo esto, necesito descansar, necesito encontrar el equilibrio, pero qué clase de\n";
+                        cout<<"\tequilibrio puede conseguir una lagartija gigante??. Te lo suplico, por favor acaba conmigo, solo quiero morir\n";
+                        cout<<"\tdeseo salir de este mundo que me ha hecho tanto daño.Harias eso por mi??\n";
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n\n";
+                        cout<<"Que deseas hacer??\n\n[1] Matar\t[2] Pelear\t[3] Perdonar\n\n";
+                        cin>>op5;
+                        if (op5==1){
+                            cout<<personaje<<" toma su espada, desevaina la hoja, toma un respiro, hinhala, exhala, encuentra determinacion en\n";
+                            cout<<"sus acciones y...\n";
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: espera, que estoy haciendo??Dejandome matar por una persona que\n";
+                            cout<<"\tno tiene la menor idea de mis heroicos actos, de mi legado, de mi ser...no, un Dragon de mi linaje\n";
+                            cout<<"\tno puede morir de esta forma tan patetica. Preparate para nuestra pelea, será de las cosas más dificiles que\n";
+                            cout<<"hayas hecho nunca...muah...jjajajaja..coff.cofff...\n";
+                        }else if (op5==2){
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: a veces, y solo a veces son necesarias las peleas pero esta vez será\n";
+                            cout<<"\talgo muy sensillo,pero...por qué debería serlo, por qué me tengo tando desprecio a mi mismo??\n";
+                            cout<<"\tOlvidalo por completo, PREPARATE A SER CARBONNIZADO JAJAJAJAJAJA\n";
+                        }else{
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
+                            cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
+                            cout<<"coff...coff....\n";
+                        }
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
+                            cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
+                            cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
+                            cout<<"JUMEX, EL GRAN DRAGON BLANCO DE OJOS AZULES muere\n";
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                            return true;
+
+                        }else{
+                            cout<<"Te lo dije, un gran ser como yo es imposible de matar...espero que la proxima vez sea distinto, aqui estaré\n";
+                            cout<<personaje<<" tirado en el suelo y sufriendo de agonia, mira al dragon y da su ultimo suspiro....has muerto\n";
+                            cout<<"El dragon se come tu cadaver y con ello, todos tus corazones\n";
+                            corazones = 0;
+                            cout<<"Corazones actuales"<<corazones<<endl;
+                            return false;
+
+                        }
+                    }
+                    //End dragon y Bosques Perdidos
+                    break;
+                case 3:
+                    //Pagar a serpiente indú
+                    cout<<"Serpiente Indú: Espera, qué se supone que haga yo con essssso, solo soy una serpiente de origen desconocido, lo siento pero\n";
+                    cout<<"\nno puedo dejarte hacer eso, total, ya cazé mi presa del día ...ssssss.sssss.ssss\n";
+                    cout<<"Corazones actuales: "<<corazones<<endl;
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    //End serpiente indú
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<personaje<<" empieza a desmotivarse por todo el asunto de si realmente vale la pena seguir en busqueda de\n";
+                    cout<<"esa tal piedra, pero sin embargo decide no rendirse y procurar seguir adelante con sus motivaciones, \n";
+                    cout<<"ese prestamos a los burgueses no se va a pagar solo.\n";
+                    cout<<"El bosque a pesar de ser un lugar bastante obtuso sigue siendo una de las grandes obras magnas de la naturaleza\n";
+                    cout<<"en los antiguos libros de hechizos y magias paganas, se dice que los origenes del bosque son indecifrables.\n";
+                    cout<<"Las primeras investigaciones que se hicieron sobre el bosque fue sobre muestras de cortesas de arbol,\n";
+                    cout<<"pues los aros de los troncos revelaría con certeza su edad y a partir de ahí estimarian tiempos junto con\n";
+                    cout<<"otras muestras del sedimento y del micelio blanco que crece alrededor del perimetro del boosque, pero que \n";
+                    cout<<"sin embargo, al intentar partir los arboles, estos parecian indestructibles, ni con la fuerza de 20 hombres\n";
+                    cout<<"era capaz de fragmentarse un solo pedazo de madera, al parecer los arboles secretaban naturalemente\n";
+                    cout<<"una especie de baba pegajosa que puede ser usada como catalizador alquimico, incluso hay registros de que\n";
+                    cout<<"al ser ingerido puede hacer que la persona persiva \"otra vida\", pues se asegura que puedes experimentar\n";
+                    cout<<"otra vida muy distinta a la propia, con entornos y consecuecias diferentes salvo una sola constante\n";
+                    cout<<"el NECRONOMICON.\n";
+                    cout<<personaje<<" se sube a la copa de un arbol, intentando ver el final del bosque, pero este parece no terminar,\n";
+                    cout<<"para no perderse, empieza a marcar los arboles por donde ya ha pasado, sin embargo, empieza a notar algo extraño\n";
+                    cout<<"Los arboles que al principio solo tenian una marca vuelven a aparecer "<<personaje<<" empieza a sospechar sobre si\n";
+                    cout<<"ha estado caminando en ciculos, hasta que...encuentra un patron en los arboles: forman tren hileras\n";
+                    cout<<"el clima empieza a mostrar una cara gris, y algunas gotas se empiezan a persivir, buscando donde refugiarse\n";
+                    cout<<"encuentra un techo de hojas, es como si alguien estuviera viviendo ahí, durante un tiempo...\n";
+                    cout<<"DESCONOCIDO: Hey, que haces durmiendo ahí, uno ya no puede ir por algunos conejos sin que le roben su refugio\n";
+                    cout<<"\tsé que el bosque parece interminable pero hay lugar para ambos, vale?, te dejaré quedarte pero nada de timos\n";
+                    cout<<"\tsoy el ultimo protector que queda del dragon JUMEX, ese dragon se apoderó de todos los frutos del bosque \n";
+                    cout<<"\tdesde hace un tiempo, desde entonces solo nos queda matarnos entre nosotros, los habitantes del Bosque Perdido\n";
+                    cout<<"\tha decir verdad, los bucles entre arboles son bastante común entre mas te acercas al dragon, de vez en cuando\n";
+                    cout<<"\tcuando el clima cambia el dragon pierde un poco de magia y tranquiliza la randomizacion del bosque. En fin, duerme.\n";
+                    cout<<"\n\nAl día siguiente "<<personaje<<" le dió las gracias por su hospitalidad al ser Anaranjado Manchinegro.\n";
+                    cout<<"Dandole adios a KKKKKN\n";
+                    cout<<personaje<<" comieza a perder la determinacion, pero se acuerda del dinero por la PIEDRA FILOSOFAL y se le pasa\n";
+                    cout<<"Despues de haber caminado durante 3 dias y 3 noches,"<<personaje<<" finalmente encuentra el templo del Dragon JUMEX\n";
+                    cout<<"el templo es una esctructura monolitica de forma piramida invertida, con rios por algunas salidas del templo\n";
+                    cout<<"y desgastado por el tiempo. Al seguir caminando, "<<personaje<<" se encuentra con un viejo conocido, KKKKKN,\n";
+                    cout<<"KKKKKN: Sabría que vendrias, pero no pensé que llegarías tan lejos, como sabras es mi deber proteger a este dragon\n";
+                    cout<<"\tle debo la vida de mis seres queridos, cuando la nacion enemiga de mi pueblo atacó, JUMEX, en su grandeza,\n";
+                    cout<<"dió la cara y con sus llamaradas elimino al ejercito enemigo. Ese día, toda mi generacion le juró lealtad junto\n";
+                    cout<<"con algunas otras familias. Pero ahora solo quedo yo, y no dejaré que sigas avanzando...\n";
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear\n";
+                    cin>>op4;
+                    while (corazones>0)
+                    {
+                        //Pelea, Pelea, Pelea
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
+                            cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
+                            cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
+                            cout<<"En medio de la agonía de KKKKKN, reune pocas de sus fuerzas, se arrebata su unico corazon del pecho\n";
+                            cout<<"y te lo ofrese como trofeo...simplemente lo aceptas.\n";
+                            corazones+=1;
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                        }else{
+                            cout<<"KKKKKN: La sangre de otro mortal vuelve a manchar mi espada de sangre, que con aquejo y remordimiento\n";
+                            cout<<"\nespero que la proxima vez pueda encontrar la paz\n";
+                            corazones-=0;
+                            if (corazones-=0){
+                                return false;
+                            }
+                        }
+                        //End KKKKKN
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                        cout<<personaje<<" ha recorrido bastante el suelo que hoy tiene lugar a un templo sagrado y protegido por un linaje\n";
+                        cout<<"de guardianes tratando de encontrar la paz en su deber, en un juramento, en un una idea.\n";
+                        cout<<"Al adentrarse en el gran templo, las cosas parecen estar muy abandonadas, los pisos con cubiertos por gruesas\n";
+                        cout<<"y pesadas capas de polvo formando un aura de abandono profundo, sin embargo tras caminar un tiempo\n";
+                        cout<<"se logran ver algunas huellas que se repiten a si mismas, al parecer son las huellas de un Jaguar\n";
+                        cout<<"parece ser que KKKKKN recorria constantemente los pasillos vacios y oscuros, así que "<<personaje<<"decide \n";
+                        cout<<"seguir el rastro, mientras sigue las marcas en el piso, se pueden apreciar en los muros una cierta leyenda\n";
+                        cout<<"al parecer los muros fueron pintados con un estilo muy ruprestre, no se logra ver muy bien, el paso del tiempo\n";
+                        cout<<"ha hecho que se borre la pintura pero parcialmente se puede apreciar una especia de dragon blanco\n";
+                        cout<<"de ojos azules saliendo del Sol en direccion para un grupo de personas, tambien hay una rota, falta un fragmento\n";
+                        cout<<"solo se logra ver lo que parece una persona alzando algo....tal vez no sea importante...\n";
+                        cout<<"A lo lejos se escucha un rugido temible, seguido de un golpe constante, un compas confuso de flauta se logra\n";
+                        cout<<"distinguir, al ritmo se suma algunos tambores muy tribales, arpas y algunos instrumentos de cuerda.\n";
+                        cout<<personaje<<" decide seguir la musica, sube unas escaleras en forma de caracol de una aparente torre y llega a \n ";
+                        cout<<"una camara en donde resuena los tambores, ahí ve un dragon blanco dormido, una gran hoguera y los musicos\n";
+                        cout<<"disfrutando la complicidad, la union y el rito. De repente, un grupo encapuchado empieza a escoger personas\n";
+                        cout<<"aparentemente al azar, usan una especie de rampa imprivizada y lo dejan caer a la boca del dragon quien\n";
+                        cout<<"instintivamente abrió el hocico, dejando algunas llamas en el aire. Las personas encapuchadas vuelven a escoger\n";
+                        cout<<"personas, separando a una familia, se llevan a una madre y a su hija, el padre implora que las dejen en paz\n";
+                        cout<<"entre gritos y sollozos, la hija se libera por un instante y luego dejan caer a la madre a la boca del dragon\n";
+                        cout<<"mientras la madre cae, la hija corre a los brazos del padre, el padre enfurecido, en un movimiento rapido\n";
+                        cout<<"carga a su hija y le arrebata un leño a la hoguera, su mirada lo dice todo, solo quire salir de ahí\n";
+                        cout<<"Entre lagrimas, la hija pregunta por su madre, aún no comprende que acaba de pasar, simplemente no lo asimila\n";
+                        cout<<"el padre al verse acorralado, decide subir por la rampa y saltar, el dragon abre la boca pero es tarde\n";
+                        cout<<"el padre le ha clavado un leño en su ojo izquierdo. Con el ojo enrojesido el Gran Dragon Blanco se levanta\n";
+                        cout<<"Y muestra su imponente forma, dando un rugido muy feroz, capaz de sacar volando a todo el culto, el padre\n";
+                        cout<<"logra verte y en un breve momento de contacto visual, desaparece...El Dragon intenta volar, sin embargo tiene\n";
+                        cout<<"una de sus alas rotas ya, desconocido es si aun su equilibro en orden está, al intentar levantarse no logra superar\n";
+                        cout<<"los 10 segundos seguidos en una pocicion estable. Una corroida sustancia es expulsada de su boca. El legendario\n";
+                        cout<<"dragon está muriendo. JUMEX, nota tu presencia, alcanza a verte con el rabillo de su ojo aun en paz\n";
+                        cout<<personaje<<" decide acercase con determinacion...El momento se detiene, los flujos de agua cayendo se detienen\n";
+                        cout<<"y el tiempo lo hace tambien, escuha una extraña voz agrietada y corrompida\n";
+                        cout<<"\nJUMEX, el gran dragon de ojos azules: Estas aquí por esa baratija de piedra, cierto?? Bueno, tengo malas noticias\n";
+                        cout<<"\tesa cosa nunca existió, solo fueron inventos de gente rechazada por la sociedad inventó, el sistema les falló\n";
+                        cout<<"\tcomo puedes ver ahora los grupos de extraños me llaman una leyenda, pero que soy si no otro dragon\n";
+                        cout<<"\tlas historias que se cuentan de mi, son solo grandes enagenaciones de mitos revueltos en la mente\n";
+                        cout<<"\thumana, un parasito social que solo aferra a los más necesitados a un puño de promesas vacias\n ";
+                        cout<<"\tPero, ya estoy cansado de todo esto, necesito descansar, necesito encontrar el equilibrio, pero qué clase de\n";
+                        cout<<"\tequilibrio puede conseguir una lagartija gigante??. Te lo suplico, por favor acaba conmigo, solo quiero morir\n";
+                        cout<<"\tdeseo salir de este mundo que me ha hecho tanto daño.Harias eso por mi??\n";
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n\n";
+                        cout<<"Que deseas hacer??\n\n[1] Matar\t[2] Pelear\t[3] Perdonar\n\n";
+                        cin>>op5;
+                        if (op5==1){
+                            cout<<personaje<<" toma su espada, desevaina la hoja, toma un respiro, hinhala, exhala, encuentra determinacion en\n";
+                            cout<<"sus acciones y...\n";
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: espera, que estoy haciendo??Dejandome matar por una persona que\n";
+                            cout<<"\tno tiene la menor idea de mis heroicos actos, de mi legado, de mi ser...no, un Dragon de mi linaje\n";
+                            cout<<"\tno puede morir de esta forma tan patetica. Preparate para nuestra pelea, será de las cosas más dificiles que\n";
+                            cout<<"hayas hecho nunca...muah...jjajajaja..coff.cofff...\n";
+                        }else if (op5==2){
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: a veces, y solo a veces son necesarias las peleas pero esta vez será\n";
+                            cout<<"\talgo muy sensillo,pero...por qué debería serlo, por qué me tengo tando desprecio a mi mismo??\n";
+                            cout<<"\tOlvidalo por completo, PREPARATE A SER CARBONNIZADO JAJAJAJAJAJA\n";
+                        }else{
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
+                            cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
+                            cout<<"coff...coff....";
+                        }
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
+                            cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
+                            cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
+                            cout<<"JUMEX, EL GRAN DRAGON BLANCO DE OJOS AZULES muere\n";
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                            return true;
+
+                        }else{
+                            cout<<"Te lo dije, un gran ser como yo es imposible de matar...espero que la proxima vez sea distinto, aqui estaré\n";
+                            cout<<personaje<<" tirado en el suelo y sufriendo de agonia, mira al dragon y da su ultimo suspiro....has muerto\n";
+                            cout<<"El dragon se come tu cadaver y con ello, todos tus corazones\n";
+                            corazones = 0;
+                            cout<<"Corazones actuales"<<corazones<<endl;
+                            return false;
+
+                        }
+                    }
+                    //End dragon y Bosques Perdidos
+                    break;
+                
+                default:
+                    cout<<"Opcion no disponible\n";
+                    break;
+                }
+                
+            }
+
+            break;
+        case 3://Primera opcion
+            //Pagar al oso
+            cout<<"---------------------------------------------------------------------------------------------------------\n";
+            cout<<"Oso: Puedo ver que hay un poco de masoquismo en ti...jeje...no solo sé solo soy un Oso que hablar...jaja\n";
+            cout<<personaje<<" arranca uno de sus corazones y se lo ofrese al osos como forma de pago";
+            corazones--;
+            cout<<"Corazones actuales: "<<corazones<<endl;
+            cout<<"---------------------------------------------------------------------------------------------------------\n";
+            cout<<personaje<<" se adentra aún más en el bosque y a lo lejos escucha una peleea, al parecer es entre un\n";
+            cout<<"ratón y una serpiente, los movimientos rapidos del ratón despistan un poco a la serpiente pero no se\n";
+            cout<<"deja intimidar por nada del mundo, finalmente, logra encajar una mordida abrazadora en la espina dorsal\n";
+            cout<<"del ratón, empezando el proceso de licuacion de organos para posteriormente absorverlos a travez\n";
+            cout<<"de sus colmillos.";
+            cout<<"-----------------------------------------------------------------------------------------------------------\n";
+            cout<<"Te acercas sigilosamente, pero la serpiente se acerca a ti rapidamente...\n";
+            cout<<"Serpiente: A donde crees que ibasssss, si desearme un buen probechosssssss??, en este bosque la gente que se\n";
+            cout<<"\tpierdessss, es deborada por alguna variante mía, pero más o menos letal, al parecer te llegó un poco tarde\n";
+            cout<<"el mensaje sobre la hora de comer, pero ya que estas aqui, no me dejas otra alternativasssss...\n";
+            cout<<"-----------------------------------------------------------------------------------------------------------\n";
+            while (corazones > 0){
+                cout<<"Serpiente Indú te queda viendo fijamente, que quieres hacer??\n\n[1] Pelear\n[2] Hablar\n[3] Pagar\n\n";
+                cin>>op2;
+                switch (op2)
+                {
+                case 1:
+                    //Pelea contra serpiente indu
+                    cout<<personaje<<" se acerca con determinacion...\n";
+                    cout<<"Serpiente Indú, veo lo que intentasssss, veo a travezzzzz de tu ser, tus pecadossssss, tu hisssstoria, nada increible\n";
+                    cout<<"\tessssspero hallassss traido algun antiveneno si no ve preparandote para una gran agonia\n";
+                    if(batallaPorTurnos(personaje, "Serpiente Indú", dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                        cout<<"Serpiente Indú: Sssii, es cierto no lo que cuentan por ahí, malaventuraos los seguidores de la avaricia y la codicia\n";
+                    }else{
+                        cout<<"Serpiente Indú: Que es lo que veo?? otro ser arrastrandose y suplicando por su perdon por estar en el momento y lugar\n";
+                        cout<<"\tequivocado??. Creo que ya sabes como es esto, tengo que arrebatarte ese calido corazon con mis frias escamassss\n";
+                        corazones--;
+                        cout<<"Corazones actuales: "<<corazones<<endl;
+                    }
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    //End serpiente indú
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<personaje<<" empieza a desmotivarse por todo el asunto de si realmente vale la pena seguir en busqueda de\n";
+                    cout<<"esa tal piedra, pero sin embargo decide no rendirse y procurar seguir adelante con sus motivaciones, \n";
+                    cout<<"ese prestamos a los burgueses no se va a pagar solo.\n";
+                    cout<<"El bosque a pesar de ser un lugar bastante obtuso sigue siendo una de las grandes obras magnas de la naturaleza\n";
+                    cout<<"en los antiguos libros de hechizos y magias paganas, se dice que los origenes del bosque son indecifrables.\n";
+                    cout<<"Las primeras investigaciones que se hicieron sobre el bosque fue sobre muestras de cortesas de arbol,\n";
+                    cout<<"pues los aros de los troncos revelaría con certeza su edad y a partir de ahí estimarian tiempos junto con\n";
+                    cout<<"otras muestras del sedimento y del micelio blanco que crece alrededor del perimetro del boosque, pero que \n";
+                    cout<<"sin embargo, al intentar partir los arboles, estos parecian indestructibles, ni con la fuerza de 20 hombres\n";
+                    cout<<"era capaz de fragmentarse un solo pedazo de madera, al parecer los arboles secretaban naturalemente\n";
+                    cout<<"una especie de baba pegajosa que puede ser usada como catalizador alquimico, incluso hay registros de que\n";
+                    cout<<"al ser ingerido puede hacer que la persona persiva \"otra vida\", pues se asegura que puedes experimentar\n";
+                    cout<<"otra vida muy distinta a la propia, con entornos y consecuecias diferentes salvo una sola constante\n";
+                    cout<<"el NECRONOMICON.\n";
+                    cout<<personaje<<" se sube a la copa de un arbol, intentando ver el final del bosque, pero este parece no terminar,\n";
+                    cout<<"para no perderse, empieza a marcar los arboles por donde ya ha pasado, sin embargo, empieza a notar algo extraño\n";
+                    cout<<"Los arboles que al principio solo tenian una marca vuelven a aparecer "<<personaje<<" empieza a sospechar sobre si\n";
+                    cout<<"ha estado caminando en ciculos, hasta que...encuentra un patron en los arboles: forman tren hileras\n";
+                    cout<<"el clima empieza a mostrar una cara gris, y algunas gotas se empiezan a persivir, buscando donde refugiarse\n";
+                    cout<<"encuentra un techo de hojas, es como si alguien estuviera viviendo ahí, durante un tiempo...\n";
+                    cout<<"DESCONOCIDO: Hey, que haces durmiendo ahí, uno ya no puede ir por algunos conejos sin que le roben su refugio\n";
+                    cout<<"\tsé que el bosque parece interminable pero hay lugar para ambos, vale?, te dejaré quedarte pero nada de timos\n";
+                    cout<<"\tsoy el ultimo protector que queda del dragon JUMEX, ese dragon se apoderó de todos los frutos del bosque \n";
+                    cout<<"\tdesde hace un tiempo, desde entonces solo nos queda matarnos entre nosotros, los habitantes del Bosque Perdido\n";
+                    cout<<"\tha decir verdad, los bucles entre arboles son bastante común entre mas te acercas al dragon, de vez en cuando\n";
+                    cout<<"\tcuando el clima cambia el dragon pierde un poco de magia y tranquiliza la randomizacion del bosque. En fin, duerme.\n";
+                    cout<<"\n\nAl día siguiente "<<personaje<<" le dió las gracias por su hospitalidad al ser Anaranjado Manchinegro.\n";
+                    cout<<"Dandole adios a KKKKKN\n";
+                    cout<<personaje<<" comieza a perder la determinacion, pero se acuerda del dinero por la PIEDRA FILOSOFAL y se le pasa\n";
+                    cout<<"Despues de haber caminado durante 3 dias y 3 noches,"<<personaje<<" finalmente encuentra el templo del Dragon JUMEX\n";
+                    cout<<"el templo es una esctructura monolitica de forma piramida invertida, con rios por algunas salidas del templo\n";
+                    cout<<"y desgastado por el tiempo. Al seguir caminando, "<<personaje<<" se encuentra con un viejo conocido, KKKKKN,\n";
+                    cout<<"KKKKKN: Sabría que vendrias, pero no pensé que llegarías tan lejos, como sabras es mi deber proteger a este dragon\n";
+                    cout<<"\tle debo la vida de mis seres queridos, cuando la nacion enemiga de mi pueblo atacó, JUMEX, en su grandeza,\n";
+                    cout<<"dió la cara y con sus llamaradas elimino al ejercito enemigo. Ese día, toda mi generacion le juró lealtad junto\n";
+                    cout<<"con algunas otras familias. Pero ahora solo quedo yo, y no dejaré que sigas avanzando...\n";
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear\n";
+                    cin>>op4;
+                    while (corazones>0)
+                    {
+                        //Pelea, Pelea, Pelea
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
+                            cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
+                            cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
+                            cout<<"En medio de la agonía de KKKKKN, reune pocas de sus fuerzas, se arrebata su unico corazon del pecho\n";
+                            cout<<"y te lo ofrese como trofeo...simplemente lo aceptas.\n";
+                            corazones+=1;
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                        }else{
+                            cout<<"KKKKKN: La sangre de otro mortal vuelve a manchar mi espada de sangre, que con aquejo y remordimiento\n";
+                            cout<<"\nespero que la proxima vez pueda encontrar la paz\n";
+                            corazones-=0;
+                            if (corazones-=0){
+                                return false;
+                            }
+                        }
+                        //End KKKKKN
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                        cout<<personaje<<" ha recorrido bastante el suelo que hoy tiene lugar a un templo sagrado y protegido por un linaje\n";
+                        cout<<"de guardianes tratando de encontrar la paz en su deber, en un juramento, en un una idea.\n";
+                        cout<<"Al adentrarse en el gran templo, las cosas parecen estar muy abandonadas, los pisos con cubiertos por gruesas\n";
+                        cout<<"y pesadas capas de polvo formando un aura de abandono profundo, sin embargo tras caminar un tiempo\n";
+                        cout<<"se logran ver algunas huellas que se repiten a si mismas, al parecer son las huellas de un Jaguar\n";
+                        cout<<"parece ser que KKKKKN recorria constantemente los pasillos vacios y oscuros, así que "<<personaje<<"decide \n";
+                        cout<<"seguir el rastro, mientras sigue las marcas en el piso, se pueden apreciar en los muros una cierta leyenda\n";
+                        cout<<"al parecer los muros fueron pintados con un estilo muy ruprestre, no se logra ver muy bien, el paso del tiempo\n";
+                        cout<<"ha hecho que se borre la pintura pero parcialmente se puede apreciar una especia de dragon blanco\n";
+                        cout<<"de ojos azules saliendo del Sol en direccion para un grupo de personas, tambien hay una rota, falta un fragmento\n";
+                        cout<<"solo se logra ver lo que parece una persona alzando algo....tal vez no sea importante...\n";
+                        cout<<"A lo lejos se escucha un rugido temible, seguido de un golpe constante, un compas confuso de flauta se logra\n";
+                        cout<<"distinguir, al ritmo se suma algunos tambores muy tribales, arpas y algunos instrumentos de cuerda.\n";
+                        cout<<personaje<<" decide seguir la musica, sube unas escaleras en forma de caracol de una aparente torre y llega a \n ";
+                        cout<<"una camara en donde resuena los tambores, ahí ve un dragon blanco dormido, una gran hoguera y los musicos\n";
+                        cout<<"disfrutando la complicidad, la union y el rito. De repente, un grupo encapuchado empieza a escoger personas\n";
+                        cout<<"aparentemente al azar, usan una especie de rampa imprivizada y lo dejan caer a la boca del dragon quien\n";
+                        cout<<"instintivamente abrió el hocico, dejando algunas llamas en el aire. Las personas encapuchadas vuelven a escoger\n";
+                        cout<<"personas, separando a una familia, se llevan a una madre y a su hija, el padre implora que las dejen en paz\n";
+                        cout<<"entre gritos y sollozos, la hija se libera por un instante y luego dejan caer a la madre a la boca del dragon\n";
+                        cout<<"mientras la madre cae, la hija corre a los brazos del padre, el padre enfurecido, en un movimiento rapido\n";
+                        cout<<"carga a su hija y le arrebata un leño a la hoguera, su mirada lo dice todo, solo quire salir de ahí\n";
+                        cout<<"Entre lagrimas, la hija pregunta por su madre, aún no comprende que acaba de pasar, simplemente no lo asimila\n";
+                        cout<<"el padre al verse acorralado, decide subir por la rampa y saltar, el dragon abre la boca pero es tarde\n";
+                        cout<<"el padre le ha clavado un leño en su ojo izquierdo. Con el ojo enrojesido el Gran Dragon Blanco se levanta\n";
+                        cout<<"Y muestra su imponente forma, dando un rugido muy feroz, capaz de sacar volando a todo el culto, el padre\n";
+                        cout<<"logra verte y en un breve momento de contacto visual, desaparece...El Dragon intenta volar, sin embargo tiene\n";
+                        cout<<"una de sus alas rotas ya, desconocido es si aun su equilibro en orden está, al intentar levantarse no logra superar\n";
+                        cout<<"los 10 segundos seguidos en una pocicion estable. Una corroida sustancia es expulsada de su boca. El legendario\n";
+                        cout<<"dragon está muriendo. JUMEX, nota tu presencia, alcanza a verte con el rabillo de su ojo aun en paz\n";
+                        cout<<personaje<<" decide acercase con determinacion...El momento se detiene, los flujos de agua cayendo se detienen\n";
+                        cout<<"y el tiempo lo hace tambien, escuha una extraña voz agrietada y corrompida\n";
+                        cout<<"\nJUMEX, el gran dragon de ojos azules: Estas aquí por esa baratija de piedra, cierto?? Bueno, tengo malas noticias\n";
+                        cout<<"\tesa cosa nunca existió, solo fueron inventos de gente rechazada por la sociedad inventó, el sistema les falló\n";
+                        cout<<"\tcomo puedes ver ahora los grupos de extraños me llaman una leyenda, pero que soy si no otro dragon\n";
+                        cout<<"\tlas historias que se cuentan de mi, son solo grandes enagenaciones de mitos revueltos en la mente\n";
+                        cout<<"\thumana, un parasito social que solo aferra a los más necesitados a un puño de promesas vacias\n ";
+                        cout<<"\tPero, ya estoy cansado de todo esto, necesito descansar, necesito encontrar el equilibrio, pero qué clase de\n";
+                        cout<<"\tequilibrio puede conseguir una lagartija gigante??. Te lo suplico, por favor acaba conmigo, solo quiero morir\n";
+                        cout<<"\tdeseo salir de este mundo que me ha hecho tanto daño.Harias eso por mi??\n";
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n\n";
+                        cout<<"Que deseas hacer??\n\n[1] Matar\t[2] Pelear\t[3] Perdonar\n\n";
+                        cin>>op5;
+                        if (op5==1){
+                            cout<<personaje<<" toma su espada, desevaina la hoja, toma un respiro, hinhala, exhala, encuentra determinacion en\n";
+                            cout<<"sus acciones y...\n";
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: espera, que estoy haciendo??Dejandome matar por una persona que\n";
+                            cout<<"\tno tiene la menor idea de mis heroicos actos, de mi legado, de mi ser...no, un Dragon de mi linaje\n";
+                            cout<<"\tno puede morir de esta forma tan patetica. Preparate para nuestra pelea, será de las cosas más dificiles que\n";
+                            cout<<"hayas hecho nunca...muah...jjajajaja..coff.cofff...\n";
+                        }else if (op5==2){
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: a veces, y solo a veces son necesarias las peleas pero esta vez será\n";
+                            cout<<"\talgo muy sensillo,pero...por qué debería serlo, por qué me tengo tando desprecio a mi mismo??\n";
+                            cout<<"\tOlvidalo por completo, PREPARATE A SER CARBONNIZADO JAJAJAJAJAJA\n";
+                        }else{
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
+                            cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
+                            cout<<"coff...coff....";
+                        }
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
+                            cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
+                            cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
+                            cout<<"JUMEX, EL GRAN DRAGON BLANCO DE OJOS AZULES muere\n";
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                            return true;
+
+                        }else{
+                            cout<<"Te lo dije, un gran ser como yo es imposible de matar...espero que la proxima vez sea distinto, aqui estaré\n";
+                            cout<<personaje<<" tirado en el suelo y sufriendo de agonia, mira al dragon y da su ultimo suspiro....has muerto\n";
+                            cout<<"El dragon se come tu cadaver y con ello, todos tus corazones\n";
+                            corazones = 0;
+                            cout<<"Corazones actuales"<<corazones<<endl;
+                            return false;
+
+                        }
+                    }
+                    //End dragon y Bosques Perdidos
+
+                    break;
+                case 2:
+                    //Habla con serpiente Indú
+                    cout<<"Serpiente Indú: Espera, no queriassss quitarme mi comida???, Debisste haberlo mencionado antesss, todo esto es un simple mal\n";
+                    cout<<"\tentendidosss, de ser por mi, puedes pasar a dodne quieras, en este bosque las cosas son más simples de lo que parece\n";
+                    cout<<"Serpiente Indú, te ha dejado pasar sin aparentemente ningun problema\n";
+                    cout<<"Corazones actuales: "<<corazones<<endl;
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    //End serpiente indú
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<personaje<<" empieza a desmotivarse por todo el asunto de si realmente vale la pena seguir en busqueda de\n";
+                    cout<<"esa tal piedra, pero sin embargo decide no rendirse y procurar seguir adelante con sus motivaciones, \n";
+                    cout<<"ese prestamos a los burgueses no se va a pagar solo.\n";
+                    cout<<"El bosque a pesar de ser un lugar bastante obtuso sigue siendo una de las grandes obras magnas de la naturaleza\n";
+                    cout<<"en los antiguos libros de hechizos y magias paganas, se dice que los origenes del bosque son indecifrables.\n";
+                    cout<<"Las primeras investigaciones que se hicieron sobre el bosque fue sobre muestras de cortesas de arbol,\n";
+                    cout<<"pues los aros de los troncos revelaría con certeza su edad y a partir de ahí estimarian tiempos junto con\n";
+                    cout<<"otras muestras del sedimento y del micelio blanco que crece alrededor del perimetro del boosque, pero que \n";
+                    cout<<"sin embargo, al intentar partir los arboles, estos parecian indestructibles, ni con la fuerza de 20 hombres\n";
+                    cout<<"era capaz de fragmentarse un solo pedazo de madera, al parecer los arboles secretaban naturalemente\n";
+                    cout<<"una especie de baba pegajosa que puede ser usada como catalizador alquimico, incluso hay registros de que\n";
+                    cout<<"al ser ingerido puede hacer que la persona persiva \"otra vida\", pues se asegura que puedes experimentar\n";
+                    cout<<"otra vida muy distinta a la propia, con entornos y consecuecias diferentes salvo una sola constante\n";
+                    cout<<"el NECRONOMICON.\n";
+                    cout<<personaje<<" se sube a la copa de un arbol, intentando ver el final del bosque, pero este parece no terminar,\n";
+                    cout<<"para no perderse, empieza a marcar los arboles por donde ya ha pasado, sin embargo, empieza a notar algo extraño\n";
+                    cout<<"Los arboles que al principio solo tenian una marca vuelven a aparecer "<<personaje<<" empieza a sospechar sobre si\n";
+                    cout<<"ha estado caminando en ciculos, hasta que...encuentra un patron en los arboles: forman tren hileras\n";
+                    cout<<"el clima empieza a mostrar una cara gris, y algunas gotas se empiezan a persivir, buscando donde refugiarse\n";
+                    cout<<"encuentra un techo de hojas, es como si alguien estuviera viviendo ahí, durante un tiempo...\n";
+                    cout<<"DESCONOCIDO: Hey, que haces durmiendo ahí, uno ya no puede ir por algunos conejos sin que le roben su refugio\n";
+                    cout<<"\tsé que el bosque parece interminable pero hay lugar para ambos, vale?, te dejaré quedarte pero nada de timos\n";
+                    cout<<"\tsoy el ultimo protector que queda del dragon JUMEX, ese dragon se apoderó de todos los frutos del bosque \n";
+                    cout<<"\tdesde hace un tiempo, desde entonces solo nos queda matarnos entre nosotros, los habitantes del Bosque Perdido\n";
+                    cout<<"\tha decir verdad, los bucles entre arboles son bastante común entre mas te acercas al dragon, de vez en cuando\n";
+                    cout<<"\tcuando el clima cambia el dragon pierde un poco de magia y tranquiliza la randomizacion del bosque. En fin, duerme.\n";
+                    cout<<"\n\nAl día siguiente "<<personaje<<" le dió las gracias por su hospitalidad al ser Anaranjado Manchinegro.\n";
+                    cout<<"Dandole adios a KKKKKN\n";
+                    cout<<personaje<<" comieza a perder la determinacion, pero se acuerda del dinero por la PIEDRA FILOSOFAL y se le pasa\n";
+                    cout<<"Despues de haber caminado durante 3 dias y 3 noches,"<<personaje<<" finalmente encuentra el templo del Dragon JUMEX\n";
+                    cout<<"el templo es una esctructura monolitica de forma piramida invertida, con rios por algunas salidas del templo\n";
+                    cout<<"y desgastado por el tiempo. Al seguir caminando, "<<personaje<<" se encuentra con un viejo conocido, KKKKKN,\n";
+                    cout<<"KKKKKN: Sabría que vendrias, pero no pensé que llegarías tan lejos, como sabras es mi deber proteger a este dragon\n";
+                    cout<<"\tle debo la vida de mis seres queridos, cuando la nacion enemiga de mi pueblo atacó, JUMEX, en su grandeza,\n";
+                    cout<<"dió la cara y con sus llamaradas elimino al ejercito enemigo. Ese día, toda mi generacion le juró lealtad junto\n";
+                    cout<<"con algunas otras familias. Pero ahora solo quedo yo, y no dejaré que sigas avanzando...\n";
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear\n";
+                    cin>>op4;
+                    while (corazones>0)
+                    {
+                        //Pelea, Pelea, Pelea
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
+                            cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
+                            cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
+                            cout<<"En medio de la agonía de KKKKKN, reune pocas de sus fuerzas, se arrebata su unico corazon del pecho\n";
+                            cout<<"y te lo ofrese como trofeo...simplemente lo aceptas.\n";
+                            corazones+=1;
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                        }else{
+                            cout<<"KKKKKN: La sangre de otro mortal vuelve a manchar mi espada de sangre, que con aquejo y remordimiento\n";
+                            cout<<"\nespero que la proxima vez pueda encontrar la paz\n";
+                            corazones-=0;
+                            if (corazones-=0){
+                                return false;
+                            }
+                        }
+                        //End KKKKKN
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                        cout<<personaje<<" ha recorrido bastante el suelo que hoy tiene lugar a un templo sagrado y protegido por un linaje\n";
+                        cout<<"de guardianes tratando de encontrar la paz en su deber, en un juramento, en un una idea.\n";
+                        cout<<"Al adentrarse en el gran templo, las cosas parecen estar muy abandonadas, los pisos con cubiertos por gruesas\n";
+                        cout<<"y pesadas capas de polvo formando un aura de abandono profundo, sin embargo tras caminar un tiempo\n";
+                        cout<<"se logran ver algunas huellas que se repiten a si mismas, al parecer son las huellas de un Jaguar\n";
+                        cout<<"parece ser que KKKKKN recorria constantemente los pasillos vacios y oscuros, así que "<<personaje<<"decide \n";
+                        cout<<"seguir el rastro, mientras sigue las marcas en el piso, se pueden apreciar en los muros una cierta leyenda\n";
+                        cout<<"al parecer los muros fueron pintados con un estilo muy ruprestre, no se logra ver muy bien, el paso del tiempo\n";
+                        cout<<"ha hecho que se borre la pintura pero parcialmente se puede apreciar una especia de dragon blanco\n";
+                        cout<<"de ojos azules saliendo del Sol en direccion para un grupo de personas, tambien hay una rota, falta un fragmento\n";
+                        cout<<"solo se logra ver lo que parece una persona alzando algo....tal vez no sea importante...\n";
+                        cout<<"A lo lejos se escucha un rugido temible, seguido de un golpe constante, un compas confuso de flauta se logra\n";
+                        cout<<"distinguir, al ritmo se suma algunos tambores muy tribales, arpas y algunos instrumentos de cuerda.\n";
+                        cout<<personaje<<" decide seguir la musica, sube unas escaleras en forma de caracol de una aparente torre y llega a \n ";
+                        cout<<"una camara en donde resuena los tambores, ahí ve un dragon blanco dormido, una gran hoguera y los musicos\n";
+                        cout<<"disfrutando la complicidad, la union y el rito. De repente, un grupo encapuchado empieza a escoger personas\n";
+                        cout<<"aparentemente al azar, usan una especie de rampa imprivizada y lo dejan caer a la boca del dragon quien\n";
+                        cout<<"instintivamente abrió el hocico, dejando algunas llamas en el aire. Las personas encapuchadas vuelven a escoger\n";
+                        cout<<"personas, separando a una familia, se llevan a una madre y a su hija, el padre implora que las dejen en paz\n";
+                        cout<<"entre gritos y sollozos, la hija se libera por un instante y luego dejan caer a la madre a la boca del dragon\n";
+                        cout<<"mientras la madre cae, la hija corre a los brazos del padre, el padre enfurecido, en un movimiento rapido\n";
+                        cout<<"carga a su hija y le arrebata un leño a la hoguera, su mirada lo dice todo, solo quire salir de ahí\n";
+                        cout<<"Entre lagrimas, la hija pregunta por su madre, aún no comprende que acaba de pasar, simplemente no lo asimila\n";
+                        cout<<"el padre al verse acorralado, decide subir por la rampa y saltar, el dragon abre la boca pero es tarde\n";
+                        cout<<"el padre le ha clavado un leño en su ojo izquierdo. Con el ojo enrojesido el Gran Dragon Blanco se levanta\n";
+                        cout<<"Y muestra su imponente forma, dando un rugido muy feroz, capaz de sacar volando a todo el culto, el padre\n";
+                        cout<<"logra verte y en un breve momento de contacto visual, desaparece...El Dragon intenta volar, sin embargo tiene\n";
+                        cout<<"una de sus alas rotas ya, desconocido es si aun su equilibro en orden está, al intentar levantarse no logra superar\n";
+                        cout<<"los 10 segundos seguidos en una pocicion estable. Una corroida sustancia es expulsada de su boca. El legendario\n";
+                        cout<<"dragon está muriendo. JUMEX, nota tu presencia, alcanza a verte con el rabillo de su ojo aun en paz\n";
+                        cout<<personaje<<" decide acercase con determinacion...El momento se detiene, los flujos de agua cayendo se detienen\n";
+                        cout<<"y el tiempo lo hace tambien, escuha una extraña voz agrietada y corrompida\n";
+                        cout<<"\nJUMEX, el gran dragon de ojos azules: Estas aquí por esa baratija de piedra, cierto?? Bueno, tengo malas noticias\n";
+                        cout<<"\tesa cosa nunca existió, solo fueron inventos de gente rechazada por la sociedad inventó, el sistema les falló\n";
+                        cout<<"\tcomo puedes ver ahora los grupos de extraños me llaman una leyenda, pero que soy si no otro dragon\n";
+                        cout<<"\tlas historias que se cuentan de mi, son solo grandes enagenaciones de mitos revueltos en la mente\n";
+                        cout<<"\thumana, un parasito social que solo aferra a los más necesitados a un puño de promesas vacias\n ";
+                        cout<<"\tPero, ya estoy cansado de todo esto, necesito descansar, necesito encontrar el equilibrio, pero qué clase de\n";
+                        cout<<"\tequilibrio puede conseguir una lagartija gigante??. Te lo suplico, por favor acaba conmigo, solo quiero morir\n";
+                        cout<<"\tdeseo salir de este mundo que me ha hecho tanto daño.Harias eso por mi??\n";
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n\n";
+                        cout<<"Que deseas hacer??\n\n[1] Matar\t[2] Pelear\t[3] Perdonar\n\n";
+                        cin>>op5;
+                        if (op5==1){
+                            cout<<personaje<<" toma su espada, desevaina la hoja, toma un respiro, hinhala, exhala, encuentra determinacion en\n";
+                            cout<<"sus acciones y...\n";
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: espera, que estoy haciendo??Dejandome matar por una persona que\n";
+                            cout<<"\tno tiene la menor idea de mis heroicos actos, de mi legado, de mi ser...no, un Dragon de mi linaje\n";
+                            cout<<"\tno puede morir de esta forma tan patetica. Preparate para nuestra pelea, será de las cosas más dificiles que\n";
+                            cout<<"hayas hecho nunca...muah...jjajajaja..coff.cofff...\n";
+                        }else if (op5==2){
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: a veces, y solo a veces son necesarias las peleas pero esta vez será\n";
+                            cout<<"\talgo muy sensillo,pero...por qué debería serlo, por qué me tengo tando desprecio a mi mismo??\n";
+                            cout<<"\tOlvidalo por completo, PREPARATE A SER CARBONNIZADO JAJAJAJAJAJA\n";
+                        }else{
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
+                            cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
+                            cout<<"coff...coff....";
+                        }
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
+                            cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
+                            cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
+                            cout<<"JUMEX, EL GRAN DRAGON BLANCO DE OJOS AZULES muere\n";
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                            return true;
+
+                        }else{
+                            cout<<"Te lo dije, un gran ser como yo es imposible de matar...espero que la proxima vez sea distinto, aqui estaré\n";
+                            cout<<personaje<<" tirado en el suelo y sufriendo de agonia, mira al dragon y da su ultimo suspiro....has muerto\n";
+                            cout<<"El dragon se come tu cadaver y con ello, todos tus corazones\n";
+                            corazones = 0;
+                            cout<<"Corazones actuales"<<corazones<<endl;
+                            return false;
+
+                        }
+                    }
+                    //End dragon y Bosques Perdidos
+                    break;
+                case 3:
+                    //Pagar a serpiente indú
+                    cout<<"Serpiente Indú: Espera, qué se supone que haga yo con essssso, solo soy una serpiente de origen desconocido, lo siento pero\n";
+                    cout<<"\nno puedo dejarte hacer eso, total, ya cazé mi presa del día ...ssssss.sssss.ssss\n";
+                    cout<<"Corazones actuales: "<<corazones<<endl;
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    //End serpiente indú
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<personaje<<" empieza a desmotivarse por todo el asunto de si realmente vale la pena seguir en busqueda de\n";
+                    cout<<"esa tal piedra, pero sin embargo decide no rendirse y procurar seguir adelante con sus motivaciones, \n";
+                    cout<<"ese prestamos a los burgueses no se va a pagar solo.\n";
+                    cout<<"El bosque a pesar de ser un lugar bastante obtuso sigue siendo una de las grandes obras magnas de la naturaleza\n";
+                    cout<<"en los antiguos libros de hechizos y magias paganas, se dice que los origenes del bosque son indecifrables.\n";
+                    cout<<"Las primeras investigaciones que se hicieron sobre el bosque fue sobre muestras de cortesas de arbol,\n";
+                    cout<<"pues los aros de los troncos revelaría con certeza su edad y a partir de ahí estimarian tiempos junto con\n";
+                    cout<<"otras muestras del sedimento y del micelio blanco que crece alrededor del perimetro del boosque, pero que \n";
+                    cout<<"sin embargo, al intentar partir los arboles, estos parecian indestructibles, ni con la fuerza de 20 hombres\n";
+                    cout<<"era capaz de fragmentarse un solo pedazo de madera, al parecer los arboles secretaban naturalemente\n";
+                    cout<<"una especie de baba pegajosa que puede ser usada como catalizador alquimico, incluso hay registros de que\n";
+                    cout<<"al ser ingerido puede hacer que la persona persiva \"otra vida\", pues se asegura que puedes experimentar\n";
+                    cout<<"otra vida muy distinta a la propia, con entornos y consecuecias diferentes salvo una sola constante\n";
+                    cout<<"el NECRONOMICON.\n";
+                    cout<<personaje<<" se sube a la copa de un arbol, intentando ver el final del bosque, pero este parece no terminar,\n";
+                    cout<<"para no perderse, empieza a marcar los arboles por donde ya ha pasado, sin embargo, empieza a notar algo extraño\n";
+                    cout<<"Los arboles que al principio solo tenian una marca vuelven a aparecer "<<personaje<<" empieza a sospechar sobre si\n";
+                    cout<<"ha estado caminando en ciculos, hasta que...encuentra un patron en los arboles: forman tren hileras\n";
+                    cout<<"el clima empieza a mostrar una cara gris, y algunas gotas se empiezan a persivir, buscando donde refugiarse\n";
+                    cout<<"encuentra un techo de hojas, es como si alguien estuviera viviendo ahí, durante un tiempo...\n";
+                    cout<<"DESCONOCIDO: Hey, que haces durmiendo ahí, uno ya no puede ir por algunos conejos sin que le roben su refugio\n";
+                    cout<<"\tsé que el bosque parece interminable pero hay lugar para ambos, vale?, te dejaré quedarte pero nada de timos\n";
+                    cout<<"\tsoy el ultimo protector que queda del dragon JUMEX, ese dragon se apoderó de todos los frutos del bosque \n";
+                    cout<<"\tdesde hace un tiempo, desde entonces solo nos queda matarnos entre nosotros, los habitantes del Bosque Perdido\n";
+                    cout<<"\tha decir verdad, los bucles entre arboles son bastante común entre mas te acercas al dragon, de vez en cuando\n";
+                    cout<<"\tcuando el clima cambia el dragon pierde un poco de magia y tranquiliza la randomizacion del bosque. En fin, duerme.\n";
+                    cout<<"\n\nAl día siguiente "<<personaje<<" le dió las gracias por su hospitalidad al ser Anaranjado Manchinegro.\n";
+                    cout<<"Dandole adios a KKKKKN\n";
+                    cout<<personaje<<" comieza a perder la determinacion, pero se acuerda del dinero por la PIEDRA FILOSOFAL y se le pasa\n";
+                    cout<<"Despues de haber caminado durante 3 dias y 3 noches,"<<personaje<<" finalmente encuentra el templo del Dragon JUMEX\n";
+                    cout<<"el templo es una esctructura monolitica de forma piramida invertida, con rios por algunas salidas del templo\n";
+                    cout<<"y desgastado por el tiempo. Al seguir caminando, "<<personaje<<" se encuentra con un viejo conocido, KKKKKN,\n";
+                    cout<<"KKKKKN: Sabría que vendrias, pero no pensé que llegarías tan lejos, como sabras es mi deber proteger a este dragon\n";
+                    cout<<"\tle debo la vida de mis seres queridos, cuando la nacion enemiga de mi pueblo atacó, JUMEX, en su grandeza,\n";
+                    cout<<"dió la cara y con sus llamaradas elimino al ejercito enemigo. Ese día, toda mi generacion le juró lealtad junto\n";
+                    cout<<"con algunas otras familias. Pero ahora solo quedo yo, y no dejaré que sigas avanzando...\n";
+                    cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear\n";
+                    cin>>op4;
+                    while (corazones>0)
+                    {
+                        //Pelea, Pelea, Pelea
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
+                            cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
+                            cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
+                            cout<<"En medio de la agonía de KKKKKN, reune pocas de sus fuerzas, se arrebata su unico corazon del pecho\n";
+                            cout<<"y te lo ofrese como trofeo...simplemente lo aceptas.\n";
+                            corazones+=1;
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                        }else{
+                            cout<<"KKKKKN: La sangre de otro mortal vuelve a manchar mi espada de sangre, que con aquejo y remordimiento\n";
+                            cout<<"\nespero que la proxima vez pueda encontrar la paz\n";
+                            corazones-=0;
+                            if (corazones-=0){
+                                return false;
+                            }
+                        }
+                        //End KKKKKN
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n";
+                        cout<<personaje<<" ha recorrido bastante el suelo que hoy tiene lugar a un templo sagrado y protegido por un linaje\n";
+                        cout<<"de guardianes tratando de encontrar la paz en su deber, en un juramento, en un una idea.\n";
+                        cout<<"Al adentrarse en el gran templo, las cosas parecen estar muy abandonadas, los pisos con cubiertos por gruesas\n";
+                        cout<<"y pesadas capas de polvo formando un aura de abandono profundo, sin embargo tras caminar un tiempo\n";
+                        cout<<"se logran ver algunas huellas que se repiten a si mismas, al parecer son las huellas de un Jaguar\n";
+                        cout<<"parece ser que KKKKKN recorria constantemente los pasillos vacios y oscuros, así que "<<personaje<<"decide \n";
+                        cout<<"seguir el rastro, mientras sigue las marcas en el piso, se pueden apreciar en los muros una cierta leyenda\n";
+                        cout<<"al parecer los muros fueron pintados con un estilo muy ruprestre, no se logra ver muy bien, el paso del tiempo\n";
+                        cout<<"ha hecho que se borre la pintura pero parcialmente se puede apreciar una especia de dragon blanco\n";
+                        cout<<"de ojos azules saliendo del Sol en direccion para un grupo de personas, tambien hay una rota, falta un fragmento\n";
+                        cout<<"solo se logra ver lo que parece una persona alzando algo....tal vez no sea importante...\n";
+                        cout<<"A lo lejos se escucha un rugido temible, seguido de un golpe constante, un compas confuso de flauta se logra\n";
+                        cout<<"distinguir, al ritmo se suma algunos tambores muy tribales, arpas y algunos instrumentos de cuerda.\n";
+                        cout<<personaje<<" decide seguir la musica, sube unas escaleras en forma de caracol de una aparente torre y llega a \n ";
+                        cout<<"una camara en donde resuena los tambores, ahí ve un dragon blanco dormido, una gran hoguera y los musicos\n";
+                        cout<<"disfrutando la complicidad, la union y el rito. De repente, un grupo encapuchado empieza a escoger personas\n";
+                        cout<<"aparentemente al azar, usan una especie de rampa imprivizada y lo dejan caer a la boca del dragon quien\n";
+                        cout<<"instintivamente abrió el hocico, dejando algunas llamas en el aire. Las personas encapuchadas vuelven a escoger\n";
+                        cout<<"personas, separando a una familia, se llevan a una madre y a su hija, el padre implora que las dejen en paz\n";
+                        cout<<"entre gritos y sollozos, la hija se libera por un instante y luego dejan caer a la madre a la boca del dragon\n";
+                        cout<<"mientras la madre cae, la hija corre a los brazos del padre, el padre enfurecido, en un movimiento rapido\n";
+                        cout<<"carga a su hija y le arrebata un leño a la hoguera, su mirada lo dice todo, solo quire salir de ahí\n";
+                        cout<<"Entre lagrimas, la hija pregunta por su madre, aún no comprende que acaba de pasar, simplemente no lo asimila\n";
+                        cout<<"el padre al verse acorralado, decide subir por la rampa y saltar, el dragon abre la boca pero es tarde\n";
+                        cout<<"el padre le ha clavado un leño en su ojo izquierdo. Con el ojo enrojesido el Gran Dragon Blanco se levanta\n";
+                        cout<<"Y muestra su imponente forma, dando un rugido muy feroz, capaz de sacar volando a todo el culto, el padre\n";
+                        cout<<"logra verte y en un breve momento de contacto visual, desaparece...El Dragon intenta volar, sin embargo tiene\n";
+                        cout<<"una de sus alas rotas ya, desconocido es si aun su equilibro en orden está, al intentar levantarse no logra superar\n";
+                        cout<<"los 10 segundos seguidos en una pocicion estable. Una corroida sustancia es expulsada de su boca. El legendario\n";
+                        cout<<"dragon está muriendo. JUMEX, nota tu presencia, alcanza a verte con el rabillo de su ojo aun en paz\n";
+                        cout<<personaje<<" decide acercase con determinacion...El momento se detiene, los flujos de agua cayendo se detienen\n";
+                        cout<<"y el tiempo lo hace tambien, escuha una extraña voz agrietada y corrompida\n";
+                        cout<<"\nJUMEX, el gran dragon de ojos azules: Estas aquí por esa baratija de piedra, cierto?? Bueno, tengo malas noticias\n";
+                        cout<<"\tesa cosa nunca existió, solo fueron inventos de gente rechazada por la sociedad inventó, el sistema les falló\n";
+                        cout<<"\tcomo puedes ver ahora los grupos de extraños me llaman una leyenda, pero que soy si no otro dragon\n";
+                        cout<<"\tlas historias que se cuentan de mi, son solo grandes enagenaciones de mitos revueltos en la mente\n";
+                        cout<<"\thumana, un parasito social que solo aferra a los más necesitados a un puño de promesas vacias\n ";
+                        cout<<"\tPero, ya estoy cansado de todo esto, necesito descansar, necesito encontrar el equilibrio, pero qué clase de\n";
+                        cout<<"\tequilibrio puede conseguir una lagartija gigante??. Te lo suplico, por favor acaba conmigo, solo quiero morir\n";
+                        cout<<"\tdeseo salir de este mundo que me ha hecho tanto daño.Harias eso por mi??\n";
+                        cout<<"-----------------------------------------------------------------------------------------------------------\n\n";
+                        cout<<"Que deseas hacer??\n\n[1] Matar\t[2] Pelear\t[3] Perdonar\n\n";
+                        cin>>op5;
+                        if (op5==1){
+                            cout<<personaje<<" toma su espada, desevaina la hoja, toma un respiro, hinhala, exhala, encuentra determinacion en\n";
+                            cout<<"sus acciones y...\n";
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: espera, que estoy haciendo??Dejandome matar por una persona que\n";
+                            cout<<"\tno tiene la menor idea de mis heroicos actos, de mi legado, de mi ser...no, un Dragon de mi linaje\n";
+                            cout<<"\tno puede morir de esta forma tan patetica. Preparate para nuestra pelea, será de las cosas más dificiles que\n";
+                            cout<<"hayas hecho nunca...muah...jjajajaja..coff.cofff...\n";
+                        }else if (op5==2){
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: a veces, y solo a veces son necesarias las peleas pero esta vez será\n";
+                            cout<<"\talgo muy sensillo,pero...por qué debería serlo, por qué me tengo tando desprecio a mi mismo??\n";
+                            cout<<"\tOlvidalo por completo, PREPARATE A SER CARBONNIZADO JAJAJAJAJAJA\n";
+                        }else{
+                            cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
+                            cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
+                            cout<<"coff...coff....\n";
+                        }
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
+                            cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
+                            cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
+                            cout<<"JUMEX, EL GRAN DRAGON BLANCO DE OJOS AZULES muere\n";
+                            cout<<"Corazones actuales: "<<corazones<<endl;
+                            return true;
+
+                        }else{
+                            cout<<"Te lo dije, un gran ser como yo es imposible de matar...espero que la proxima vez sea distinto, aqui estaré\n";
+                            cout<<personaje<<" tirado en el suelo y sufriendo de agonia, mira al dragon y da su ultimo suspiro....has muerto\n";
+                            cout<<"El dragon se come tu cadaver y con ello, todos tus corazones\n";
+                            corazones = 0;
+                            cout<<"Corazones actuales"<<corazones<<endl;
+                            return false;
+
+                        }
+                    }
+                    //End dragon y Bosques Perdidos
+                    break;
+                
+                default:
+                    cout<<"Opcion no disponible\n";
+                    break;
+                }
+                
+            }
+            break;
+        default:
+            cout<<"Opcion no disponible\n";
+            break;
+        }
+    }
+    if (corazones<=0){
+        cout<<"Regresando al menú\n";
+        return false;
+    }
     
+
 }
 
 bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
