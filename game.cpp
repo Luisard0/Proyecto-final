@@ -198,14 +198,18 @@ int manoUsuario(){
 }
 
 //La computadora escoge que va a jugar (1:Piedra, 2: Papel, 3:Tijera)
-int manoComputadora(){
+int manoComputadora(int dificultad){
     //Genera número aleatorio entre 1 y 4
-    return rand() % 4 + 1;
+    if (dificultad==1){
+        return rand() % 3 +1;
+    }else{
+        return rand() % 4 +1;
+    }
 }
 
 //Determina quien es el ganador basado en las reglas del juego, verdadero si el usario gana, falso de otro modo
-bool determinarGanador(int usuario, int computadora){
-    cout<<"La computadora eligio: ";
+bool determinarGanador(int usuario, int computadora, string personaje, string enemigo){
+    cout<<enemigo<<" eligio: ";
     switch (computadora)
     {
     case 1:
@@ -226,7 +230,7 @@ bool determinarGanador(int usuario, int computadora){
     }
 
 
-    cout<<"Tu elegiste: ";
+    cout<<personaje<<" eligio: ";
     switch (usuario)
     {
     case 1:
@@ -246,40 +250,39 @@ bool determinarGanador(int usuario, int computadora){
     //Determina ganador
     if(usuario == computadora){
         cout<<"Es un empate\n";
-        return false;
+        cout<<"Has ganado una victoria\n";
+        return true;
     }else if ((usuario == 1 && computadora == 3) ||
                (usuario == 2 && computadora == 1) ||
                (usuario == 3 && computadora == 2)) {
-        cout << "¡Ganaste!" << endl;
+        cout << personaje<<" gano!!" << endl;
         return true;
     } else {
-        cout << "¡La computadora gana!" << endl;
+        cout << enemigo <<"ha ganado!!" << endl;
         return false;
     }
 }
 
 //Juego Piedra, Papel o Tiejeras, verdadero si logró ganar el juego, falso de otra manera
-bool piedraPapelTijeras(int dificultad){
+bool piedraPapelTijeras(int dificultad,string personaje, string enemigo){
     // Configurar la semilla para generar números aleatorios
     srand(static_cast<unsigned int>(time(0)));
-
-    cout<<"---------------------------------\n";
-    cout << "\nBienvenido al juego de Piedra, Papel o Tijeras." << endl;
-    cout << "Victorias necesarias para ganar: 3"<<endl;
-    cout<<"Los empates seran considerados como derrotas :c"<<endl;
-    cout<<"---------------------------------";
     int victorias = 0;
     int round = 1; 
     int necesarias;
 
-
-    //Dependiendo de la dificultad se necesitarás más o menos victorias
-    if (dificultad==1){
+    cout<<"---------------------------------\n";
+    cout << "\nBienvenido al juego de Piedra, Papel o Tijeras." << endl;
+    cout << "Victorias necesarias para ganar: ";
+    if (dificultad == 1){
+        cout<<"1\n";
         necesarias=1;
     }else{
+        cout<<"3\n";
         necesarias=3;
     }
-    
+    cout<<"Los empates seran considerados como victorias :D"<<endl;
+    cout<<"---------------------------------";    
     while (victorias<necesarias){
         cout<<"\nRound: "<< round<<endl;
         round++;
@@ -292,9 +295,9 @@ bool piedraPapelTijeras(int dificultad){
         }
         
         int usuario = manoUsuario();
-        int computadora = manoComputadora();
+        int computadora = manoComputadora(dificultad);
         //int computadora = 2; //prueba
-        if(determinarGanador(usuario,computadora)){
+        if(determinarGanador(usuario, computadora, personaje,enemigo)){
             victorias++;
         }else{
             victorias--;
@@ -307,11 +310,9 @@ bool piedraPapelTijeras(int dificultad){
         cout<<"---------------------------------\n";
     }
     cout<<"Gracias por jugar\n";
-    if(victorias==3){
+    if(victorias==necesarias){
         return true;
-    }else{return false;
-    }
-    
+    }else{return false;}
 }
 
 //------piedra, papel o tijeras game----------
@@ -368,9 +369,9 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
     int turno = 1;
     int op;//Opcion del jugador y el enemigo
     //Pelea a muerte
-    cout<<"\n\n***************************************************\n";
+    cout<<"\n\n********************************************************************************\n";
     cout<<"\tLa batalla contra "<<nomEnemigo<<" ha empezado\n";
-    cout<<"***************************************************\n";
+    cout<<"\n\n********************************************************************************\n";
 
     while (vidaUsuario > 0 && vidaComputadora > 0) {
         //Muestra información basica
@@ -605,12 +606,12 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
                 if ((rand()%2 +1) % 2 == 0){
                     cout<<"Oh no, ha invocado el hechizo 'Piedra, papel o tijeras de la muerte'\n";
                     cout<<"Es un todo o nada, un hechizo simple pero increbrantable\n";
-                    if(piedraPapelTijeras(dificultad)){
+                    if(piedraPapelTijeras(dificultad,nomPersonaje,nomEnemigo)){
                         cout<<"Felicidades, has ganado el Piedra papel o tijeras de la muerte\n";
-                        vidaComputadora=0;
+                        return true;
                     }else{
                         cout<<"Oh no, has perdido en el Piedra, papel o tijeras de la muerte\n";
-                        vidaUsuario=0;
+                        return false;
                     }
                 }else{
                     cout<<"Pero se le lengua la traba (no se acuerda del hechizo, ese dia falto a clases XD)\n";
@@ -650,7 +651,8 @@ int menuPrincipal(){
         cout<<"[1] Para jugar\n";
         cout<<"[2] Para ir a la tienda\n";
         cout<<"[3] Para ajustar la dificultad\n";
-        cout<<"[4] Para salir del juego\n{>>>} ";
+        cout<<"[4] Para ver el progreso de la historia\n";
+        cout<<"[5] Para salir del juego\n ";
         cin>>op;
         if (op == 1){
             return 1;
@@ -660,9 +662,12 @@ int menuPrincipal(){
             return 3;
         }else if (op == 4){
             return 4;
+        }else if (op == 5){
+            return 5;
         }else{
             cout<<"Opcion no valida\n";
         }
+        
     }
 }
 
@@ -685,6 +690,7 @@ string nomPlayer(){
     }
 }
 
+//Introduccion
 void introduccion(string personaje){
     cout<<"-----------------------------------------------------------------------------------------------\n";
     cout<<"\t\tI N T R O D U C C I O N \n";
@@ -713,10 +719,12 @@ void introduccion(string personaje){
     cout<<"de monedas reales, entregadas por el mismisimo ministro del SAT.\n";
     cout<<" -- tal vez sea mucho para declarar --. Por todo esto, "<<personaje<<" se pone en marcha.\n";
     cout<<" Despues de morir PRINGLES, los seguidores del necronomicon\n";
-    cout<<"Manifestaron ir tras tres lugares: Bosques perdidos, Reinos Zora y a las Ruinas del Abismo\n\n\n";
-    cout<<"-----------------------------------------------------------------------------------------------\n";
+    cout<<"Manifestaron ir tras tres lugares: Bosques perdidos, Reinos Zora y a las Ruinas del Abismo...\n";
+    cout<<"Pues se rumora que cada uno de esos tres luegares alberga un fragmento de la PIEDRA FILOSOFAL\n";
+    cout<<"-----------------------------------------------------------------------------------------------\n\n\n";
 }
 
+//Bosques perdidos historia
 bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
     int op1, op2, op3, op4, op5;
     int corazones = 3;
@@ -836,7 +844,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     cout<<"dió la cara y con sus llamaradas elimino al ejercito enemigo. Ese día, toda mi generacion le juró lealtad junto\n";
                     cout<<"con algunas otras familias. Pero ahora solo quedo yo, y no dejaré que sigas avanzando...\n";
                     cout<<"-----------------------------------------------------------------------------------------------------------\n";
-                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear";
+                    cout<<"\n\nQue deseas hacer??[1] Pelear\t[2] Pelear\t[3] Pelear\n\n";
                     cin>>op4;
                     while (corazones>0)
                     {
@@ -940,7 +948,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     break;
                 case 2:
                     //Habla con serpiente Indú
-                    cout<<"Serpiente Indú: Espera, no queriassss quitarme mi comida???, Debisste haberlo mencionado antesss, todo esto es un simple mal\n";
+                    cout<<"Serpiente Indú: Espera, no queriassss quitarme mi comida???,\nDebisste haberlo mencionado antesss, todo esto es un simple mal\n";
                     cout<<"\tentendidosss, de ser por mi, puedes pasar a dodne quieras, en este bosque las cosas son más simples de lo que parece\n";
                     cout<<"Serpiente Indú, te ha dejado pasar sin aparentemente ningun problema\n";
                     cout<<"Corazones actuales: "<<corazones<<endl;
@@ -1440,7 +1448,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     break;
                 case 2:
                     //Habla con serpiente Indú
-                    cout<<"Serpiente Indú: Espera, no queriassss quitarme mi comida???, Debisste haberlo mencionado antesss, todo esto es un simple mal\n";
+                    cout<<"Serpiente Indú: Espera, no queriassss quitarme mi comida???,\nDebisste haberlo mencionado antesss, todo esto es un simple mal\n";
                     cout<<"\tentendidosss, de ser por mi, puedes pasar a dodne quieras, en este bosque las cosas son más simples de lo que parece\n";
                     cout<<"Serpiente Indú, te ha dejado pasar sin aparentemente ningun problema\n";
                     cout<<"Corazones actuales: "<<corazones<<endl;
@@ -1711,7 +1719,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                         }else{
                             cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
-                            cout<<"coff...coff....";
+                            cout<<"coff...coff....\n";
                         }
                         if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
@@ -1746,7 +1754,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
             //Pagar al oso
             cout<<"---------------------------------------------------------------------------------------------------------\n";
             cout<<"Oso: Puedo ver que hay un poco de masoquismo en ti...jeje...no solo sé solo soy un Oso que hablar...jaja\n";
-            cout<<personaje<<" arranca uno de sus corazones y se lo ofrese al osos como forma de pago";
+            cout<<personaje<<" arranca uno de sus corazones y se lo ofrese al osos como forma de pago\n";
             corazones--;
             cout<<"Corazones actuales: "<<corazones<<endl;
             cout<<"---------------------------------------------------------------------------------------------------------\n";
@@ -1754,7 +1762,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
             cout<<"ratón y una serpiente, los movimientos rapidos del ratón despistan un poco a la serpiente pero no se\n";
             cout<<"deja intimidar por nada del mundo, finalmente, logra encajar una mordida abrazadora en la espina dorsal\n";
             cout<<"del ratón, empezando el proceso de licuacion de organos para posteriormente absorverlos a travez\n";
-            cout<<"de sus colmillos.";
+            cout<<"de sus colmillos.\n";
             cout<<"-----------------------------------------------------------------------------------------------------------\n";
             cout<<"Te acercas sigilosamente, pero la serpiente se acerca a ti rapidamente...\n";
             cout<<"Serpiente: A donde crees que ibasssss, si desearme un buen probechosssssss??, en este bosque la gente que se\n";
@@ -1899,7 +1907,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                         }else{
                             cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
-                            cout<<"coff...coff....";
+                            cout<<"coff...coff....\n";
                         }
                         if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
@@ -2048,7 +2056,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                         }else{
                             cout<<"JUMEX, Dragon Blanco de Ojos Azules: no,no,no,no,no...no necesito tu perdon, no necesito el de nadie\n";
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
-                            cout<<"coff...coff....";
+                            cout<<"coff...coff....\n";
                         }
                         if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
@@ -2238,10 +2246,73 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
 
 }
 
+//Reinos Zora
 bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
+    int op1,op2,op3,op4;
+    int corazones = 3;
     cout<<"R E I N O S  Z O R A\n\n";
+    cout<<"-------------------------------------------------------------------------------------------------------------\n";
+    cout<<"Los lagos son en verdad de agua o aparentan serlo??. Si bien los cuerpos de agua proceden desde un clico\n";
+    cout<<"y con sus ciertos desfaces por alteraciones no naturales como la humana son por si mismos una gran fuente\n ";
+    cout<<"albergadora de vida, o eso era. Poco se conoce de la raza Zora, seres que se dice provienen del cielo\n";
+    cout<<"llegaron a travez de bolas de fuego que calleron al mar, pero, no se tendrían registros de estos hasta que\n";
+    cout<<"un viejo pescador de la costa este, en medio de una tormenta en el centro del golfo que forma el continente\n";
+    cout<<"seria arrazado por una imponente ola moustro, hundiendo a toda la tripulacion del barco pesquero y dejandolos\n";
+    cout<<"a la deriva, con solo suministros para 2 dias, una brujula con el puntero rojo girando sin sentido, y 10 litros\n";
+    cout<<"de agua para consumo, y es ahí en donde se hizo el primer contacto con esta especie, seres llenos de tentaculos\n";
+    cout<<"piel azul diamente, con cuerpos variados devido al nivel de precion atmosferica, cada colonia de los Zora\n";
+    cout<<"abarca aproximadamente 3 leguas marinas, sin embargo, como todo comun denominador en cualquier especie avanzada\n";
+    cout<<"constantemente estan en guerra por más territorio. Desde que se estableció un acuerdo maritimo para los continentes\n";
+    cout<<"y los Zora, se ha logrado que los barcos navios lleguen más rapido, las rutas comerciales se expanden cada vez más\n";
+    cout<<"y el mundo burgues se hace cada vez más la regla, sin embargo, desde que estos alienigenas llegaron, todo su\n";
+    cout<<"desarrollo tecnologico se ha enfocado en la vida marina, llena de seres apenas pensantes, compadeciendose de ellos\n";
+    cout<<"lograron gracias a un sistema de plasmidos, hacer que las especies marinas avancen por lo menos 50,000 millones\n";
+    cout<<"de años, dotandolos de una gran inteligencia y formando todo un imperio de vida bajo el mar. Existen dos grandes\n";
+    cout<<"problemas con esta neo civilizacion, el primero es una adiccion hacia los plasmidos, pues su alto consumo provoca\n";
+    cout<<"deformaciones genetias que eventualmente terminan matando al ser, el segundo problema es un desavastecimiento de comida\n";
+    cout<<"despues del tratado del Atlantico este y sur, se llegó al acuerdo de no comer a otro ser pensante marino, por lo que\n";
+    cout<<"desarrollaron un meto de alimentacion a base de fotosintesis, sin embargo, las mutaciones de los plasmidos han\n";
+    cout<<"creado mutaciones de la sintesis dependientes de la melanina humana, es por ello que suelen cazar algunos barcos\n";
+    cout<<"perdidos, o embarcaciones desoladas, le arrancan los ojos a los humanos junto con su cabello y por ultimo lo someten\n";
+    cout<<"a un proceso que retira toda la piel del cuerpo, sin embargo, suelen usar los corazones y la medula espinal\n";
+    cout<<"como un condimento especial muy vendido en el mercado profundo, ademas de tambien \n";
+    cout<<"para conseguir aun más melanina especial. Esta meleanina es unica pues es capaz de obtener energia\n";
+    cout<<"disociando las moleculas de agua a partir de la radiacion electromagnetica, un proceso similar a la clorofila\n";
+    cout<<"pero mucho más efectiva.";
+    cout<<"-------------------------------------------------------------------------------------------------------------\n";
+    cout<<personaje<<" se aventura en un barco con direccion a los reinos Zora...\n";
+    cout<<"Una gabiota se acerca a "<<personaje<<endl;
+    cout<<"GABIOTA: NI los mejores marineros se atreverían a navegar por estas aguas tan turbulentas, si lo que deseas es uno \n";
+    cout<<"de esos fragmentos rojos, deberás buscar en lo más profundo de ti y del mar. Ese barco no restirá, los viejos Zoras\n";
+    cout<<"que venian a las costas les daban a estas semillas a humanos ingenuos, las semillas del hermitaño te permiten estar\n";
+    cout<<"en el fondo del mar sin la necesidad de respirar, crea momentanamente un organo adaptativo a partir del apendice que\n";
+    cout<<"lleva el oxigeno del mar a tus pulmones, estas semillas solo funcionan durante 24 horas, pero los días de luna llena\n";
+    cout<<"el efecto se hace aun mas fuerte, provocando tumores malignos una fuerte descalcificaion en los huesos\n";
+    cout<<"por lo que si estas en lo profundo del oceano la presion atmosferica terminará triturandote vivo todo el sistema oceo\n";
+    cout<<"-------------------------------------------------------------------------------------------------------------\n";
+    while (corazones>0)
+    {
+        cout<<"Que te gustaría hacer??\n[1] Comer la semilla del hermitaño\t[2] NO comer la semilla del hermitaño\t[3] Sospechar de la gabiota\n\n";
+        cin>>op1;
+
+        if (op1==1){
+            //Comer la semilla del hermitaño
+        }else if (op1 == 2){
+            //NO comer la semilla del hermitaño
+        }else if (op1 == 3){
+            //Sospechar de la gabiota
+        }else{
+            cout<<"Opcion no valida\n";
+        }
+        
+        
+        
+    }
+    
+    
 }
 
+//Ruinas del Abismo
 bool RuinasDelAbismo(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
     cout<<"R U I N A S  D E L  A B I S M O \n\n";
 }
@@ -2254,6 +2325,8 @@ void finalHistoria(){
 int main(){   
     // vector<string> palabras={"platano","tact","else"};
     // string palabra =choose_palabra(palabras);
+    //Fragmentos de la piedra filosofal
+    int fragmentoPiedra = 3;
     //Nombre del jugador
     string jugador = nomPlayer();
     //string nEnemy = "Empanada";
@@ -2273,8 +2346,6 @@ int main(){
     //otras opciones
     int cho1;
     int cho2;
-    //Progreso
-    int progreso = 0;
     //menú principal
     while (true){
         op = menuPrincipal();
@@ -2282,23 +2353,25 @@ int main(){
         switch (op){
         case 1:
             //---------Pre game----------------------------------------------------
+            cout<<"\n\n____________________________________________________________\n";
             cout<<"Antes de  empezar...\n\n";
             cout<<"____________________________________________________________\n";
             cout<<"\t\tAlgunas estadisticas de "<<jugador<<"\n";
             cout<<"____________________________________________________________\n";
-            cout<<"Corazones: \t"<<corazones<<endl;
-            cout<<"Dificultad: \t";
+            cout<<"Corazones: \t\t\t\t"<<corazones<<endl;
+            cout<<"Dificultad: \t\t\t\t";
             if (dificultad == 1){
                 cout<<"Facil\n";
             }else{cout<<"Dificil\n";}
-            cout<<"Monedas: \t"<<monedas<<"\n\n";
-            cout<<"____________________________________________________________\n";
+            cout<<"Monedas: \t\t\t\t"<<monedas<<"\n";
+            cout<<"Fragmentos de la piedra Filosofal: \t"<<fragmentoPiedra<<endl;
+            cout<<"\n____________________________________________________________\n";
             cout<<"\tAlgunos objetos disponibles de: "<<jugador<<"\n";
             cout<<"____________________________________________________________\n";
-            cout<<"Pociones = "<<pociones<<endl;
-            cout<<"Pociones grandes = "<<pocionesMax<<endl;
-            cout<<"Escudos = "<<escudos<<endl;
-            cout<<"Hechizo 'golpe definitivo' = "<<ataqueMortal<<endl;
+            cout<<"Pociones : \t\t\t\t"<<pociones<<endl;
+            cout<<"Pociones grandes : \t\t\t"<<pocionesMax<<endl;
+            cout<<"Escudos : \t\t\t\t"<<escudos<<endl;
+            cout<<"Hechizo 'golpe definitivo' : \t\t"<<ataqueMortal<<endl;
             cout<<"____________________________________________________________\n";
             cout<<"\n\n";
             cout<<"Recuerda que puedes comprar mas items en la tienda\n";
@@ -2314,14 +2387,23 @@ int main(){
                     if (cho1 == 1){
                         if(BosquesPerdidos(jugador, dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
                             cout<<"Bosques perdidos superados\n";
+                            cout<<"Despues de derrotar al DRAGON DE OJOS AZULES,"<<jugador<<" sigue el sonido del agua\n";
+                            cout<<"callendo, y encuentra una cueva, dentro de ella, hay un cadaver con una carta y un \n";
+                            cout<<"paño rojo, dentro del paño hay una piedra roja y la carta reza lo siguiente: \n";
+                            cout<<"LA PRINCESA ESTA EN OTRO CASTILLO!!!\n\n\njaja, la piedra fue fracturada hacer mucho\n";
+                            cout<<"por un viejo hechizero que conocia el poder de la piedra, he aqui solo un fragmento\n";
+                            cout<<"encuentra los otros dos y obtendras la piedra completa...\n\n";
+                            cout<<jugador<<" ha encontrado un fragmento de  LA PIEDRA FILOSOFAL!!!\n\n";
+                            fragmentoPiedra+=1;
+                            cout<<"Fragmentos de la piedra filosofal: "<<fragmentoPiedra<<endl;
                             if (dificultad==1){
                                 cout<<"Has recibido 300 monedas\n";
                                 monedas+=300;
                             }else{
-                                cout<<"Has recibido 500 monedas";
+                                cout<<"Has recibido 500 monedas\n";
                                 monedas+=500;
                             }
-                            progreso++;
+                            cout<<"Bosques perdidos superados!!!"<<endl;
                             break;
                         }else{
                             cout<<"Bosques perdidos no superados\n";
@@ -2343,7 +2425,6 @@ int main(){
                                 cout<<"Has recibido 500 monedas";
                                 monedas+=500;
                             }
-                            progreso++;
                             break;
                         }else{
                             cout<<"Reinos Zora no superados\n";
@@ -2366,7 +2447,6 @@ int main(){
                                 cout<<"Has recibido 500 monedas\n";
                                 monedas+=500;
                             }
-                            progreso++;
                             break;
                         }else{
                             cout<<"Ruinas del Abismo no superadas\n";
@@ -2387,7 +2467,7 @@ int main(){
                     }
                 
                 }
-                if (progreso == 3){
+                if (fragmentoPiedra == 3){
                     finalHistoria();
                     cout<<"Felicidades por completar el juego, has recibido 1000 para cada item del juego ";
                     pociones+=1000;
@@ -2702,6 +2782,33 @@ int main(){
             
             break;//brake de la dificultad
         case 4:
+            //Progreso
+            cout<<"____________________________________________________________\n";
+            cout<<"\t\tAVANCE DE LA HISTORIA\n\n";
+            cout<<"____________________________________________________________\n";
+            cout<<"La historia principal se compone de 3 capitulos. Cada uno\n";
+            cout<<"de ellos comprende su propio hilo narrativo pero en      \n";
+            cout<<"conjunto forman la historia completa. Para ver el final, \n";
+            cout<<"es necesario pasar los 3 capitulos.\n";
+            cout<<"____________________________________________________________\n";
+            cout<<"\t\t\tPROGRESO: \n\n";
+            if (fragmentoPiedra == 0){
+                cout<<"Aun no has jugado lo suficiente. Prueba usar items de la\n";
+                cout<<"tienda para facilitar la aventura.\n";
+                cout<<"Fragmentos de la PIEDRA FILOSOFAL encontrados: \t"<<fragmentoPiedra<<endl;
+            }else if (fragmentoPiedra==3){
+                cout<<"Felicidades, has completado el juego por completo\n";
+                cout<<"en verdad, no fue facil hacerlo pero si lo has\n";
+                cout<<"disfrutado, valio la pena...\n";
+                cout<<"Fragmentos de la PIEDRA FILOSOFAL encontrados: \t"<<fragmentoPiedra<<endl;
+            }else{
+                cout<<"Estas cada vez más cerca del final del juego, itenta pasar\n";
+                cout<<"los otros "<<3-fragmentoPiedra<<" capitulos restantes para\n";
+                cout<<"terminar el juego\n";
+                cout<<"Fragmentos de la PIEDRA FILOSOFAL encontrados: \t"<<fragmentoPiedra<<endl;
+            }
+            break;
+        case 5:
             //Salir
             break;
         default:
@@ -2710,7 +2817,7 @@ int main(){
             break;
         }
         //Case 4, salir del juego, aqui op = 4 para salir
-        if (op==4){
+        if (op==5){
             cout<<"Estas saliendo del juego...\n";
             cout<<"Gracias por jugar";
             break;
