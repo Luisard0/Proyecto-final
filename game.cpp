@@ -2278,7 +2278,7 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
     cout<<"como un condimento especial muy vendido en el mercado profundo, ademas de tambien \n";
     cout<<"para conseguir aun más melanina especial. Esta meleanina es unica pues es capaz de obtener energia\n";
     cout<<"disociando las moleculas de agua a partir de la radiacion electromagnetica, un proceso similar a la clorofila\n";
-    cout<<"pero mucho más efectiva.";
+    cout<<"pero mucho más efectiva.\n";
     cout<<"-------------------------------------------------------------------------------------------------------------\n";
     cout<<personaje<<" se aventura en un barco con direccion a los reinos Zora...\n";
     cout<<"Una gabiota se acerca a "<<personaje<<endl;
@@ -2289,18 +2289,761 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
     cout<<"lleva el oxigeno del mar a tus pulmones, estas semillas solo funcionan durante 24 horas, pero los días de luna llena\n";
     cout<<"el efecto se hace aun mas fuerte, provocando tumores malignos una fuerte descalcificaion en los huesos\n";
     cout<<"por lo que si estas en lo profundo del oceano la presion atmosferica terminará triturandote vivo todo el sistema oceo\n";
+    cout<<"por cierto, cuando lo encuentres no lo mieres a los ojos...sabras lo que significa cuando lo veas...\n";
     cout<<"-------------------------------------------------------------------------------------------------------------\n";
     while (corazones>0)
     {
         cout<<"Que te gustaría hacer??\n[1] Comer la semilla del hermitaño\t[2] NO comer la semilla del hermitaño\t[3] Sospechar de la gabiota\n\n";
         cin>>op1;
-
         if (op1==1){
             //Comer la semilla del hermitaño
+            while (true){
+                cout<<"-------------------------------------------------------------------------------------------------------------\n";
+                cout<<"A pesar de lo poco confiable que puede ser comer algo que un extraño te ofrese por motivos desconocidos.     \n";
+                cout<<"asceptas el riesgo que tu decicion implica y no te deas intimidar por falsos prejuicios de la sociedad       \n";
+                cout<<personaje<<" consume las semillas del hermitaño....                                                           \n";
+                cout<<"GABIOTA: jeje a veces es bueno asceptar la ayuda de los demas jeje...Sigue tu viaje, simplemente recuerda    \n";
+                cout<<"mantener tu melanina a salvo si es que no quieres terminar siendo comida de los Zora ac...ac                 \n";
+                cout<<"(graznido de gaviota)                                                                                        \n";
+                cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                cout<<"Para aprovechar al maximo tu nueva habilidad, decides saltar de barco y nadar directamente hacia las         \n";
+                cout<<"profundidades del mar, empiezas a ver algunos seres Zora de aspecto reflejante y deciden cazarte...          \n";
+                cout<<"La pelea es inevitable...pero...                                                                             \n";
+                cout<<"Que te gustaría hacer??\n[1] Pelear\t[2] Hablar\t[3] Sacrificar un corazon\n\n";
+                cin>>op2;
+                switch (op2){
+                case 1:
+                    //Pelear
+                    cout<<"Estas determinado a enfrentar la situación...\n";
+                    if (batallaPorTurnos(personaje,"Zora dosil",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        cout<<"Pueden ver tu determinacion pero no te dejaran pasar hasta que les des solo uno de tus corazones...\n";
+                        cout<<"renegado, les dan uno de tus corazones\n";
+                        corazones--;
+                        cout<<"Corazones actuales: "<<corazones<<endl;
+                    }else{
+                        cout<<"Despues de intentar salvar tu vida, los Zora ven algo en ti, algo que les recuerda a ellos, lo toman uno de tus corazones\n";
+                        cout<<"y te dejan seguir...\n";
+                        corazones--;
+                        cout<<"Corazones actuales: "<<corazones<<endl;
+                    }
+                    cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                    cout<<"Despues de evirar ser comido, por una simple forma extraña de una sensibilidad alianada entre seres\n";
+                    cout<<"continuas bajando, pues es todo lo que queda, tu cuerpo se acontumbra al lento procesoce del cambio de \n";
+                    cout<<"presion atmosferico, la luz empieza a hacerse más escasa, el oceano no solo no parece tener fin, tambie es una\n";
+                    cout<<"exprecion pura de profundidad. A pesar de lo poco que se conoce de los Zora, es bien sabido que la cuspide de\n";
+                    cout<<"su creación fue la metropolis llamada Raputure, un lugar lleno de los grandes misterios pues no mucha gente se\n";
+                    cout<<"ha atrevido a llegar tan lejos, se dice que fue contruida por encima de los viejos restos de la ATLANTIDA y \n";
+                    cout<<"para hacer aún más seguro el lugar, lo cubrieron debajo de un domo trasparente.\n";
+                    cout<<"LLegas al fondo del oceano y encuentras una red de tubos de trasporte, aparentemente la manera de moverse es \n";
+                    cout<<"dejando que la tecnologia lo haga, ademas, hay una cabina de abordaje que permite subir a cualquier especie marina.\n";
+                    cout<<"Al llegar a la cabina de abordaje te percatas que el capitan ispecciona el pase para abordar, encuentras una especie\n";
+                    cout<<"de taquilla, y procedes a coprar un boleto, sin embargo te hacen una comision por el cambio de moneda, y todavía\n";
+                    cout<<"te hacen dejar una propina al sistema de cambios automaticos, estas frustrado, pero tienes tu boleto, haces fila\n";
+                    cout<<"para abordar el trasporte, el capitan que supervisa los boletos te ve de pies a cabeza, es facil reconocer que\n";
+                    cout<<"no eres un animal marino, sin embargo un neo delfin arto de esperar en la fila, pide que se apresuren\n";
+                    cout<<"el capitan te deja pasar aparentemente. Entras al vagon, una vez lleno, empieza a moverse a muy alta velocidad,los\n ";
+                    cout<<"los tubos parecen estar echos de una especie de fibrra de vidrio unida uno con otro a travez de un superconductor\n";
+                    cout<<"capas de manejar los campos delectromagneticos de los vagones, y todo el tubo está cubierto por fibra de carbono\n";
+                    cout<<"transparente, todo el sitema de tubos funciona por nodos, como si fueran grafos.\n ";
+                    cout<<"Una vez llegando a la gran central (o gran nodo), puedes ver como se abre ante ti un grupo armado de tiburones blancos\n";
+                    cout<<"el dominio de los Zora no solo se remonta a su propia existencia, si no al de muchos seres marinos\n";
+                    cout<<"empiezas a correr pero todo parece ser muy confuso, empiezas a marearte, tal vez sea un efecto secundario de las\n";
+                    cout<<"semillas del hermitaño, finalmente vuelves a ti y ahí junto con los tiburones blanco se presenta ante ti el gran\n";
+                    cout<<"KITO CORLEONE, un gran tiburon blanco mutado por los plasmidos, pero que en realidad no es si no más que otra\n";
+                    cout<<"marioneta de las grandes mentes Zora, KITO, te hace unas preguntas pero no sabes lo que dice, y al nunca haber\n";
+                    cout<<"situación similar, no hay una especie de protocolo por lo que deciden llevarte ante el Rey del Todo para que decida\n";
+                    cout<<"qué hacer contigo, usan una bolsa de pseaudo plastico biodegradable a vase de algas para taparte la cara y no\n";
+                    cout<<"puedas ver el camino...\n";
+                    cout<<"vuelves a ser despertado de una manera ruda, uno de los tiburones de KITO te azotado la cara contra una especie\n";
+                    cout<<"de libro en un atril de oro. Lo poco que puedes distinguir es que la pagina de ese libro dice en varios idiomas\n";
+                    cout<<"incluyendo el humano: NO LO MIRES A LOS OJOS. Una voz o más bien un sonido tan grave que retumba por todo \n";
+                    cout<<"comienza a decir algo, porque parece tener un ritmo, parece hablar en una lengua tan antigua arena del mar\n";
+                    cout<<"todo esta oscuro, no puedes ver de donde vienen esos sonidos, pero logras escuchar una cadena acercandose...\n";
+                    cout<<"entre las oscuridades más profundas, puedes lograr ver una luz de una vela marina, siguie acercandose hasta que \n";
+                    cout<<"depues de ese basto sonido de cadenas se puede entrever un ser encapuchado con una tunica roja, te ve, y lo sabe\n";
+                    cout<<"sabe que este día llegaría...\n\n";
+                    cout<<"MILLER: Sabes como es esto, no??. Bueno primero es decir que este lugar realmente no es Rapture, si no que el \n";
+                    cout<<"\tverdadero nombre  es R'lyeh y has viajado tanto que has llegado al oceano Pacífico. Este momento es realmente sublime\n";
+                    cout<<"\tlos millones de años han pasado y por fin, solo tines que decir las palabras sagradas y todo estára listo\n";
+                    cout<<"\t¿Qué pasa, no las conoces a caso?¿Cómo es eso posible?, espera, no sabes lo que está ocurriendo cierto???\n";
+                    cout<<"\tjajajajajajajajajajajajajajajajajajajajajajajajaja, esto es en serio fabuloso, tan kafkiano, veras, estas apunto\n";
+                    cout<<"\tde traer paz al mundo...(está mintiendo), todo lo que necesitas saber está en ese libro, serías tan amable de\n";
+                    cout<<"\tcambiar de pagina??...\n\n";
+                    cout<<"Cambias la pagina y ves un mismo texto escrito en los diferentes lenguajes, una frase que se repite y se repite: \n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                    while (true){
+                        cout<<"QUE QUIERES HACER??\n[1] RECITAR LA SAGRADA FRASE\t[2] NO RECITAR LA SAGRADA FRASE\t[3] Intentar escapar\n\n";
+                        cin>>op3;
+                        switch (op3){
+                        case 1:
+                            //recita la sagrada frase
+                            cout<<"Recuerdas las palabres de aquella gaviota al inicio de tu aventura, y decides recitar las palabras sagradas\n";
+                            cout<<"sin saber exactamente lo que significa ni lo que está pasando, prefieres no ver a nadie a los ojos\n";
+                            cout<<"en cuanto comienzas, el tiempo parece detenerse, y todo el oceano comienza a herbir, los suelos se agritan\n";
+                            cout<<"y sale lava de las fragmentaciones, empiezas a sentir que flotas, cada vez más y más arriba en un estado de\n";
+                            cout<<"trance profundo repitiendo las frases sagradas, y de repente, vuelves a ti, estas en la playa, a mitad de una\n";
+                            cout<<"tormenta de relampagos y tsunamis, en las aguas de los mares comiezan a salir seres marinos sin vida,\n";
+                            cout<<"incluyendo algunos Zora, y al fondo ves a un monstruo de contornos vagamente antropoides, pero con una cabeza\n";
+                            cout<<"de pulpo cuyo rostro es una masa de tentaculos, un cuerpo escamoso que sugiere cierta elasticidad, cuatro\n";
+                            cout<<"extremidades dotadas de garras enormes y un par de alas largas y estrechas en la espalda...\n";
+                            cout<<"el caos viviente ha despertado y viene a reclamar lo que es suyo, el planeta, el gran ser aterra a todos\n";
+                            cout<<"avionetas esparcen un mensaje: Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn. Te parece similar, reaccionas\n";
+                            cout<<"esas palabras han causado todo este desastre. Comienza a haber todo un cataclismo ambiental, nada parecido\n";
+                            cout<<"a algo nunca antes visto. Las personas que intentan luchar por su vida contra este ser cosmico socumben a la\n";
+                            cout<<"locura, comienzan a haber más habionetas con bocinas que predican ser seguidores del ser, son los seguidores\n";
+                            cout<<"del sacerdote. Repentinamente, del agua sale Miller, explicando lo que ha sucedido, acabas de despertar a un ser\n";
+                            cout<<"cosmico ancestral que esperaba en un sueño eterno. Tambien te revela que hay un fragmento de la piedra que tanto\n";
+                            cout<<"anhelas, y está incrustrada en una de sus alas, se despide de ti, proclama que su verdadero nombre no es miller\n";
+                            cout<<"Su verdadero nombre es NYARLATHOTEP...\nLuego procede a mostrarte su verdadera forma, una gran masa poliposa\n";
+                            cout<<"con una larga excrecion roja, o es el lo que cree que quieres ver...\n";
+                            cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                            cout<<"Decides seguirle la pista al gran moustro marino, encuentras un tronco liso a medio cortar, rompes 3/4\n";
+                            cout<<"de los anillos del tronco, decides impulsarte desde una montaña y usar la corteza del tronco como\n";
+                            cout<<"recorres rapidamente la playa y llegas a un pueblo habitado por personas con tres ojos, pregutas por direcciones\n";
+                            cout<<"y continuas tu viaje, cerca de llegar al moustro, decides subir un molino que esta proximo a llegar \n";
+                            cout<<"subes a lo más alto del molino y saltas a una de sus aspas, y te impulsas con tu propio peso para\n";
+                            cout<<"aprobechar el momentum y saltas hasta la cima del molino donde esperas al gigante marino\n";
+                            cout<<"el logra verte e intenta destruir el molino, aprobechas ese momento para subirte a uno de sus brazos y \n";
+                            cout<<"correr a travez de el, pronto llegas a su espalda y ubicas el fragmaento de la piedra en una terminacion\n";
+                            cout<<"del ala, te lanzas hacia ella y por fin la consigues, otro fragmento de la piedra filosofal\n";
+                            cout<<"Pero el cara de masa tentacular logra sentirte y logra arrojarte de nuevo al mar, pronto el planeta\n";
+                            cout<<"comienza a ser inestable y empieza a expulsar torres de lava, desde lo lejos logras percatarte de \n";
+                            cout<<"una explosion masiva, el nucleo de la tierra explotó y el planeta con el. Estas varado en el espacio \n";
+                            cout<<"sin poder respirar. Las cosas empiezan a detenerse, un punto rojo a lo lejos se comienza a acercar\n";
+                            cout<<"el punto rojo se presenta a si mismo como MEFISTOFELES, y te ofrece un trato, el cual consiste en que\n";
+                            cout<<"nunca haber despertado al moustro marino a cambio de tu alma\n";
+                            cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                            cout<<"Qué quieres hacer??\n[1] Vender alma\t[2] No vender alma\t[3] Negociar\n";
+                            cin>>op4;
+                            if (op4 == 3 || op4 == 2){
+                                cout<<"NO terminas de aceptar vender tu alma del todo, MEFISTOFELES, entendiendo de la clase de problema\n";
+                                cout<<"en la que te acabas e meter, se pregunta si relamente hacía falta salvarte, se cuentiona a si mismo\n";
+                                cout<<"encuentra la respuesta en su interior, no debe ayudarte...\nMEFISTOFELES TE HA HABANDONADO...\n";
+                                cout<<"Se reanudan las cosas en el espacio tiempo , tu sangre empieza a herbir y te empiezas a sofocar por la falta\n";
+                                cout<<"de oxigeno...terminas muriendo\n";
+                                cout<<"sin embargo y apesar de tus malas deciciones,MEFISTOFELES te deja un regalo...intenetarlo otra vez\n";
+                                continue;
+                            }else if (op4 == 1){
+                                cout<<"Al verte superado por la situacion, decides aceptar el trato siempre y cuando puedas conservar el fragmento\n";
+                                cout<<"de la piedra filosofal...el simplemente ascepta...\n\n";
+                                return true;
+                            }else{
+                                cout<<"Opcion no valida\n";
+                            }
+                            break;
+                        case 2:
+                            //no recita la sagrada frase
+                            cout<<"Te niegas a hacer lo que te pide, no quieres formar parte de ningun rito extraño, ni nada por el estilo\n";
+                            cout<<"pero las salidas se cierran y queda solamente la luz de Miller, reflejando el atril de oro decides desafiar\n";
+                            cout<<"a miller, él se empieza a reir, desconcertado levantas la mirada y logras finalmente verlo, un mounstro de\n";
+                            cout<<"contornos vagamente antropoides, pero con una cabeza de pulpo cuyo rostro es una masa de tentaculos,\n";
+                            cout<<"un cuerpo escamoso que sugiere cierta elasticidad, cuatro extremidades dotadas de garras enormes y un\n";
+                            cout<<"par de alas largas y estrechas en la espalda....\n";
+                            cout<<"Haces contacto visual con el y ....\n";
+                            cout<<"sales de la habitación con la mirada viendo la nada, llegas al centro de la estacion que conecta al nodo \n";
+                            cout<<"central, en medio del todo, te quitas los ojos, caes de rodillas y mueres...\n";
+                            cout<<"tu ecuentro con el ser ancestral te ha llevado a la locura...\n";
+                            return false;
+                            break;
+                        case 3:
+                            //intenta escapar
+                            cout<<"Te ves superado por la situacion, empiezas a perder la cabeza...empiezas a escuhar voces susurrandote\n";
+                            cout<<"que debes recitar la sagrada frase, entras en desesperación, tu pupilas se comienzan a dilatar, y \n";
+                            cout<<"decides alzar la mirada, y logras verlo finalmente...logras quedar anonadado por un mounstro de \n";
+                            cout<<"contornos vagamente antropoides, pero con una cabeza de pulpo cuyo rostro es una masa de tentaculos,\n";
+                            cout<<"un cuerpo escamoso que sugiere cierta elasticidad, cuatro extremidades dotadas de garras enormes y un\n";
+                            cout<<"par de alas largas y estrechas en la espalda....\n";
+                            cout<<"Haces contacto visual con el y ....\n";
+                            cout<<"sales de la habitación con la mirada viendo la nada, llegas al centro de la estacion que conecta al nodo \n";
+                            cout<<"central, en medio del todo, te quitas los ojos, caes de rodillas y mueres...\n";
+                            cout<<"tu ecuentro con el ser ancestral te ha llevado a la locura...\n";
+                            return false;
+                            break;
+                        default:
+                            cout<<"Opcion no valida\nRECITA LA SAGRADA FRASE....\n";
+                            break;
+                        }
+                    }      
+                    break;
+                case 2:
+                    //Hablar
+                    cout<<"Intentas hablar y negociar con los Zora, sin embargo, ellos desarrollaron otro lenguaje, algun si son capaces\n";
+                    cout<<"de comunicarse, pero estos no, no te queda otra opcion más que pelear...\n";
+                    if (batallaPorTurnos(personaje,"Zora dosil",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        cout<<"Pueden ver tu determinacion pero no te dejaran pasar hasta que les des solo uno de tus corazones...\n";
+                        cout<<"renegado, les dan uno de tus corazones\n";
+                        corazones--;
+                        cout<<"Corazones actuales: "<<corazones<<endl;
+                    }else{
+                        cout<<"Despues de intentar salvar tu vida, los Zora ven algo en ti, algo que les recuerda a ellos, lo toman uno de tus corazones\n";
+                        cout<<"y te dejan seguir...\n";
+                        corazones--;
+                        cout<<"Corazones actuales: "<<corazones<<endl;
+                        }
+                    cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                    cout<<"Despues de evirar ser comido, por una simple forma extraña de una sensibilidad alianada entre seres\n";
+                    cout<<"continuas bajando, pues es todo lo que queda, tu cuerpo se acontumbra al lento procesoce del cambio de \n";
+                    cout<<"presion atmosferico, la luz empieza a hacerse más escasa, el oceano no solo no parece tener fin, tambie es una\n";
+                    cout<<"exprecion pura de profundidad. A pesar de lo poco que se conoce de los Zora, es bien sabido que la cuspide de\n";
+                    cout<<"su creación fue la metropolis llamada Raputure, un lugar lleno de los grandes misterios pues no mucha gente se\n";
+                    cout<<"ha atrevido a llegar tan lejos, se dice que fue contruida por encima de los viejos restos de la ATLANTIDA y \n";
+                    cout<<"para hacer aún más seguro el lugar, lo cubrieron debajo de un domo trasparente.\n";
+                    cout<<"LLegas al fondo del oceano y encuentras una red de tubos de trasporte, aparentemente la manera de moverse es \n";
+                    cout<<"dejando que la tecnologia lo haga, ademas, hay una cabina de abordaje que permite subir a cualquier especie marina.\n";
+                    cout<<"Al llegar a la cabina de abordaje te percatas que el capitan ispecciona el pase para abordar, encuentras una especie\n";
+                    cout<<"de taquilla, y procedes a coprar un boleto, sin embargo te hacen una comision por el cambio de moneda, y todavía\n";
+                    cout<<"te hacen dejar una propina al sistema de cambios automaticos, estas frustrado, pero tienes tu boleto, haces fila\n";
+                    cout<<"para abordar el trasporte, el capitan que supervisa los boletos te ve de pies a cabeza, es facil reconocer que\n";
+                    cout<<"no eres un animal marino, sin embargo un neo delfin arto de esperar en la fila, pide que se apresuren\n";
+                    cout<<"el capitan te deja pasar aparentemente. Entras al vagon, una vez lleno, empieza a moverse a muy alta velocidad,los\n ";
+                    cout<<"los tubos parecen estar echos de una especie de fibrra de vidrio unida uno con otro a travez de un superconductor\n";
+                    cout<<"capas de manejar los campos delectromagneticos de los vagones, y todo el tubo está cubierto por fibra de carbono\n";
+                    cout<<"transparente, todo el sitema de tubos funciona por nodos, como si fueran grafos.\n ";
+                    cout<<"Una vez llegando a la gran central (o gran nodo), puedes ver como se abre ante ti un grupo armado de tiburones blancos\n";
+                    cout<<"el dominio de los Zora no solo se remonta a su propia existencia, si no al de muchos seres marinos\n";
+                    cout<<"empiezas a correr pero todo parece ser muy confuso, empiezas a marearte, tal vez sea un efecto secundario de las\n";
+                    cout<<"semillas del hermitaño, finalmente vuelves a ti y ahí junto con los tiburones blanco se presenta ante ti el gran\n";
+                    cout<<"KITO CORLEONE, un gran tiburon blanco mutado por los plasmidos, pero que en realidad no es si no más que otra\n";
+                    cout<<"marioneta de las grandes mentes Zora, KITO, te hace unas preguntas pero no sabes lo que dice, y al nunca haber\n";
+                    cout<<"situación similar, no hay una especie de protocolo por lo que deciden llevarte ante el Rey del Todo para que decida\n";
+                    cout<<"qué hacer contigo, usan una bolsa de pseaudo plastico biodegradable a vase de algas para taparte la cara y no\n";
+                    cout<<"puedas ver el camino...\n";
+                    cout<<"vuelves a ser despertado de una manera ruda, uno de los tiburones de KITO te azotado la cara contra una especie\n";
+                    cout<<"de libro en un atril de oro. Lo poco que puedes distinguir es que la pagina de ese libro dice en varios idiomas\n";
+                    cout<<"incluyendo el humano: NO LO MIRES A LOS OJOS. Una voz o más bien un sonido tan grave que retumba por todo \n";
+                    cout<<"comienza a decir algo, porque parece tener un ritmo, parece hablar en una lengua tan antigua arena del mar\n";
+                    cout<<"todo esta oscuro, no puedes ver de donde vienen esos sonidos, pero logras escuchar una cadena acercandose...\n";
+                    cout<<"entre las oscuridades más profundas, puedes lograr ver una luz de una vela marina, siguie acercandose hasta que \n";
+                    cout<<"depues de ese basto sonido de cadenas se puede entrever un ser encapuchado con una tunica roja, te ve, y lo sabe\n";
+                    cout<<"sabe que este día llegaría...\n\n";
+                    cout<<"MILLER: Sabes como es esto, no??. Bueno primero es decir que este lugar realmente no es Rapture, si no que el \n";
+                    cout<<"\tverdadero nombre  es R'lyeh y has viajado tanto que has llegado al oceano Pacífico. Este momento es realmente sublime\n";
+                    cout<<"\tlos millones de años han pasado y por fin, solo tines que decir las palabras sagradas y todo estára listo\n";
+                    cout<<"\t¿Qué pasa, no las conoces a caso?¿Cómo es eso posible?, espera, no sabes lo que está ocurriendo cierto???\n";
+                    cout<<"\tjajajajajajajajajajajajajajajajajajajajajajajajaja, esto es en serio fabuloso, tan kafkiano, veras, estas apunto\n";
+                    cout<<"\tde traer paz al mundo...(está mintiendo), todo lo que necesitas saber está en ese libro, serías tan amable de\n";
+                    cout<<"\tcambiar de pagina??...\n\n";
+                    cout<<"Cambias la pagina y ves un mismo texto escrito en los diferentes lenguajes, una frase que se repite y se repite: \n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                    while (true){
+                        cout<<"QUE QUIERES HACER??\n[1] RECITAR LA SAGRADA FRASE\t[2] NO RECITAR LA SAGRADA FRASE\t[3] Intentar escapar\n\n";
+                        cin>>op3;
+                        switch (op3){
+                        case 1:
+                            //recita la sagrada frase
+                            cout<<"Recuerdas las palabres de aquella gaviota al inicio de tu aventura, y decides recitar las palabras sagradas\n";
+                            cout<<"sin saber exactamente lo que significa ni lo que está pasando, prefieres no ver a nadie a los ojos\n";
+                            cout<<"en cuanto comienzas, el tiempo parece detenerse, y todo el oceano comienza a herbir, los suelos se agritan\n";
+                            cout<<"y sale lava de las fragmentaciones, empiezas a sentir que flotas, cada vez más y más arriba en un estado de\n";
+                            cout<<"trance profundo repitiendo las frases sagradas, y de repente, vuelves a ti, estas en la playa, a mitad de una\n";
+                            cout<<"tormenta de relampagos y tsunamis, en las aguas de los mares comiezan a salir seres marinos sin vida,\n";
+                            cout<<"incluyendo algunos Zora, y al fondo ves a un monstruo de contornos vagamente antropoides, pero con una cabeza\n";
+                            cout<<"de pulpo cuyo rostro es una masa de tentaculos, un cuerpo escamoso que sugiere cierta elasticidad, cuatro\n";
+                            cout<<"extremidades dotadas de garras enormes y un par de alas largas y estrechas en la espalda...\n";
+                            cout<<"el caos viviente ha despertado y viene a reclamar lo que es suyo, el planeta, el gran ser aterra a todos\n";
+                            cout<<"avionetas esparcen un mensaje: Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn. Te parece similar, reaccionas\n";
+                            cout<<"esas palabras han causado todo este desastre. Comienza a haber todo un cataclismo ambiental, nada parecido\n";
+                            cout<<"a algo nunca antes visto. Las personas que intentan luchar por su vida contra este ser cosmico socumben a la\n";
+                            cout<<"locura, comienzan a haber más habionetas con bocinas que predican ser seguidores del ser, son los seguidores\n";
+                            cout<<"del sacerdote. Repentinamente, del agua sale Miller, explicando lo que ha sucedido, acabas de despertar a un ser\n";
+                            cout<<"cosmico ancestral que esperaba en un sueño eterno. Tambien te revela que hay un fragmento de la piedra que tanto\n";
+                            cout<<"anhelas, y está incrustrada en una de sus alas, se despide de ti, proclama que su verdadero nombre no es miller\n";
+                            cout<<"Su verdadero nombre es NYARLATHOTEP...\nLuego procede a mostrarte su verdadera forma, una gran masa poliposa\n";
+                            cout<<"con una larga excrecion roja, o es el lo que cree que quieres ver...\n";
+                            cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                            cout<<"Decides seguirle la pista al gran moustro marino, encuentras un tronco liso a medio cortar, rompes 3/4\n";
+                            cout<<"de los anillos del tronco, decides impulsarte desde una montaña y usar la corteza del tronco como\n";
+                            cout<<"recorres rapidamente la playa y llegas a un pueblo habitado por personas con tres ojos, pregutas por direcciones\n";
+                            cout<<"y continuas tu viaje, cerca de llegar al moustro, decides subir un molino que esta proximo a llegar \n";
+                            cout<<"subes a lo más alto del molino y saltas a una de sus aspas, y te impulsas con tu propio peso para\n";
+                            cout<<"aprobechar el momentum y saltas hasta la cima del molino donde esperas al gigante marino\n";
+                            cout<<"el logra verte e intenta destruir el molino, aprobechas ese momento para subirte a uno de sus brazos y \n";
+                            cout<<"correr a travez de el, pronto llegas a su espalda y ubicas el fragmaento de la piedra en una terminacion\n";
+                            cout<<"del ala, te lanzas hacia ella y por fin la consigues, otro fragmento de la piedra filosofal\n";
+                            cout<<"Pero el cara de masa tentacular logra sentirte y logra arrojarte de nuevo al mar, pronto el planeta\n";
+                            cout<<"comienza a ser inestable y empieza a expulsar torres de lava, desde lo lejos logras percatarte de \n";
+                            cout<<"una explosion masiva, el nucleo de la tierra explotó y el planeta con el. Estas varado en el espacio \n";
+                            cout<<"sin poder respirar. Las cosas empiezan a detenerse, un punto rojo a lo lejos se comienza a acercar\n";
+                            cout<<"el punto rojo se presenta a si mismo como MEFISTOFELES, y te ofrece un trato, el cual consiste en que\n";
+                            cout<<"nunca haber despertado al moustro marino a cambio de tu alma\n";
+                            cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                            cout<<"Qué quieres hacer??\n[1] Vender alma\t[2] No vender alma\t[3] Negociar\n";
+                            cin>>op4;
+                            if (op4 == 3 || op4 == 2){
+                                cout<<"NO terminas de aceptar vender tu alma del todo, MEFISTOFELES, entendiendo de la clase de problema\n";
+                                cout<<"en la que te acabas e meter, se pregunta si relamente hacía falta salvarte, se cuentiona a si mismo\n";
+                                cout<<"encuentra la respuesta en su interior, no debe ayudarte...\nMEFISTOFELES TE HA HABANDONADO...\n";
+                                cout<<"Se reanudan las cosas en el espacio tiempo , tu sangre empieza a herbir y te empiezas a sofocar por la falta\n";
+                                cout<<"de oxigeno...terminas muriendo\n";
+                                cout<<"sin embargo y apesar de tus malas deciciones,MEFISTOFELES te deja un regalo...intenetarlo otra vez\n";
+                                continue;
+                            }else if (op4 == 1){
+                                cout<<"Al verte superado por la situacion, decides aceptar el trato siempre y cuando puedas conservar el fragmento\n";
+                                cout<<"de la piedra filosofal...el simplemente ascepta...\n\n";
+                                return true;
+                            }else{
+                                cout<<"Opcion no valida\n";
+                            }
+                            break;
+                        case 2:
+                            //no recita la sagrada frase
+                            cout<<"Te niegas a hacer lo que te pide, no quieres formar parte de ningun rito extraño, ni nada por el estilo\n";
+                            cout<<"pero las salidas se cierran y queda solamente la luz de Miller, reflejando el atril de oro decides desafiar\n";
+                            cout<<"a miller, él se empieza a reir, desconcertado levantas la mirada y logras finalmente verlo, un mounstro de\n";
+                            cout<<"contornos vagamente antropoides, pero con una cabeza de pulpo cuyo rostro es una masa de tentaculos,\n";
+                            cout<<"un cuerpo escamoso que sugiere cierta elasticidad, cuatro extremidades dotadas de garras enormes y un\n";
+                            cout<<"par de alas largas y estrechas en la espalda....\n";
+                            cout<<"Haces contacto visual con el y ....\n";
+                            cout<<"sales de la habitación con la mirada viendo la nada, llegas al centro de la estacion que conecta al nodo \n";
+                            cout<<"central, en medio del todo, te quitas los ojos, caes de rodillas y mueres...\n";
+                            cout<<"tu ecuentro con el ser ancestral te ha llevado a la locura...\n";
+                            return false;
+                            break;
+                        case 3:
+                            //intenta escapar
+                            cout<<"Te ves superado por la situacion, empiezas a perder la cabeza...empiezas a escuhar voces susurrandote\n";
+                            cout<<"que debes recitar la sagrada frase, entras en desesperación, tu pupilas se comienzan a dilatar, y \n";
+                            cout<<"decides alzar la mirada, y logras verlo finalmente...logras quedar anonadado por un mounstro de \n";
+                            cout<<"contornos vagamente antropoides, pero con una cabeza de pulpo cuyo rostro es una masa de tentaculos,\n";
+                            cout<<"un cuerpo escamoso que sugiere cierta elasticidad, cuatro extremidades dotadas de garras enormes y un\n";
+                            cout<<"par de alas largas y estrechas en la espalda....\n";
+                            cout<<"Haces contacto visual con el y ....\n";
+                            cout<<"sales de la habitación con la mirada viendo la nada, llegas al centro de la estacion que conecta al nodo \n";
+                            cout<<"central, en medio del todo, te quitas los ojos, caes de rodillas y mueres...\n";
+                            cout<<"tu ecuentro con el ser ancestral te ha llevado a la locura...\n";
+                            return false;
+                            break;
+                        default:
+                            cout<<"Opcion no valida\nRECITA LA SAGRADA FRASE....\n";
+                            break;
+                        }
+                    }
+                    break;
+                case 3:
+                    //Sacrificar un corazon
+                    cout<<"Los ZORA, no hacen negocios con la comida, te dasafian a una batalla\n";
+                    if (batallaPorTurnos(personaje,"Zora dosil",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        cout<<"Pueden ver tu determinacion pero no te dejaran pasar hasta que les des solo uno de tus corazones...\n";
+                        cout<<"renegado, les dan uno de tus corazones\n";
+                        corazones--;
+                        cout<<"Corazones actuales: "<<corazones<<endl;
+                    }else{
+                        cout<<"Despues de intentar salvar tu vida, los Zora ven algo en ti, algo que les recuerda a ellos, lo toman uno de tus corazones\n";
+                        cout<<"y te dejan seguir...\n";
+                        corazones--;
+                        cout<<"Corazones actuales: "<<corazones<<endl;
+                    }
+                    cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                    cout<<"Despues de evirar ser comido, por una simple forma extraña de una sensibilidad alianada entre seres\n";
+                    cout<<"continuas bajando, pues es todo lo que queda, tu cuerpo se acontumbra al lento procesoce del cambio de \n";
+                    cout<<"presion atmosferico, la luz empieza a hacerse más escasa, el oceano no solo no parece tener fin, tambie es una\n";
+                    cout<<"exprecion pura de profundidad. A pesar de lo poco que se conoce de los Zora, es bien sabido que la cuspide de\n";
+                    cout<<"su creación fue la metropolis llamada Raputure, un lugar lleno de los grandes misterios pues no mucha gente se\n";
+                    cout<<"ha atrevido a llegar tan lejos, se dice que fue contruida por encima de los viejos restos de la ATLANTIDA y \n";
+                    cout<<"para hacer aún más seguro el lugar, lo cubrieron debajo de un domo trasparente.\n";
+                    cout<<"LLegas al fondo del oceano y encuentras una red de tubos de trasporte, aparentemente la manera de moverse es \n";
+                    cout<<"dejando que la tecnologia lo haga, ademas, hay una cabina de abordaje que permite subir a cualquier especie marina.\n";
+                    cout<<"Al llegar a la cabina de abordaje te percatas que el capitan ispecciona el pase para abordar, encuentras una especie\n";
+                    cout<<"de taquilla, y procedes a coprar un boleto, sin embargo te hacen una comision por el cambio de moneda, y todavía\n";
+                    cout<<"te hacen dejar una propina al sistema de cambios automaticos, estas frustrado, pero tienes tu boleto, haces fila\n";
+                    cout<<"para abordar el trasporte, el capitan que supervisa los boletos te ve de pies a cabeza, es facil reconocer que\n";
+                    cout<<"no eres un animal marino, sin embargo un neo delfin arto de esperar en la fila, pide que se apresuren\n";
+                    cout<<"el capitan te deja pasar aparentemente. Entras al vagon, una vez lleno, empieza a moverse a muy alta velocidad,los\n ";
+                    cout<<"los tubos parecen estar echos de una especie de fibrra de vidrio unida uno con otro a travez de un superconductor\n";
+                    cout<<"capas de manejar los campos delectromagneticos de los vagones, y todo el tubo está cubierto por fibra de carbono\n";
+                    cout<<"transparente, todo el sitema de tubos funciona por nodos, como si fueran grafos.\n ";
+                    cout<<"Una vez llegando a la gran central (o gran nodo), puedes ver como se abre ante ti un grupo armado de tiburones blancos\n";
+                    cout<<"el dominio de los Zora no solo se remonta a su propia existencia, si no al de muchos seres marinos\n";
+                    cout<<"empiezas a correr pero todo parece ser muy confuso, empiezas a marearte, tal vez sea un efecto secundario de las\n";
+                    cout<<"semillas del hermitaño, finalmente vuelves a ti y ahí junto con los tiburones blanco se presenta ante ti el gran\n";
+                    cout<<"KITO CORLEONE, un gran tiburon blanco mutado por los plasmidos, pero que en realidad no es si no más que otra\n";
+                    cout<<"marioneta de las grandes mentes Zora, KITO, te hace unas preguntas pero no sabes lo que dice, y al nunca haber\n";
+                    cout<<"situación similar, no hay una especie de protocolo por lo que deciden llevarte ante el Rey del Todo para que decida\n";
+                    cout<<"qué hacer contigo, usan una bolsa de pseaudo plastico biodegradable a vase de algas para taparte la cara y no\n";
+                    cout<<"puedas ver el camino...\n";
+                    cout<<"vuelves a ser despertado de una manera ruda, uno de los tiburones de KITO te azotado la cara contra una especie\n";
+                    cout<<"de libro en un atril de oro. Lo poco que puedes distinguir es que la pagina de ese libro dice en varios idiomas\n";
+                    cout<<"incluyendo el humano: NO LO MIRES A LOS OJOS. Una voz o más bien un sonido tan grave que retumba por todo \n";
+                    cout<<"comienza a decir algo, porque parece tener un ritmo, parece hablar en una lengua tan antigua arena del mar\n";
+                    cout<<"todo esta oscuro, no puedes ver de donde vienen esos sonidos, pero logras escuchar una cadena acercandose...\n";
+                    cout<<"entre las oscuridades más profundas, puedes lograr ver una luz de una vela marina, siguie acercandose hasta que \n";
+                    cout<<"depues de ese basto sonido de cadenas se puede entrever un ser encapuchado con una tunica roja, te ve, y lo sabe\n";
+                    cout<<"sabe que este día llegaría...\n\n";
+                    cout<<"MILLER: Sabes como es esto, no??. Bueno primero es decir que este lugar realmente no es Rapture, si no que el \n";
+                    cout<<"\tverdadero nombre  es R'lyeh y has viajado tanto que has llegado al oceano Pacífico. Este momento es realmente sublime\n";
+                    cout<<"\tlos millones de años han pasado y por fin, solo tines que decir las palabras sagradas y todo estára listo\n";
+                    cout<<"\t¿Qué pasa, no las conoces a caso?¿Cómo es eso posible?, espera, no sabes lo que está ocurriendo cierto???\n";
+                    cout<<"\tjajajajajajajajajajajajajajajajajajajajajajajajaja, esto es en serio fabuloso, tan kafkiano, veras, estas apunto\n";
+                    cout<<"\tde traer paz al mundo...(está mintiendo), todo lo que necesitas saber está en ese libro, serías tan amable de\n";
+                    cout<<"\tcambiar de pagina??...\n\n";
+                    cout<<"Cambias la pagina y ves un mismo texto escrito en los diferentes lenguajes, una frase que se repite y se repite: \n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"PH'NGLUI MGLW'NAFH CTHULHU R'LYEH WGAH'NAGL FHTAGN...\n";
+                    cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                    while (true){
+                        cout<<"QUE QUIERES HACER??\n[1] RECITAR LA SAGRADA FRASE\t[2] NO RECITAR LA SAGRADA FRASE\t[3] Intentar escapar\n\n";
+                        cin>>op3;
+                        switch (op3){
+                        case 1:
+                            //recita la sagrada frase
+                            cout<<"Recuerdas las palabres de aquella gaviota al inicio de tu aventura, y decides recitar las palabras sagradas\n";
+                            cout<<"sin saber exactamente lo que significa ni lo que está pasando, prefieres no ver a nadie a los ojos\n";
+                            cout<<"en cuanto comienzas, el tiempo parece detenerse, y todo el oceano comienza a herbir, los suelos se agritan\n";
+                            cout<<"y sale lava de las fragmentaciones, empiezas a sentir que flotas, cada vez más y más arriba en un estado de\n";
+                            cout<<"trance profundo repitiendo las frases sagradas, y de repente, vuelves a ti, estas en la playa, a mitad de una\n";
+                            cout<<"tormenta de relampagos y tsunamis, en las aguas de los mares comiezan a salir seres marinos sin vida,\n";
+                            cout<<"incluyendo algunos Zora, y al fondo ves a un monstruo de contornos vagamente antropoides, pero con una cabeza\n";
+                            cout<<"de pulpo cuyo rostro es una masa de tentaculos, un cuerpo escamoso que sugiere cierta elasticidad, cuatro\n";
+                            cout<<"extremidades dotadas de garras enormes y un par de alas largas y estrechas en la espalda...\n";
+                            cout<<"el caos viviente ha despertado y viene a reclamar lo que es suyo, el planeta, el gran ser aterra a todos\n";
+                            cout<<"avionetas esparcen un mensaje: Ph'nglui mglw'nafh Cthulhu R'lyeh wgah'nagl fhtagn. Te parece similar, reaccionas\n";
+                            cout<<"esas palabras han causado todo este desastre. Comienza a haber todo un cataclismo ambiental, nada parecido\n";
+                            cout<<"a algo nunca antes visto. Las personas que intentan luchar por su vida contra este ser cosmico socumben a la\n";
+                            cout<<"locura, comienzan a haber más habionetas con bocinas que predican ser seguidores del ser, son los seguidores\n";
+                            cout<<"del sacerdote. Repentinamente, del agua sale Miller, explicando lo que ha sucedido, acabas de despertar a un ser\n";
+                            cout<<"cosmico ancestral que esperaba en un sueño eterno. Tambien te revela que hay un fragmento de la piedra que tanto\n";
+                            cout<<"anhelas, y está incrustrada en una de sus alas, se despide de ti, proclama que su verdadero nombre no es miller\n";
+                            cout<<"Su verdadero nombre es NYARLATHOTEP...\nLuego procede a mostrarte su verdadera forma, una gran masa poliposa\n";
+                            cout<<"con una larga excrecion roja, o es el lo que cree que quieres ver...\n";
+                            cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                            cout<<"Decides seguirle la pista al gran moustro marino, encuentras un tronco liso a medio cortar, rompes 3/4\n";
+                            cout<<"de los anillos del tronco, decides impulsarte desde una montaña y usar la corteza del tronco como\n";
+                            cout<<"recorres rapidamente la playa y llegas a un pueblo habitado por personas con tres ojos, pregutas por direcciones\n";
+                            cout<<"y continuas tu viaje, cerca de llegar al moustro, decides subir un molino que esta proximo a llegar \n";
+                            cout<<"subes a lo más alto del molino y saltas a una de sus aspas, y te impulsas con tu propio peso para\n";
+                            cout<<"aprobechar el momentum y saltas hasta la cima del molino donde esperas al gigante marino\n";
+                            cout<<"el logra verte e intenta destruir el molino, aprobechas ese momento para subirte a uno de sus brazos y \n";
+                            cout<<"correr a travez de el, pronto llegas a su espalda y ubicas el fragmaento de la piedra en una terminacion\n";
+                            cout<<"del ala, te lanzas hacia ella y por fin la consigues, otro fragmento de la piedra filosofal\n";
+                            cout<<"Pero el cara de masa tentacular logra sentirte y logra arrojarte de nuevo al mar, pronto el planeta\n";
+                            cout<<"comienza a ser inestable y empieza a expulsar torres de lava, desde lo lejos logras percatarte de \n";
+                            cout<<"una explosion masiva, el nucleo de la tierra explotó y el planeta con el. Estas varado en el espacio \n";
+                            cout<<"sin poder respirar. Las cosas empiezan a detenerse, un punto rojo a lo lejos se comienza a acercar\n";
+                            cout<<"el punto rojo se presenta a si mismo como MEFISTOFELES, y te ofrece un trato, el cual consiste en que\n";
+                            cout<<"nunca haber despertado al moustro marino a cambio de tu alma\n";
+                            cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                            cout<<"Qué quieres hacer??\n[1] Vender alma\t[2] No vender alma\t[3] Negociar\n";
+                            cin>>op4;
+                            if (op4 == 3 || op4 == 2){
+                                cout<<"NO terminas de aceptar vender tu alma del todo, MEFISTOFELES, entendiendo de la clase de problema\n";
+                                cout<<"en la que te acabas e meter, se pregunta si relamente hacía falta salvarte, se cuentiona a si mismo\n";
+                                cout<<"encuentra la respuesta en su interior, no debe ayudarte...\nMEFISTOFELES TE HA HABANDONADO...\n";
+                                cout<<"Se reanudan las cosas en el espacio tiempo , tu sangre empieza a herbir y te empiezas a sofocar por la falta\n";
+                                cout<<"de oxigeno...terminas muriendo\n";
+                                cout<<"sin embargo y apesar de tus malas deciciones,MEFISTOFELES te deja un regalo...intenetarlo otra vez\n";
+                                continue;
+                            }else if (op4 == 1){
+                                cout<<"Al verte superado por la situacion, decides aceptar el trato siempre y cuando puedas conservar el fragmento\n";
+                                cout<<"de la piedra filosofal...el simplemente ascepta...\n\n";
+                                return true;
+                            }else{
+                                cout<<"Opcion no valida\n";
+                            }
+                            break;
+                        case 2:
+                            //no recita la sagrada frase
+                            cout<<"Te niegas a hacer lo que te pide, no quieres formar parte de ningun rito extraño, ni nada por el estilo\n";
+                            cout<<"pero las salidas se cierran y queda solamente la luz de Miller, reflejando el atril de oro decides desafiar\n";
+                            cout<<"a miller, él se empieza a reir, desconcertado levantas la mirada y logras finalmente verlo, un mounstro de\n";
+                            cout<<"contornos vagamente antropoides, pero con una cabeza de pulpo cuyo rostro es una masa de tentaculos,\n";
+                            cout<<"un cuerpo escamoso que sugiere cierta elasticidad, cuatro extremidades dotadas de garras enormes y un\n";
+                            cout<<"par de alas largas y estrechas en la espalda....\n";
+                            cout<<"Haces contacto visual con el y ....\n";
+                            cout<<"sales de la habitación con la mirada viendo la nada, llegas al centro de la estacion que conecta al nodo \n";
+                            cout<<"central, en medio del todo, te quitas los ojos, caes de rodillas y mueres...\n";
+                            cout<<"tu ecuentro con el ser ancestral te ha llevado a la locura...\n";
+                            return false;
+                            break;
+                        case 3:
+                            //intenta escapar
+                            cout<<"Te ves superado por la situacion, empiezas a perder la cabeza...empiezas a escuhar voces susurrandote\n";
+                            cout<<"que debes recitar la sagrada frase, entras en desesperación, tu pupilas se comienzan a dilatar, y \n";
+                            cout<<"decides alzar la mirada, y logras verlo finalmente...logras quedar anonadado por un mounstro de \n";
+                            cout<<"contornos vagamente antropoides, pero con una cabeza de pulpo cuyo rostro es una masa de tentaculos,\n";
+                            cout<<"un cuerpo escamoso que sugiere cierta elasticidad, cuatro extremidades dotadas de garras enormes y un\n";
+                            cout<<"par de alas largas y estrechas en la espalda....\n";
+                            cout<<"Haces contacto visual con el y ....\n";
+                            cout<<"sales de la habitación con la mirada viendo la nada, llegas al centro de la estacion que conecta al nodo \n";
+                            cout<<"central, en medio del todo, te quitas los ojos, caes de rodillas y mueres...\n";
+                            cout<<"tu ecuentro con el ser ancestral te ha llevado a la locura...\n";
+                            return false;
+                            break;
+                        default:
+                            cout<<"Opcion no valida\nRECITA LA SAGRADA FRASE....\n";
+                            break;
+                        }
+                    }
+                    break;
+                default:
+                    cout<<"Opcion no valida";
+                    break;
+                }
+            }
         }else if (op1 == 2){
             //NO comer la semilla del hermitaño
+            cout<<"-------------------------------------------------------------------------------------------------------------\n";
+            cout<<"Has decidio no comer la semilla del hermitaño...algo te dió una mala corazonada (triple corazonada),          \n";
+            cout<<"te mantienes alerta, sobre la gaviota, puedes ver uno de sus ojos brillar demaciado y te preguntas si los Zora\n";
+            cout<<"han empezado a buscar la melanina en otros animales...tal vez ese ojo de la GAVIOTA, no sea real...           \n";
+            cout<<"Como sea, decides ignorar a la GAVIOTA e ir avanzando con direccion hacia el sol. Pasan las horas y al parecer\n";
+            cout<<"empieza a oscurecer, de repente tres moustros Zora te rodean y empiezan a acechar...                         \n";
+            while (true){
+                cout<<"Uno de ellos te empieza a oler... al parecer es uno de los PIGMENTARIOS, un grupo de cazadores Zora        \n";
+                cout<<"Otro de ellos saca algo brilloso de su garganta, en un abrir y cerrar de ojos, te ha inyectado un plasmido \n";
+                cout<<"el plasmido empieza a envenenar tu sangre y ha empezando a coagularla...aun así no te das por vencido y...\n";
+                cout<<"Que te gustaría hacer??\n[1] Pelear\t[2] Intentar escapar\t[3] Sacrificar un corazon\n\n";
+                cout<<"-------------------------------------------------------------------------------------------------------------\n";
+                cin>>op2;
+                switch (op2){
+                case 1:
+                    //Pelear
+                    cout<<"-------------------------------------------------------------------------------------------------------------\n";
+                    cout<<"Determinado, decides pelear por tu vida...\n";
+                    if (batallaPorTurnos(personaje,"PIGMENTARIO 1",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        cout<<"Has ganado la primera batalla, pero aun quedan dos PIGMENTARIOS...y la pelea  continua\n";
+                        if (batallaPorTurnos(personaje,"PIGMENTARIO 2",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"Empiezas a sentir como tu pierna empieza a sentirse extraña, acaso esto será una trombosis venosa profunda?\n";
+                            if(batallaPorTurnos(personaje,"PIGMENTARIO 3",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                                cout<<"Empiezas a sentirte un poco mariado apesar de haber derrotado a los cazadores PIGMENTARIOS\n";
+                                cout<<"la falta de oxigeno empieza a hacerse severa, la desesperacion empieza a apoderarse de ti\n";
+                                cout<<"...comiezas a preguntarte si realmente era necesario pelear...\n";
+                                cout<<"Los corazones pueden salvarte de peleas, pero las embolias pulmonares y la trombosis venosa profunda son inevitables\n";
+                                cout<<"y es aqui donde "<<personaje<<" despues de tanto sufrimiento, muere\n";
+                                cout<<"Por la posicion en la que caiste, tu cuerpo quedo flotando y la luna llena en todo su esplandor...te habla...\n";
+                                cout<<"-------------------------------------------------------------------------------------------------------------\n\n";
+                                cout<<"Continuar luchando??\n[1] Si\t[2] No\n";
+                                cin>>op3;
+                                if (op3 == 1){
+                                    continue;
+                                }else{
+                                    break;
+                                }
+                            }else{
+                                cout<<"Las dos batallas anteriores te han deteriorado demaciado...empiezas a sentir un dolor en el pecho\n";
+                                cout<<"estas presionando el lado izquierdo del pecho pero el dolor no desaparece, empiezas a escuchar el ritmo\n";
+                                cout<<"cardiaco de tus corazones, y los latidos se empiezan a acelerar aun más, uno de tus corazones empieza a seguir otro ritmo\n";
+                                cout<<"no lo puedes creer, tu vida pasa por tus ojos y finalmente mueres...\n";
+                                cout<<"Si es de ayuda, el PIGMENTARIO restante se llevó tu cuerpo y llevo la cena a la mesa de su familia...\n";
+                                return false;
+                            }
+                        }else{
+                            cout<<"Tu cuerpo esta siendo llevado al limite, no sabes si sobreviviras...en pocos minutos todo terminará...\n";
+                            cout<<"los PIGMENTARIOS no te esperan por siempre, decididos, ambos se abalanzan contra ti, te sacan los ojos\n";
+                            cout<<"y te arrancan tus corazones...simplemente mueres...\n";
+                            return false;
+                        }
+                    }else{
+                        cout<<"Has perdido, no tienes más esperanzas, te resignas a seguir, la ansiedad se apodera de ti, sacas tu navaja y ...\n";
+                        cout<<"te has herido de gravedad, los PIGMENTARIOS se abalanzan contra ti, te empiezan a devorar vivo...finalmente...mueres\n";
+                        return false;
+                    }
+                    
+                    break;
+                case 2:
+                    //Escapar
+                    cout<<"Intentas escapar...reconoces que la situacion te supera, desesperado empiezas a nadar en la direccion contraria pero\n";
+                    cout<<"los PIGMENTARIOS no van a dejar que su comida simplemente escape, por lo que empiezan a perseguirte salvajemente\n";
+                    cout<<"uno de ellos saca una soga con un arpon amarrado, lo lanza y te lo ha clavado, empieza a jalar, y con uno de sus tentaculos\n";
+                    cout<<"empieza a realizar una lobotomia, llegando al lobulo frontal y moviendo sensiblemente la punta del tentaculo provoca que\n";
+                    cout<<"la parte motora deje de responder y tranquilamete te llevan con ellos para desollarte vivo...\n";
+                    return false;
+                    break;
+                case 3:
+                    //Sacrificar un corazon
+                    cout<<"Cortas una parte de ti para sacrificar uno de tus corazones, sin embargo, eso no los deja satisfechos, por lo que\n";
+                    cout<<"un de los PIGMENTARIOS te apresa con una especie de alga muy resistente, dejando te inmovil, pronto otro de ellos\n";
+                    cout<<"abre un orifico por donde sale una larva verde y muy gelatinosa y la inserta en uno de tus corazones, ponen otro plasmido\n";
+                    cout<<"adormecedor y te llevan al fondo del oceano en donde la larva al crecer, consumirá cada uno de tus corazones en busqueda\n";
+                    cout<<"de melanina, una vez lo suficientemente grande, sale de tu pecho rompiendo todo en su paso y empezando a llamar a sus padres\n";
+                    cout<<"has muerto...\n";
+                    return false;
+                    break;
+                default:
+                    cout<<"Opcion no valida\n";
+                    break;
+                }
+            }
         }else if (op1 == 3){
             //Sospechar de la gabiota
+            cout<<"Consideras la oferta pero, no te sientes muy seguro con sus intentciones, reconsideras tus opciones\n";
+            cout<<"pero no es suficiente, decides revelarle tus pensamientos...GAVIOTA no está muy contenta con tus comentarios\n";
+            cout<<"se ha marchado pero no te preocupas, comienzas a apresurarte. Antes de sarpar, te preparas con un arpon\n";
+            cout<<"-------------------------------------------------------------------------------------------------------------\n";
+            while (true){
+                cout<<"Pronto llegas a la mitad del golfo, todo parece tranquilo hasta que todo el mar se empieza a inclinar\n";
+                cout<<"Un sonido ensordesedor se apodera de toda tu audicion, y en segundos eres capturador por una gran boca\n";
+                cout<<"al parecer el espermaceti de alguien no funciona con regularidad, toda el agua que entró junto contigo\n";
+                cout<<"fluye a travez del esofago y choca con la pared del estomago del colosal animal, a pesar de que el ser fue modificado\n";
+                cout<<"con plasmidos, para el no fue un gran cambio a su hambiente, ahora al ser un mejor depredador tambien mejoró sus organos\n";
+                cout<<"logrando producir enzimas con un mayor grado de complejidad logrando así devorar grandes cantidades\n";
+                cout<<"cantidades de comida en poco tiempo...\n";
+                cout<<"El barco se roto por completo, tendras que nadar. Te percatas sobre una extraña masa gelatinosa indescriptible\n";
+                cout<<"logras ver un pequeño ritmo en la masa negra, puedes ver como consumen al cachalote poco a poco, te has\n";
+                cout<<"dado cuenta de lo que realmente esta pasando, el cachalote que te secuestró esta siendo manipulado por un parasito\n";
+                cout<<"Decides nadar en direccion de la boca del animal pero la fuerza centrifuga con la que jala es demaciada para nadar \n";
+                cout<<"contra ella, por lo que decides ir seguir a travez de los intentinos, despues de los plasmidos, el cachalote empezó\n";
+                cout<<"a producir aun más ambar gris, despues de caminar por un rato encuentras cuerpos de calamares gigantes a medio devorar\n";
+                cout<<"pero escuchas un sonido lejano que llama tu atención, lo sigues y resulta ser una extraña combinacion de masa parasitoide\n";
+                cout<<"y un calamar gigante, agobiado, intentas salir corriendo pero la mente colmena del paracito pronto se percata\n";
+                cout<<"de otro ser vivo, te has topado directamente contra tres calamares paracitados...\n";
+                cout<<"-------------------------------------------------------------------------------------------------------------\n";
+                cout<<"Que te gustaría hacer??\n[1] Pelear\t[2] Intentar escapar\t[3] Sacrificar un corazon\n\n";
+                cin>>op2;
+                switch (op2){
+                case 1:
+                    //Pelear
+                    cout<<"Luces determinado, dando cada paso con seguridad y decides pelear.\n";
+                    if (batallaPorTurnos(personaje,"CALAMAR PARASITADO 1",dificultad,pociones, pocionesMax,escudos,ataqueMortal)){
+                        cout<<"Has logrado vencer al primer CALAMAR PARASITADO, pero no es suficiente, aqui viene otro\n";
+                        if(batallaPorTurnos(personaje,"CALAMAR PARASITADO 2",dificultad, pociones,pocionesMax,escudos,ataqueMortal)){
+                            cout<<"Estas derrotando a cada uno de ellos, pero aún no encuetras forma de salir del los intestinos del cachalote\n";
+                            if(batallaPorTurnos(personaje,"CALAMAR PARASITADO 3",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                                cout<<"Tras derrotar a cada uno de ellos, el parasito decide unirse en una sola cosa, estas a punto de enfrentar al parasito\n";
+                                cout<<"te mira fijamente y despliega su verdaro ser, una aberracion alienigena de pura maldad\n";
+                                if (batallaPorTurnos(personaje,"PARASITO DEVORADOR DE MUNDOS",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                                    cout<<"Una vez derrotado al parasito, decides seguir el camino de los intentinos...\n";
+                                    cout<<"tras una grotesca expulcion, logra salir del cachalote, sin embargo, la desidad osea de tu cuerpo\n";
+                                    cout<<"y tus organos no soportan el cambio atmosferico tan brusco e implosionas...\n";
+                                    cout<<"Has muerto...";
+                                    return false;
+                                }else{
+                                    cout<<"No has podido derrotar a la cosa aberrante que se returece por si misma\n";
+                                    cout<<"Despues de forcejear un rato el parasito te arranca la cabeza con dos psedudo extremidades\n";
+                                    cout<<"despues de acabar contigo, se expande aun más y logra controlar por completo al cachalote\n";
+                                    cout<<"el cachalote empieza a nadar y nadar hasta llegar al fin del de su territorio, en donde una falsa\n";
+                                    cout<<"orca se termina enganchando de el y trasmitiendole el parasito en a la falsa orca\n";
+                                    cout<<"pronto se empieza a apoderar de más seres marinos provocando una epidemia, los Zora al percatarse\n";
+                                    cout<<"ponen a todos los seres marinos en cuarentena...tras dos años de ella, salen pero al no haber encontrado\n";
+                                    cout<<"una cura estable, el panico de los demas seres marinos empieza a hacerse notar\n";
+                                    cout<<"provocando que empiecen a matar a los seres infectados, encerrandolos en supercontenedores\n";
+                                    cout<<"con bombas de hiperimplocion...acabando con una gran parte de la diversidad marina y un duro golpe para el\n";
+                                    cout<<"ecosistema marino\n";
+                                    return false;
+                                }   
+                            }else{
+                                cout<<"derrotado, te hayas en el suelo con un gran panico\n";
+                                cout<<"el CALAMAR PAARASITADO, usa su pseudo extremidad y te atravieza la cabeza...\n";
+                                cout<<"Has muerto...\n";
+                                return false;
+                            }
+                        }else{
+                            cout<<"derrotado, te hayas en el suelo con un gran panico\n";
+                                cout<<"el CALAMAR PAARASITADO, usa su pseudo extremidad y te atravieza la cabeza...\n";
+                                cout<<"Has muerto...\n";
+                                return false;
+                        }
+                    }else{
+                        cout<<"derrotado, te hayas en el suelo con un gran panico\n";
+                                cout<<"el CALAMAR PAARASITADO, usa su pseudo extremidad y te atravieza la cabeza...\n";
+                                cout<<"Has muerto...\n";
+                                return false;
+                    }
+                    
+                    break;
+                case 2:
+                    //Intentar escapar
+                    cout<<"La desesperacion se apodera de ti, no sabes como reaccionar, pronto el paracito ha cerrado un segmento de intensino\n";
+                    cout<<"se empieza a estirar a lo largo de esos 10 metros rodeando las paredes intestinales, haciendo sobresalir\n";
+                    cout<<"lo que parece un tentaculo especial, logras cortar dos de los tentaculos del calamar pero no es suficiente, la masa\n";
+                    cout<<"parasitaria empieza a crecer por detras de ti, sometiendote a travez de  inmovilizar tus extremidades, con el\n";
+                    cout<<"tentaculo especial logra acariciar tu cara y logra introducirlo por uno de tus oidos, introduciendo un poco de\n";
+                    cout<<"una oscura masa parasitaria de calamar en el laberinto del oido, ropiendo el utrículo y saculo en el proceso\n";
+                    cout<<"probocando una desorientación fatal, sin embargo, las enzimas del cachalote son más fuertes que el paracito y lo empiezan\n";
+                    cout<<"a descomponer pero el paracito se cubre tras una gran montaña de ambar gris soltandote en el proceso y dejandote\n";
+                    cout<<"desorientado, las enzimas son más poderosas pues han sido modificadas por los plasmidos, logrando así un produccion\n";
+                    cout<<"de amoniaco en todo el intenstino consecuentemente una quemadura quimica en la piel, garganta y los pulmones...\n";
+                    cout<<"Has muerto...\n";
+                    return false;
+                    break;
+                case 3:
+                    //Sacrificar un corazon
+                    cout<<"Decides practicar la sumicion entregandole uno de tus corazones, no se dejan asombrar, dos de ellos te atrapan con sus\n";
+                    cout<<"ventosas, la precion de sus ventosas hacen que te arrranquen por partes la piel mostrando la capa subcutanea por cada ventosa,\n";
+                    cout<<"cortadon las puntas de los nervios en el proceso y a travez de los nervios abiertos el parasito oscuro viaja y llega\n";
+                    cout<<"al cerebro. Apoderandose de tu cuerpo, tus sentidos y funcion motora...\n";
+                    cout<<"Eventualmente las encimas del cachalote terminan degradando al paracito junto contigo. Al día siguiente, el cachalote\n";
+                    cout<<"llega a su trabajo en nuevo nuevo león, entra a las oficinas, se dirije a su cubiculo, toma 6 llamadas en 10 minutos\n";
+                    cout<<"y sigue así durante todo su día, regresa a su casa en trasporte publico y a dos cuadras de su casa lo asaltan\n";
+                    cout<<"llega a su casa donde lo espera su familia y llega a recostarse al sillon, ese día era quincena pero no le pagaron\n";
+                    cout<<"es la tercera vez que le dicen eso, va su refigerador y toma una lata de extractor de Carpa Crucian (pes que produce alcohol)\n";
+                    cout<<"despues de la cena de calamares bebe, decide tomar un baño de agua termal, y es ahí donde crea se le ocurre crear un\n";
+                    cout<<"sindicato corrupto. Despues de tres años, ese cachalote alguna vez parasitado, ya no es el mismo, el no está en peligro\n";
+                    cout<<"él es el peligro.\n\n";
+                    cout<<"Has muerto\n";
+                    return false;
+                    break;
+                default:
+                    cout<<"Opcion no valida";
+                    break;
+                }
+            }
         }else{
             cout<<"Opcion no valida\n";
         }
@@ -2326,7 +3069,7 @@ int main(){
     // vector<string> palabras={"platano","tact","else"};
     // string palabra =choose_palabra(palabras);
     //Fragmentos de la piedra filosofal
-    int fragmentoPiedra = 3;
+    int fragmentoPiedra = 0;
     //Nombre del jugador
     string jugador = nomPlayer();
     //string nEnemy = "Empanada";
@@ -2734,6 +3477,7 @@ int main(){
                     }else if (op == 5){
                         //Se regresa al menú
                         cout<<"Regresa pronto :D\n\n";
+                        op = 1;
                         break;
                     }
                     
