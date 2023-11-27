@@ -53,7 +53,17 @@ string get_letrasDisponibles(const vector<char>& letras_adivinadas){
 }
 
 //hangman (ahorcado)
-bool hangman(const string& palabra_secreta){
+bool hangman( int dificultad){
+    string palabra_secreta;
+    if(dificultad == 1){
+        vector<string> palabrasFaciles = {"gato","perro","casa","sol","arbol","mesa","silla","libro","lapiz","flor","agua","azul","rojo","cielo","jugar"};
+        palabra_secreta =choose_palabra(palabrasFaciles);
+    }else{
+        vector<string> palabrasDificiles = {"quixotesco","inefable","munificencia","efervescente","cataclismo","obnubilar","furtividad","quimerico","inexorable","pletorico","acrimonioso","intransigente","voragine","uberrimo","elocuencia"};
+        palabra_secreta =choose_palabra(palabrasDificiles);
+    }
+
+
     int intentos = 6;
     int advertencias = 3;
     vector<char> letras_unicas;
@@ -689,7 +699,7 @@ string nomPlayer(){
         return "";
     }
 }
-
+//------ruleta rusa-------
 // Función para simular el giro del tambor
 bool girarTambor() {
     srand(static_cast<unsigned int>(time(0)));
@@ -709,7 +719,7 @@ bool jugarRuletaRusa(const string& jugador1, const string& jugador2, const strin
     tambor[rand() % 6] = 1;
 
     while (numJugadores > 1) {
-        for (int i = 0; i < numJugadores; ++i) {
+        for (int i = 0; i < numJugadores; i++) {
             cout << "Es el turno de " << jugadores[i] << "." << endl;
             cout << "Presiona Enter para girar el tambor.";
             cin.ignore();
@@ -718,7 +728,7 @@ bool jugarRuletaRusa(const string& jugador1, const string& jugador2, const strin
             if (girarTambor()) {
                 cout << "¡BANG! " << jugadores[i] << " ha sido eliminado." << endl;
                 // Elimina al jugador eliminado del juego
-                for (int j = i; j < numJugadores - 1; ++j) {
+                for (int j = i; j < numJugadores - 1; j++) {
                     jugadores[j] = jugadores[j + 1];
                 }
                 numJugadores--;
@@ -741,7 +751,91 @@ bool jugarRuletaRusa(const string& jugador1, const string& jugador2, const strin
     // Si llegamos aquí, el jugador 1 no es el último en pie
     return false;
 }
+//------ruleta rusa-------
+//------trivia----------
+struct Pregunta {
+    string enunciado;
+    vector<string> opciones;
+    int respuestaCorrecta;
+};
 
+// Función para mostrar la pregunta y opciones
+void mostrarPregunta(const Pregunta& pregunta) {
+    cout << pregunta.enunciado << endl;
+    for (size_t i = 0; i < pregunta.opciones.size(); ++i) {
+        cout << i + 1 << ". " << pregunta.opciones[i] << endl;
+    }
+    cout << "Ingresa el número de tu respuesta: ";
+}
+
+// Función para verificar si la respuesta es correcta
+bool verificarRespuesta(const Pregunta& pregunta, int respuesta) {
+    return respuesta == pregunta.respuestaCorrecta;
+}
+
+// Función para jugar a la trivia y retornar verdadero si la mayoría de las respuestas son correctas
+bool jugarTrivia() {
+    srand(static_cast<unsigned int>(time(0)));
+    vector<Pregunta> preguntasSet1;
+    preguntasSet1.push_back({"¿Cuál es la capital de Francia?", {"Londres", "París", "Madrid"}, 2});
+    preguntasSet1.push_back({"¿En qué año comenzó la Segunda Guerra Mundial?", {"1939", "1945", "1914"}, 1});
+    preguntasSet1.push_back({"¿Cuántos continentes hay en el mundo?", {"6", "7", "5"}, 2});
+    preguntasSet1.push_back({"¿Quién escribió 'Romeo y Julieta'?", {"Charles Dickens", "William Shakespeare", "Jane Austen"}, 2});
+    preguntasSet1.push_back({"¿Cuál es el río más largo del mundo?", {"Nilo", "Amazonas", "Misisipi"}, 2});
+
+    vector<Pregunta> preguntasSet2;
+    preguntasSet2.push_back({"¿Cuál es el elemento más abundante en la corteza terrestre?", {"Hierro", "Oxígeno", "Carbono"}, 2});
+    preguntasSet2.push_back({"¿Cuál es la montaña más alta del mundo?", {"Kilimanjaro", "Mont Everest", "Mont Blanc"}, 2});
+    preguntasSet2.push_back({"¿En qué año se fundó Google?", {"1998", "2005", "1995"}, 1});
+    preguntasSet2.push_back({"¿Cuál es el animal terrestre más rápido?", {"León", "Guepardo", "Antílope"}, 2});
+    preguntasSet2.push_back({"¿Quién pintó la Mona Lisa?", {"Vincent van Gogh", "Leonardo da Vinci", "Pablo Picasso"}, 2});
+
+    vector<Pregunta> preguntasSet3;
+
+    preguntasSet3.push_back({"¿Cuál es el océano más grande del mundo?", {"Atlántico", "Índico", "Pacífico"}, 3});
+    preguntasSet3.push_back({"¿Cuál es el país más grande en términos de área?", {"Estados Unidos", "Rusia", "China"}, 2});
+    preguntasSet3.push_back({"¿Cuántos huesos tiene el cuerpo humano en promedio?", {"206", "300", "150"}, 1});
+    preguntasSet3.push_back({"¿Quién escribió 'Cien años de soledad'?", {"Mario Vargas Llosa", "Gabriel García Márquez", "Isabel Allende"}, 2});
+    preguntasSet3.push_back({"¿Cuál es el instrumento musical más grande de la familia de las cuerdas?", {"Violín", "Contrabajo", "Viola"}, 2});
+
+    int aleatorio = rand()%3 + 1;
+    vector<Pregunta> preguntas;
+
+    if (aleatorio == 1){
+         preguntas = preguntasSet1;
+    }else if (aleatorio == 2){
+         preguntas = preguntasSet2;
+    }else{
+         preguntas = preguntasSet3;
+    }
+
+    int puntaje = 0;
+
+    // Itera a través de las preguntas
+    for (const Pregunta& pregunta : preguntas) {
+        mostrarPregunta(pregunta);
+
+        int respuesta;
+        while (!(cin >> respuesta) || respuesta < 1 || respuesta > pregunta.opciones.size()) {
+            cout << "Respuesta inválida. Ingresa un número válido." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+
+        if (verificarRespuesta(pregunta, respuesta)) {
+            cout << "¡Correcto!" << endl;
+            puntaje++;
+        } else {
+            cout << "Incorrecto. La respuesta correcta es: " << pregunta.respuestaCorrecta << endl;
+        }
+
+        cout << "------------------------" << endl;
+    }
+
+    // Retornar verdadero si la mayoría de las respuestas son correctas
+    return puntaje >= preguntas.size() / 2;
+}
+//------trivia----------
 //Introduccion
 void introduccion(string personaje){
     cout<<"-----------------------------------------------------------------------------------------------\n";
@@ -3110,6 +3204,8 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
 
 //Ruinas del Abismo
 bool RuinasDelAbismo(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
+    int fichas = 0;
+    int op,op1,op2,op3,op4;
     cout<<"-----------------------------------------------------------------------------------------------\n";
     cout<<"DENTRO DE: ----R U I N A S  D E L  A B I S M O \n\n";
     cout<<"-----------------------------------------------------------------------------------------------\n";
@@ -3147,12 +3243,131 @@ bool RuinasDelAbismo(string personaje, int dificultad, int pociones, int pocione
     cout<<"RAMONA: Parece ser que no dejas de verlos jugar, si planeas jugar contra ellos debes de tener cuidado luego las\n";
     cout<<"\treglas se ponen muy locas, lo peor es que la chica de la limpieza termina usando todo el agua oxigenada para\n";
     cout<<"\tlimpiar las manchas de sangre y los restos se los suelen dar a los perros. Espero no haberte asustado jaja\n";
-    cout<<"\ttengo que atender a alguien más, disfruta tu bebida JAMES BOND...\n\n";
+    cout<<"\ttengo que atender a alguien más, disfruta tu bebida JAMES BOND...\n";
     cout<<"-----------------------------------------------------------------------------------------------\n";
+    cout<<"Un sujeto junto a ti te comienza a mirar y te dirige la palabra...tiene un acento gringo muy marcado\n\n";
+    cout<<"SAUL BADMAN:Hey que tal, estar en la barra aveces puede parecer una buena idea para socializar más, no lo crees?\n";
+    cout<<"\tmi nombre es SAUL y si necesitas un lawyer, just call me, btw. Como veras, todo este lugar no si no más que\n";
+    cout<<"\totra trampa para aquellos despistados, pero tú pareces diferente, sabes, creo que me agradas, btw, sabías\n";
+    cout<<"\tque este lugar funciona con fichas?? Así es, el dinero real solo se usa allá afuera, por lo que si quieres\n";
+    cout<<"\ttener la verdadera experiencia de este lugar deberías traer algunas, ¿qué?, tinenes ninguna,don t worry\n";
+    cout<<"\tsiempre soy amigo del cartel, y ellos me pueden conseguir algunas, por ahora solo tengo 3, ten\n";
+    cout<<"\tdiviertete con ellas, consigue más y pagamelas despues, como me caiste tan bien solo te pediré 2 de regreso,btw\n";
+    cout<<"\ten fin, enjoy the full experience. Nos veremos luego, btw. And if u necesitas algo mejor llamame, bettter call Saul\n";
+    cout<<"\tbtw.\nPD. Las fichas no se pueden cambiar por dinero solo por asesinatos, una vez que aceptaste esas fichas que te\n";
+    cout<<"\tdí, tambien asceptaste los términos y condiciones jaja\n";
+    fichas += 3;
+    cout<<"Fichas actuales: "<<fichas<<endl;
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+    cout<<"Necesitas encontrar al culto del NECRONOMICON, pues ellos tienen el fragmento de la PIEDRA FILOSOFAL\n";
+    cout<<"tal vez estén detras de aquella puerta que reza 'Solo miebros VIP' (precio 7 fichas), -vaya burocracia-\n";
+    cout<<personaje<<" se percata que la unica manera de poder llegar a esa puerta es apostando...\n";
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+    while (true){
+        while (fichas > 0){
+            cout<<"Llegas al cuarto de juegos, en donde te gustaría apostar??\n[1] Trivia\t [2] Piedra, Papel o tijeras \t[3] Hangman\t[4] Intentar abrir puerta VIP\n";
+            cin>>op1;
+            if (op1==1){
+                //Trivia
+            }else if (op1 == 2){
+                //Piedra papel o tijeras
+                cout<<"Decides jugar piedra papel o tijeras\n";
+                cout<<"el arbitro indica que solo es necesario apostar una sola ficha, si ganas obtienes tres\n";
+                cout<<"si pierdes te quitan dos\n";
+                if (piedraPapelTijeras(dificultad,personaje,"LUDOPATA CASUAL")){
+                    cout<<"Has ganado la apuest !!!...Obtienes 3 fichas más\n";
+                    fichas+=3;
+                    cout<<"Fichas actuales: "<<fichas<<endl;
+                    cout<<"Te gustaría ir a intentar abrir la puerta VIP??\n[1] Si\t[2]No\n";
+                    cin>>op;
+                    if (op == 1){
+                        break;//regresa a abrir la puerta VIP
+                    }else{
+                        cout<<"Vale, continua disfrutando de tus apuestas\n";
+                        continue;
+                    }
+                }else{
+                    cout<<"Has perdido la apuesta, pierdes 2 fichas :/\n";
+                    fichas-=2;
+                    cout<<"Fichas actuales: "<<fichas<<endl;
+                    cout<<"Te gustaría ir a intentar abrir la puerta VIP??\n[1] Si\t[2] NO\n";
+                    cin>>op;
+                    if (op == 1){
+                        break;//regresa a abrir la puerta VIP
+                    }else{
+                        cout<<"Vale, continua desfrutando de tus apuestas\n";
+                        continue;
+                    }
+                }
+            }else if (op1 == 3){
+                //Hangman
+                cout<<"Decides jugar al hangman, llegas al lugar y  el coordinador\n";
+                cout<<"te dice que es necesario apostar una sola ficha, si ganas, obtienes dos fichas, eso es todo\n";
+                if(hangman(dificultad)){
+                    cout<<"Has ganado la  apuesta!!...Obienes 2 fichas más\n";
+                    fichas+=2;
+                    cout<<"Fichas actuales: "<<fichas<<endl;
+                    cout<<"Te gustaría ir a intentar abrir la puerta VIP??\n[1] Si\t[2] NO\n";
+                    cin>>op;
+                    if (op == 1){
+                        break;//regresa a abrir la puerta VIP
+                    }else{
+                        cout<<"Vale, continua disfrutando de tus apuestas\n";
+                        continue;
+                    }
+                }else{
+                    cout<<"Has perdido la apuesta, pierdes tu ficha :/\n";
+                    fichas--;
+                    cout<<"Fichas actuales: "<<fichas<<endl;
+                    cout<<"Te gustaría ir a intentar abrir la puerta VIP??\n[1] Si\t[2] NO\n";
+                    cin>>op;
+                    if (op == 1){
+                        break;//regresa a abrir la puerta VIP
+                    }else{
+                        cout<<"Vale, continua desfrutando de tus apuestas\n";
+                        continue;
+                    }
+                }
+            }else if (op1 == 4 ){
+                cout<<"regresando a la puerta...\n";
+                break;//Regresa a la puerta vip
+            }else{
+                cout<<"Opcion no valida :c\n";
+                continue;
+            }
 
-
+        }
+        if(fichas <= 0){
+            cout<<"Se te han acabado, las fichas, realmente no puedes hacer mucho sin ellas\n ";
+            cout<<"decides regresar al bar, te reencuentras con RAMONA...\n\n";
+            cout<<"RAMONA:Vaya, otro intento más, otra perdida más, dejame llevarte a la zona especial :D\n\n";
+            cout<<personaje<<" llega a un cuarto oscuro y con un olor muy fuerte a podredumbre, RAMONA enciende la luz\n";
+            cout<<"es un cuarto con una cabina abierta, RAMONA te lleva dentro de la cabina, una vez dentro, empiezas a sentir un\n";
+            cout<<"zumbido que cada vez se hace más fuerte hasta que . . . simplemente ya no lo escuchas, la cabeza te ha explotado\n";
+            cout<<"o eso piensas persivir, pues realmente tu cuerpo está intacto, pero completamente adormecido\n";
+            cout<<"una vez que este proceso da lugar, la cabina detecta el momenteo y gira el suelo de la misma, llevandote a\n";
+            cout<<"un gran almacen en donde hay más cuerpos tambien, estos cuerpos pronto se recuperan y se les son arrebatados\n";
+            cout<<"el pelo, la piel, el corazon y una parte de la medula espinal. Estos tejidos son muy valiosos para\n";
+            cout<<"otros seres llamados Zora.\n";
+            cout<<"Las palabras de Saul sobre los terminos y condiciones cobran más sentido.\n Al parecer las bebidas del lugar reaccionan con\n";
+            cout<<"las fichas, una vez terminadas estas ultimas, el alcohol engaña a las neuronas explosivas holísticas y persiven una ausencia de vida\n";
+            cout<<"basicamente es un golpe tan extraño del alcohol produciendo un estimulo tan complejo que termina apagando el cuerpo por completo\n";
+            cout<<"una vez procesado tu cuerpo ya no hay marcha atras...has muerto\n";
+            return false;
+        }
+        if (op == 1 || op1 == 4){
+            cout<<"La puerta VIP necesita 7 fichas para entrar...\n";
+            if (fichas>7){
+                cout<<"has abierto la puerta VIP\n";
+            }else{
+                cout<<"Aun no cuentas con suficientes fichas para pasar la puerta VIP, regresa al cuarto de juegos y sigue apostando\n";
+                cout<<"no deberías quedarte sin fichas...\n";
+                continue;
+            }  
+        }
+    }
     
-
+    
 }
 
 void finalHistoria(){
@@ -3160,7 +3375,7 @@ void finalHistoria(){
 }
 
 
-int moin(){   
+int main(){   
     // vector<string> palabras={"platano","tact","else"};
     // string palabra =choose_palabra(palabras);
     //Fragmentos de la piedra filosofal
@@ -3171,7 +3386,7 @@ int moin(){
     //Variables
     int corazones = 3;
     int dificultad = 1; //Dificultad facil
-    int monedas=100;
+    int monedas=1000;
     //Items
     int pociones = 0;
     int pocionesMax = 0;
