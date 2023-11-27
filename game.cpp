@@ -690,6 +690,58 @@ string nomPlayer(){
     }
 }
 
+// Función para simular el giro del tambor
+bool girarTambor() {
+    srand(static_cast<unsigned int>(time(0)));
+    return rand() % 6 == 0; // 1/6 de probabilidad de disparar
+}
+
+// Función que implementa el juego de la ruleta rusa y retorna true si el jugador 1 es el último en pie
+bool jugarRuletaRusa(const string& jugador1, const string& jugador2, const string& jugador3) {
+    srand(static_cast<unsigned int>(time(0)));
+    string jugadores[] = {jugador1, jugador2, jugador3};
+    int numJugadores = 3;
+
+    int tambor[6] = {0}; // Tambor con 6 cámaras, inicialmente todas vacías
+    int posicionActual = 0; // Posición del revólver
+
+    // Colocamos una bala en una posición aleatoria
+    tambor[rand() % 6] = 1;
+
+    while (numJugadores > 1) {
+        for (int i = 0; i < numJugadores; ++i) {
+            cout << "Es el turno de " << jugadores[i] << "." << endl;
+            cout << "Presiona Enter para girar el tambor.";
+            cin.ignore();
+            cin.get(); // Espera a que el jugador presione Enter
+
+            if (girarTambor()) {
+                cout << "¡BANG! " << jugadores[i] << " ha sido eliminado." << endl;
+                // Elimina al jugador eliminado del juego
+                for (int j = i; j < numJugadores - 1; ++j) {
+                    jugadores[j] = jugadores[j + 1];
+                }
+                numJugadores--;
+
+                // Verifica si el jugador 1 es el último en pie después de la eliminación
+                if (numJugadores == 1 && jugadores[0] == jugador1) {
+                    return true;
+                }
+
+                break; // Sale del bucle for
+            } else {
+                cout << "Click. " << jugadores[i] << " ha sobrevivido." << endl;
+            }
+
+            // Mueve la posición del tambor al siguiente jugador
+            posicionActual = (posicionActual + 1) % 6;
+        }
+    }
+
+    // Si llegamos aquí, el jugador 1 no es el último en pie
+    return false;
+}
+
 //Introduccion
 void introduccion(string personaje){
     cout<<"-----------------------------------------------------------------------------------------------\n";
@@ -726,7 +778,7 @@ void introduccion(string personaje){
 
 //Bosques perdidos historia
 bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
-    int op1, op2, op3, op4, op5;
+    int op1, op2,  op4, op5;
     int corazones = 3;
     cout<<"-----------------------------------------------------------------------------------------------\n";
     cout<<"\tB O S Q U E S  P E R D I D O S \n\n";
@@ -2250,7 +2302,8 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
 bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
     int op1,op2,op3,op4;
     int corazones = 3;
-    cout<<"R E I N O S  Z O R A\n\n";
+    cout<<"-------------------------------------------------------------------------------------------------------------\n";
+    cout<<"\tR E I N O S  Z O R A\n\n";
     cout<<"-------------------------------------------------------------------------------------------------------------\n";
     cout<<"Los lagos son en verdad de agua o aparentan serlo??. Si bien los cuerpos de agua proceden desde un clico\n";
     cout<<"y con sus ciertos desfaces por alteraciones no naturales como la humana son por si mismos una gran fuente\n ";
@@ -3057,7 +3110,49 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
 
 //Ruinas del Abismo
 bool RuinasDelAbismo(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
-    cout<<"R U I N A S  D E L  A B I S M O \n\n";
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+    cout<<"DENTRO DE: ----R U I N A S  D E L  A B I S M O \n\n";
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+    cout<<"A pasar de las adversidades de la situación consideras que debes terminar lo que empezaste\n";
+    cout<<"estas decidido.\n"<<personaje<<" comienza a bajar unas escaleras con letreros neon en las paredes\n";
+    cout<<"mostrando, bebidas, alguna especie de alienigena de caracter femenino, pero sexualizada\n";
+    cout<<"mientras baja se percata de los sonidos de los brindis, las risas y la musica, algo equivalente a los\n";
+    cout<<"clasicos del jazz de los 20s, al final de estas escaleras, encuentra una puerta roja, detras de ella\n";
+    cout<<"encuentra un ambiente bastante moderno, lleno de estimulos para el cerebro, como para nunca irse\n";
+    cout<<"sin embargo, "<<personaje<<" recuerda su mision y retoma la valentía necesaria para seguir, ademas\n";
+    cout<<"en estos días no es facil conseguir conseguir esas 300 monedas, antes, con eso podrías comprarte\n";
+    cout<<"una casa, una buena carreta con varios caballos e incluso poder mantener una clasica familia\n";
+    cout<<"con una linda esposa y dos bellos niños. Pero parece que las cosas cambian muy rapido, ahora no\n";
+    cout<<"tienes ni la certeza si podras jubilarte algun día.\n";
+    cout<<"LLegas a la barra en donde pides un martini seco...\n\n";
+    cout<<"RAMONA : Primera vez que vienes, cierto?? La gente no suele venir preparada para matar a Dios, en fin...\n\n";
+    cout<<"RAMONA agrega los hielos al shaker y los deja reposar por algunos segundos. Agrega el vermouth seco y \n";
+    cout<<"mescla con la cuchara bailarina para perfumar los hielos. Coloca el colador oruga y desecha el exeso de\n";
+    cout<<"vermouth.\n\n";
+    cout<<"RAMONA: todo el mundo a veces necesita realajarse un poco sabes, simplemente la gente llega del trabajo\n";
+    cout<<"\ty lo unico que quiere hacer es sentir lo que quiere sentir, ver lo que quiere ver y expresar lo que\n";
+    cout<<"\ttenga que decir, no lo crees?? Bueno, hace poco se empezó a hacer más famoso este lugar desde que\n";
+    cout<<"\tlos seguidores de ese cara de papa empezaron a tener reuniones supuestamente secretas, que realmente\n";
+    cout<<"\tlo unico secreto es cuanto dinero han de hacer estafando a todas esas pobres almas victimas de la lepra\n";
+    cout<<"\tresignadas a usar medicamentos a base de carbotano, miel de orontox y limon. Muy triste la situación,no??\n\n";
+    cout<<"RAMONA desecha el hielo de la copa martinera. Vierte ginebra en el shaker y mezcla nuevamente con la cuchara\n";
+    cout<<"bailarina durante 15 segundos, lo tapa con el colador oruga y pasa el coctel a travez del colador fino para\n";
+    cout<<"verterlo en la copa .\n\n";
+    cout<<"RAMONA: como sea, los sujetos aquellos no son más que un monton de viles carroñeros esperando otra presa\n";
+    cout<<"\tmuerda el ansuelo, ahora que tienen un fragmento de la dichosa piedra filosofal esa se sienten los dueños\n";
+    cout<<"\tdel lugar, y los pobres ilusos no dejan de intentar ganarle ese fragmento a base de apuestas super arriesgadas\n";
+    cout<<"\thay veces en las que pienso en que pasaría si todos lo framentos de esa cosa se unieran, tal vez explote\n";
+    cout<<"\tla realidad misma, o no lo sé, jaja.\n\n";
+    cout<<"RAMONA inserta las aceitunas en ambos extremos de un palillo y lo sumerge el el martini\n\n";
+    cout<<"RAMONA: Parece ser que no dejas de verlos jugar, si planeas jugar contra ellos debes de tener cuidado luego las\n";
+    cout<<"\treglas se ponen muy locas, lo peor es que la chica de la limpieza termina usando todo el agua oxigenada para\n";
+    cout<<"\tlimpiar las manchas de sangre y los restos se los suelen dar a los perros. Espero no haberte asustado jaja\n";
+    cout<<"\ttengo que atender a alguien más, disfruta tu bebida JAMES BOND...\n\n";
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+
+
+    
+
 }
 
 void finalHistoria(){
@@ -3065,7 +3160,7 @@ void finalHistoria(){
 }
 
 
-int main(){   
+int moin(){   
     // vector<string> palabras={"platano","tact","else"};
     // string palabra =choose_palabra(palabras);
     //Fragmentos de la piedra filosofal
@@ -3076,7 +3171,7 @@ int main(){
     //Variables
     int corazones = 3;
     int dificultad = 1; //Dificultad facil
-    int monedas=1000;
+    int monedas=100;
     //Items
     int pociones = 0;
     int pocionesMax = 0;
@@ -3160,6 +3255,11 @@ int main(){
                         }
                     }else if (cho1 == 2){
                         if (ReinosZora(jugador, dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                            cout<<"Despues de haber vuelto todo a la normalidad\n";
+                            cout<<"te das cuenta de que el fragmento sigue contigo, estas cada vez más cerca de lograrlo\n";
+                            cout<<"cada vez más cerca de conseguir la PIEDRA FILOSOFAL\n";
+                            fragmentoPiedra++;
+                            cout<<"Fragmentos de la piedra filosofal: "<<fragmentoPiedra<<endl;
                             cout<<"Reinos Zora superados\n";
                             if (dificultad==1){
                                 cout<<"Has recibido 300 monedas\n";
@@ -3178,10 +3278,35 @@ int main(){
                             }else{
                                 break;
                             }
-                            
                         }
                     }else if (cho1 == 3){
-                        if (RuinasDelAbismo(jugador, dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                        cout<<"-----------------------------------------------------------------------------------------------\n";
+                        cout<<"\tR U I N A S  D E L  A B I S M O \n\n";
+                        cout<<"-----------------------------------------------------------------------------------------------\n";
+                        cout<<"Resulta ser que los segidores de PRINGLES ya habian obtenido uno de los fragmentos, tuvieron que\n";
+                        cout<<"hacer hasta lo imposible para que pudieran conseguir el fragmento, realmente no se sabe mucho\n";
+                        cout<<"de ello, pues fue algo de lo que no se suele habla, sin embargo es bien sabido que, muchas de sus\n";
+                        cout<<"cosas como un buen culto es mantenerlo en secreto, desafortunadamente no lo hacen realmente bien.\n";
+                        cout<<"uno de sus grandes problemas, ademas de formar aquelarres con brujas, son las apuestas...\n";
+                        cout<<"Uno de sus lugares favoritos para hacer este tipo de cosas en un ya conocido bar, tode se practica\n";
+                        cout<<"un torneo de apuestas, que permite apuestas de practicamente todo, obiamente no está regulado y\n";
+                        cout<<"mucho menos es legal ante el estado, por eso es necesario hacer algunas generosas donaciones a los\n";
+                        cout<<"que cuidan el lugar, aquellos Goblins que solo velan por sus propios interese, se podrá decir de todo\n";
+                        cout<<"sobre ellos pero lo cierto es que realmente son avariciosos y muy vivaces."<<jugador<<" espera hasta la\n";
+                        cout<<"media noche para visitar el lugar. Resulta ser que la guarida tiene por nombre RUINAS DEL ABISMO\n";
+                        cout<<"bastante inverosimil para ser lo que es.Te hacercas a la entrada y...\n";
+                        cout<<"-----------------------------------------------------------------------------------------------\n\n";  
+                        if(monedas>300){
+                            cout<<"GOBLIN: Oye bro, no puedes pasar así como así, las cosas no son así, claro que nonononon\n";
+                            cout<<"\tsi sabes lo que debes hacer, solo haslo, dejemonos de tanto rodeo...vale bro??\n";
+                            cout<<"\tconoces el precio?? sisisisis son 300 monedas sisisisis ni una más, ni una menos sisisis\n\n";
+                            cout<<"Pasan muchas cosas por tu cabeza, consideras los pro y contras, pero la posibilidad de obtener\n";
+                            cout<<"esa piedra completa es demaciado tentadora...le das lo que pide el sujeto verdoso\n\n";
+                            cout<<"GOBLIN: Sisisisi, ni una moneda más, ni una moneda menos, sisisi...te dejaré pasar\n";
+                            cout<<"\tsabes, para la proxima entra por la puerta trasera, o vuelveme a pagar sisisisi...\n";
+                            monedas-=300;
+                            cout<<"Monedas actuales: "<<monedas<<endl;
+                            if (RuinasDelAbismo(jugador, dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
                             cout<<"Ruinas del Abismo superadas\n";
                             if (dificultad == 1){
                                 cout<<"Has recibido 300 monedas\n";
@@ -3191,20 +3316,34 @@ int main(){
                                 monedas+=500;
                             }
                             break;
-                        }else{
-                            cout<<"Ruinas del Abismo no superadas\n";
-                            cout<<"Volver a intentar??\n[1] Si\t[2] No\n";
-                            cin>>cho2;
-                            if (cho2 == 1){
-                                continue;
                             }else{
-                                break;
+                                cout<<"Ruinas del Abismo no superadas\n";
+                                cout<<"Volver a intentar??\n[1] Si\t[2] No\n";
+                                cin>>cho2;
+                                if (cho2 == 1){
+                                    continue;
+                                }else{
+                                    break;
+                                }
+                                
                             }
-                            
-                        }
-                        
+                        }else{
+                            cout<<"GOBLIN: Oye bro, no puedes pasar así como así, las cosas no son así, claro que nonononon\n";
+                            cout<<"\tsi sabes lo que debes hacer, solo haslo, dejemonos de tanto rodeo...vale bro??\n";
+                            cout<<"\tconoces el precio?? sisisisis son 300 monedas sisisisis ni una más, ni una menos sisisis\n\n";
+                            cout<<"Pasan muchas cosas por tu cabeza, consideras los pro y contras, pero la posibilidad de obtener\n";
+                            cout<<"esa piedra completa es demaciado tentadora...le das lo que pide el sujeto verdoso\n\n";
+                            cout<<"sacas tu cartera del america y no encuentras lo suficiente....\n\n";
+                            cout<<"GOBLIN: Veo lo que pasa, no hay monedas, no hay trato nononono, intentalo depues, vale bro?\n";
+                            cout<<"\ttal vez puedas conseguir más completando las otras partes de la historia, ¿Qué como sé eso?\n";
+                            cout<<"de la misma forma que sé que si pasas esos dichosos modos dificiles de la historia obtienes más monedas\n";
+                            cout<<"\tbueno, realmente ni siquiera yo sé lo que significa...nonono, así que daja de molestarme sisisisis\n\n";
+                            cout<<"Entiendes la situación y se apodera de ti la descepción...\n\n";
+                            cout<<"Monedas actuales: "<<monedas<<endl;
+                            cout<<"-----------------------------------------------------------------------------------------------------------\n\n";
+                            break;
 
-                        
+                        }
                     }else{
                         cout<<"Opcion no valida\n";
                     }
