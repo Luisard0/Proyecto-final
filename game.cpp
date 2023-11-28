@@ -6,6 +6,13 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
+
+/*
+    REALIZADO POR: GUTIÉRREZ MONTAÑO JUAN LUIS
+    GRUPO: 1158
+    INGENIERÍA EN COMPUTACIÓN
+*/
+
 //--------- Hangman game -------------------
 //Escoge una palbra de un vector de palabras
 string choose_palabra(const vector<string>& listaPalabras){
@@ -268,7 +275,7 @@ bool determinarGanador(int usuario, int computadora, string personaje, string en
         cout << personaje<<" gano!!" << endl;
         return true;
     } else {
-        cout << enemigo <<"ha ganado!!" << endl;
+        cout << enemigo <<" ha ganado!!" << endl;
         return false;
     }
 }
@@ -349,7 +356,7 @@ int defensa(int turno){
 }
 
 // Batalla por turnos, si gana true de otra forma false
-bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int sanasana,int sanasanaMAX,int repuestos, int ataqueMortal) {
+bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int sanasana,int sanasanaMAX,int repuestos, int ataqueMortal, string armaEspecial) {
     //Inicializa Items
     int vidaRana = sanasana;
     int vidaSapo = sanasanaMAX;
@@ -569,7 +576,8 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
                 break;
             case 2:
                 //Ataque fuerte
-                cout<<nomEnemigo<<" hace un ataque fuerte!!\n";
+                cout<<nomEnemigo<<" te ataca con su "<<armaEspecial<<endl;
+                cout<<"ATAQUE CRITICO!!!\n";
                 ataqueEnemy=atacar(turno)+15;//Sube 25 puntos a su ataque
                 if (ataqueEnemy<=20){
                     ataqueEnemy+=15;
@@ -601,13 +609,26 @@ bool batallaPorTurnos(string nomPersonaje,string nomEnemigo, int dificultad, int
                 break;
             case 4:
                 //Reforzar escudo
-                if (defensaEnemy>100){
-                    cout<<nomEnemigo<<" Intenta reforzar aun mas su escudo pero se termina lastimando\n";
-                    defensaEnemy=100;
+
+                if(dificultad == 1){
+                    if (defensaEnemy>=100){
+                        cout<<nomEnemigo<<" Intenta reforzar aun mas su escudo pero se termina lastimando\n";
+                        defensaEnemy=100;
+                    }else{
+                        defensaEnemy += defensa(turno);
+                        cout<<nomEnemigo<<" decide reforzar su escudo\n";
+                        cout<<"Su defensa ha subido a "<<defensaEnemy<<endl;
+                    }
                 }else{
-                    defensaEnemy += defensa(turno);
-                    cout<<nomEnemigo<<" decide reforzar su escudo\n";
-                    cout<<"Su defensa ha subido a "<<defensaEnemy<<endl;
+                    if (defensaEnemy>=200){
+                        cout<<nomEnemigo<<" Intenta reforzar aun mas su escudo pero se termina lastimando\n";
+                        defensaEnemy=200;
+                    }else{
+                        defensaEnemy += defensa(turno);
+                        cout<<nomEnemigo<<" decide reforzar su escudo\n";
+                        cout<<"Su defensa ha subido a "<<defensaEnemy<<endl;
+                    }
+
                 }
                 break;
             case 5:
@@ -856,7 +877,7 @@ void introduccion(string personaje){
     cout<<"de lo desconocido a trasmutar su alma pues en su afan de alcanzar la vida eterna descrita\n";
     cout<<"en el libro prohibido a buscado de todas las formas posibles vivir eternamente. \n";
     cout<<"Las malas lenguas suelen contar que su infancia fue dificil pues....\n";
-    cout<<"vio morir a cada uno de sus seres queridos, pudriendo cada vez mas su alma, sin embargo...\n";
+    cout<<"vió morir a cada uno de sus seres queridos, pudriendo cada vez mas su alma, sin embargo...\n";
     cout<<"ha muerto recientemente, y ha dejado en una carta decretando que cualquiera que persiga esa piedra\n";
     cout<<"sera maldecido por la eternidad, con el castigo de morir ciclicamente...\n";
     cout<<"Pero a "<<personaje<<" realmente no le importa nada de esto, pues esta mañana\n";
@@ -870,7 +891,7 @@ void introduccion(string personaje){
     cout<<"-----------------------------------------------------------------------------------------------\n\n\n";
 }
 
-//Bosques perdidos historia
+//Bosques perdidos historia //1519 lineas
 bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
     int op1, op2,  op4, op5;
     int corazones = 3;
@@ -900,7 +921,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
             //Pelear contra el oso
             cout<<"Has decidido pelear contra el oso\n";
             cout<<"Oso: Te eseñaré porqué me dicen el Oso cariñoso...jeje\n";
-            if (batallaPorTurnos(personaje,"Oso corruptoso", dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+            if (batallaPorTurnos(personaje,"Oso corruptoso", dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Garra de oso")){
                 cout<<"Oso: Veo que sabes lo que haces, pero ten cuidado al seguir por este camino, uno nunca sabe\n";
                 cout<<"\thasta donde lo puede llevar los vicios :c\n";
 
@@ -939,7 +960,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     cout<<personaje<<" se acerca con determinacion...\n";
                     cout<<"Serpiente Indú, veo lo que intentasssss, veo a travezzzzz de tu ser, tus pecadossssss, tu hisssstoria, nada increible\n";
                     cout<<"\tessssspero hallassss traido algun antiveneno si no ve preparandote para una gran agonia\n";
-                    if(batallaPorTurnos(personaje, "Serpiente Indú", dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                    if(batallaPorTurnos(personaje, "Serpiente Indú", dificultad, pociones, pocionesMax, escudos, ataqueMortal,"Mordida Venenosa")){
                         cout<<"Serpiente Indú: Sssii, es cierto no lo que cuentan por ahí, malaventuraos los seguidores de la avaricia y la codicia\n";
                     }else{
                         cout<<"Serpiente Indú: Que es lo que veo?? otro ser arrastrandose y suplicando por su perdon por estar en el momento y lugar\n";
@@ -995,7 +1016,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     while (corazones>0)
                     {
                         //Pelea, Pelea, Pelea
-                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Lanza de Jaguar")){
                             cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
                             cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
                             cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
@@ -1072,7 +1093,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
                             cout<<"coff...coff....\n";
                         }
-                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal,"Aliento de Dragon")){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
                             cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
                             cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
@@ -1144,7 +1165,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     while (corazones>0)
                     {
                         //Pelea, Pelea, Pelea
-                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Lanza de Jaguar")){
                             cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
                             cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
                             cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
@@ -1221,7 +1242,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
                             cout<<"coff...coff....\n";
                         }
-                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal,"LLamarada Explosiva")){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
                             cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
                             cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
@@ -1291,7 +1312,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     while (corazones>0)
                     {
                         //Pelea, Pelea, Pelea
-                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Mordida veloz")){
                             cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
                             cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
                             cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
@@ -1368,7 +1389,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
                             cout<<"coff...coff....\n";
                         }
-                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal,"Coletazo de Dragon")){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
                             cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
                             cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
@@ -1441,7 +1462,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     cout<<personaje<<" se acerca con determinacion...\n";
                     cout<<"Serpiente Indú, veo lo que intentasssss, veo a travezzzzz de tu ser, tus pecadossssss, tu hisssstoria, nada increible\n";
                     cout<<"\tessssspero hallassss traido algun antiveneno si no ve preparandote para una gran agonia\n";
-                    if(batallaPorTurnos(personaje, "Serpiente Indú", dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                    if(batallaPorTurnos(personaje, "Serpiente Indú", dificultad, pociones, pocionesMax, escudos, ataqueMortal,"Mordida Indú")){
                         cout<<"Serpiente Indú: Sssii, es cierto no lo que cuentan por ahí, malaventuraos los seguidores de la avaricia y la codicia\n";
                     }else{
                         cout<<"Serpiente Indú: Que es lo que veo?? otro ser arrastrandose y suplicando por su perdon por estar en el momento y lugar\n";
@@ -1494,7 +1515,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     while (corazones>0)
                     {
                         //Pelea, Pelea, Pelea
-                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Rafaga de desgarres")){
                             cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
                             cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
                             cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
@@ -1571,7 +1592,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
                             cout<<"coff...coff....\n";
                         }
-                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal,"Mirada azul")){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
                             cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
                             cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
@@ -1643,7 +1664,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     while (corazones>0)
                     {
                         //Pelea, Pelea, Pelea
-                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Mordida de Jaguar")){
                             cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
                             cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
                             cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
@@ -1720,7 +1741,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
                             cout<<"coff...coff....\n";
                         }
-                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal,"Coletazo de Dragon")){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
                             cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
                             cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
@@ -1790,7 +1811,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     while (corazones>0)
                     {
                         //Pelea, Pelea, Pelea
-                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Mancha de Jaguar")){
                             cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
                             cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
                             cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
@@ -1867,7 +1888,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
                             cout<<"coff...coff....\n";
                         }
-                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal,"Jugo a mitad de precio")){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
                             cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
                             cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
@@ -1925,7 +1946,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     cout<<personaje<<" se acerca con determinacion...\n";
                     cout<<"Serpiente Indú, veo lo que intentasssss, veo a travezzzzz de tu ser, tus pecadossssss, tu hisssstoria, nada increible\n";
                     cout<<"\tessssspero hallassss traido algun antiveneno si no ve preparandote para una gran agonia\n";
-                    if(batallaPorTurnos(personaje, "Serpiente Indú", dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
+                    if(batallaPorTurnos(personaje, "Serpiente Indú", dificultad, pociones, pocionesMax, escudos, ataqueMortal,"Mordida de Apu")){
                         cout<<"Serpiente Indú: Sssii, es cierto no lo que cuentan por ahí, malaventuraos los seguidores de la avaricia y la codicia\n";
                     }else{
                         cout<<"Serpiente Indú: Que es lo que veo?? otro ser arrastrandose y suplicando por su perdon por estar en el momento y lugar\n";
@@ -1978,7 +1999,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     while (corazones>0)
                     {
                         //Pelea, Pelea, Pelea
-                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Lanza de Jaguar")){
                             cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
                             cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
                             cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
@@ -2055,7 +2076,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
                             cout<<"coff...coff....\n";
                         }
-                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal,"Jugo en Tetrapack")){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
                             cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
                             cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
@@ -2127,7 +2148,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     while (corazones>0)
                     {
                         //Pelea, Pelea, Pelea
-                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Arañaso Gatuno")){
                             cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
                             cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
                             cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
@@ -2204,7 +2225,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
                             cout<<"coff...coff....\n";
                         }
-                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal,"Descuento en jugos")){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
                             cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
                             cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
@@ -2274,7 +2295,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                     while (corazones>0)
                     {
                         //Pelea, Pelea, Pelea
-                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        if (batallaPorTurnos(personaje,"KKKKKN",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Orgullo de manada")){
                             cout<<"KKKKKN: Le he jurado lealtad al grand Dragon JUMEX, mi cuerpo calló, pero mi alma siempre estará en deuda\n";
                             cout<<"\tdespues de tanto, esta vida no fue lo que necesitaba, pero era lo que quería, gracias por testerrarme\n";
                             cout<<"\tde este tormento, por fin podré reunirme con mi pueblo, mi tribu...mi familia...\n";
@@ -2351,7 +2372,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
                             cout<<"\tTú jamas me entenderías simple mortal, acabaré con tu vida, así como la de la gente que me lo himploró\n";
                             cout<<"coff...coff....\n";
                         }
-                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal)){
+                        if (batallaPorTurnos(personaje, "JUMEX EL GRAN DRAGON BLANCO DE OJOS AZULES", 2, pociones, pocionesMax, escudos, ataqueMortal,"Diversificación de mercado")){
                             cout<<"Esta ha sido mi ultima batalla, coff..coff, nunca fuiste realmente un rival para mi, yo no morireeee en las manos\n";
                             cout<<"de un simple mortaaaaaaaalll AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH...aaaaaaaaaaaaaaah...\n";
                             cout<<"Un liquido brumoso purpura empieza a sacar por todos los orificios del cuerpo, cae al aspero suelo y finalmente\n\n";
@@ -2392,7 +2413,7 @@ bool BosquesPerdidos(string personaje, int dificultad, int pociones, int pocione
 
 }
 
-//Reinos Zora
+//Reinos Zora //802 lineas
 bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
     int op1,op2,op3,op4;
     int corazones = 3;
@@ -2462,7 +2483,7 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
                 case 1:
                     //Pelear
                     cout<<"Estas determinado a enfrentar la situación...\n";
-                    if (batallaPorTurnos(personaje,"Zora dosil",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                    if (batallaPorTurnos(personaje,"Zora dosil",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Pistola de agua")){
                         cout<<"Pueden ver tu determinacion pero no te dejaran pasar hasta que les des solo uno de tus corazones...\n";
                         cout<<"renegado, les dan uno de tus corazones\n";
                         corazones--;
@@ -2639,7 +2660,7 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
                     //Hablar
                     cout<<"Intentas hablar y negociar con los Zora, sin embargo, ellos desarrollaron otro lenguaje, algun si son capaces\n";
                     cout<<"de comunicarse, pero estos no, no te queda otra opcion más que pelear...\n";
-                    if (batallaPorTurnos(personaje,"Zora dosil",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                    if (batallaPorTurnos(personaje,"Zora dosil",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Cañon de agua")){
                         cout<<"Pueden ver tu determinacion pero no te dejaran pasar hasta que les des solo uno de tus corazones...\n";
                         cout<<"renegado, les dan uno de tus corazones\n";
                         corazones--;
@@ -2815,7 +2836,7 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
                 case 3:
                     //Sacrificar un corazon
                     cout<<"Los ZORA, no hacen negocios con la comida, te dasafian a una batalla\n";
-                    if (batallaPorTurnos(personaje,"Zora dosil",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                    if (batallaPorTurnos(personaje,"Zora dosil",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Cañon de agua")){
                         cout<<"Pueden ver tu determinacion pero no te dejaran pasar hasta que les des solo uno de tus corazones...\n";
                         cout<<"renegado, les dan uno de tus corazones\n";
                         corazones--;
@@ -3013,11 +3034,11 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
                     //Pelear
                     cout<<"-------------------------------------------------------------------------------------------------------------\n";
                     cout<<"Determinado, decides pelear por tu vida...\n";
-                    if (batallaPorTurnos(personaje,"PIGMENTARIO 1",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                    if (batallaPorTurnos(personaje,"PIGMENTARIO 1",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Arranca Melanina")){
                         cout<<"Has ganado la primera batalla, pero aun quedan dos PIGMENTARIOS...y la pelea  continua\n";
-                        if (batallaPorTurnos(personaje,"PIGMENTARIO 2",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                        if (batallaPorTurnos(personaje,"PIGMENTARIO 2",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Arranca Ojos")){
                             cout<<"Empiezas a sentir como tu pierna empieza a sentirse extraña, acaso esto será una trombosis venosa profunda?\n";
-                            if(batallaPorTurnos(personaje,"PIGMENTARIO 3",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            if(batallaPorTurnos(personaje,"PIGMENTARIO 3",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Luz UV")){
                                 cout<<"Empiezas a sentirte un poco mariado apesar de haber derrotado a los cazadores PIGMENTARIOS\n";
                                 cout<<"la falta de oxigeno empieza a hacerse severa, la desesperacion empieza a apoderarse de ti\n";
                                 cout<<"...comiezas a preguntarte si realmente era necesario pelear...\n";
@@ -3107,14 +3128,14 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
                 case 1:
                     //Pelear
                     cout<<"Luces determinado, dando cada paso con seguridad y decides pelear.\n";
-                    if (batallaPorTurnos(personaje,"CALAMAR PARASITADO 1",dificultad,pociones, pocionesMax,escudos,ataqueMortal)){
+                    if (batallaPorTurnos(personaje,"CALAMAR PARASITADO 1",dificultad,pociones, pocionesMax,escudos,ataqueMortal,"Pedazo de cachalote")){
                         cout<<"Has logrado vencer al primer CALAMAR PARASITADO, pero no es suficiente, aqui viene otro\n";
-                        if(batallaPorTurnos(personaje,"CALAMAR PARASITADO 2",dificultad, pociones,pocionesMax,escudos,ataqueMortal)){
+                        if(batallaPorTurnos(personaje,"CALAMAR PARASITADO 2",dificultad, pociones,pocionesMax,escudos,ataqueMortal,"Tinta espumosa")){
                             cout<<"Estas derrotando a cada uno de ellos, pero aún no encuetras forma de salir del los intestinos del cachalote\n";
-                            if(batallaPorTurnos(personaje,"CALAMAR PARASITADO 3",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                            if(batallaPorTurnos(personaje,"CALAMAR PARASITADO 3",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Ventosas Resbaladizas")){
                                 cout<<"Tras derrotar a cada uno de ellos, el parasito decide unirse en una sola cosa, estas a punto de enfrentar al parasito\n";
                                 cout<<"te mira fijamente y despliega su verdaro ser, una aberracion alienigena de pura maldad\n";
-                                if (batallaPorTurnos(personaje,"PARASITO DEVORADOR DE MUNDOS",dificultad,pociones,pocionesMax,escudos,ataqueMortal)){
+                                if (batallaPorTurnos(personaje,"PARASITO DEVORADOR DE MUNDOS",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"VENOM")){
                                     cout<<"Una vez derrotado al parasito, decides seguir el camino de los intentinos...\n";
                                     cout<<"tras una grotesca expulcion, logra salir del cachalote, sin embargo, la desidad osea de tu cuerpo\n";
                                     cout<<"y tus organos no soportan el cambio atmosferico tan brusco e implosionas...\n";
@@ -3193,18 +3214,13 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
             }
         }else{
             cout<<"Opcion no valida\n";
-        }
-        
-        
-        
+        }  
     }
-    
-    
 }
 
-//Ruinas del Abismo
+//Ruinas del Abismo //478 lineas
 bool RuinasDelAbismo(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
-    int fichas = 0;
+    int fichas = 1000;
     int op,op1,op2,op3,op4;
     cout<<"-----------------------------------------------------------------------------------------------\n";
     cout<<"DENTRO DE: ----R U I N A S  D E L  A B I S M O \n\n";
@@ -3269,13 +3285,42 @@ bool RuinasDelAbismo(string personaje, int dificultad, int pociones, int pocione
             cin>>op1;
             if (op1==1){
                 //Trivia
+                cout<<"Decides jugar una trivia\n";
+                cout<<"el encargado indica que tienes que apostar una simple ficha, si ganas obtienes 2\n";
+                cout<<"si pierdes te quitan 1\n";
+                if (jugarTrivia()){
+                    cout<<"Has ganado la apuesta !!!...Obtines 2 fichas más\n";
+                    fichas+=2;
+                    cout<<"Fichas actuales: "<<fichas<<endl;
+                    cout<<"Te gustaría ir a intentar abrir la puerta VIP??\n[1] Si\t[2]No\n";
+                    cin>>op;
+                    if (op == 1){
+                        break;//regresa a abrir la puerta VIP
+                    }else{
+                        cout<<"Vale, continua disfrutando de tus apuestas\n";
+                        continue;
+                    }
+                }else{
+                    cout<<"Has perdido la apuesta, pierdes una ficha :/\n";
+                    fichas--;
+                    cout<<"Fichas actuales: "<<fichas<<endl;
+                    cout<<"Te gustaría ir a intentar abrir la puerta VIP??\n[1] Si\t[2] NO\n";
+                    cin>>op;
+                    if (op == 1){
+                        break;//regresa a abrir la puerta VIP
+                    }else{
+                        cout<<"Vale, continua desfrutando de tus apuestas\n";
+                        continue;
+                    }
+                }
+                
             }else if (op1 == 2){
                 //Piedra papel o tijeras
                 cout<<"Decides jugar piedra papel o tijeras\n";
                 cout<<"el arbitro indica que solo es necesario apostar una sola ficha, si ganas obtienes tres\n";
                 cout<<"si pierdes te quitan dos\n";
                 if (piedraPapelTijeras(dificultad,personaje,"LUDOPATA CASUAL")){
-                    cout<<"Has ganado la apuest !!!...Obtienes 3 fichas más\n";
+                    cout<<"Has ganado la apuesta !!!...Obtienes 3 fichas más\n";
                     fichas+=3;
                     cout<<"Fichas actuales: "<<fichas<<endl;
                     cout<<"Te gustaría ir a intentar abrir la puerta VIP??\n[1] Si\t[2]No\n";
@@ -3358,7 +3403,297 @@ bool RuinasDelAbismo(string personaje, int dificultad, int pociones, int pocione
         if (op == 1 || op1 == 4){
             cout<<"La puerta VIP necesita 7 fichas para entrar...\n";
             if (fichas>7){
-                cout<<"has abierto la puerta VIP\n";
+                cout<<"Has abierto la puerta VIP\n";
+                cout<<"-----------------------------------------------------------------------------------------------\n";
+                cout<<"Una vez dentro de la puerta VIP, estusiasmado, "<<personaje<<" , comienza buscar a los clasiscos\n";
+                cout<<"tipos encapuchados que sule asociar con el culto al NECRONOMICON, sin embargo no ve nada parecido ni\n";
+                cout<<"minimamente similar, a pesar de todo, encuentra a un grupo de personas, con muchos tragos encima, \n";
+                cout<<"pero solo los quedas viendo.\n\n";
+                cout<<"ONE PACK: Mira persona no grata a esta familia, tienes que hacer esto, es un gran golpe para esa\n";
+                cout<<"\tpersona no grata, esto nos hará ricos en cada uno de los sentidos posibles, simplemente tienes que ir\n ";
+                cout<<"\tenseñarle quien manda, arrebatarle el negocio y por fin estarás dentro, la torturas pueden esperar\n";
+                cout<<"\tsé que puede parecer que los que estoy pidiendo es mucho, pero si realmente quieres ser uno de nosotros\n";
+                cout<<"\ttienes que hacerlo, entendido?? Vale espero no me desepciones\n";
+                cout<<"\tMuy bien muchachos, ahora, el evento especial de la noche. Aquí tengo un revolver, alguna vez han escuchado\n";
+                cout<<"\thablar sobre la ruleta rusa?? Bueno, es un juego bastante sensillo, solo deben de insertar la bala en\n";
+                cout<<"\tuna de las camaras del tambor, girar el tambor y luego disparar, simple,no?? Bueno pues miren esto\n\n";
+                cout<<"El sujeto coloca la bala, gira el tambor, apunta a su sien y dispara . . . click, ha sobrevivido, todo \n";
+                cout<<"el grupo rie y en el mar de euforia, el sujeto apunta a uno de los integrantes y . . . BANG!! el arma ha disparado\n\n";
+                cout<<"ONE PACK: Jajaja, vieron la cara que puso antes de que le apuntara Jaja, ahora, me tendrán que decir\n";
+                cout<<"\tquíen fue el desgraciado que delató que nuestro culto peseía un fragmento de la PIEDRA FILOSOFAL??\n";
+                cout<<"\tbueno, al parecer no fue nadie de aqui verdad??. Demonios esta cosa se ha atorado, denme un segundo en lo\n";
+                cout<<"\tque la arreglo.\n\n";
+                cout<<"Sigues al sujeto hasta el baño, una vez ahí, lo esperas afuera y al salír de ahí lo aturdes y cambias de ropas con él\n";
+                cout<<"Regresas con el grupo, te sientas en la mesa, y empiezas a investigar más sobre el paradero de ese fragmento\n\n";
+                cout<<"ONE PACK: Espera, te ves algo diferente, acaso tu estabas...\n";
+                cout<<"THRE PACK: Vamos ONE PACK, deja al tipo, hace una semana apenas perdió a su esposa por un cancer y ayer mataron\n";
+                cout<<"\ta su perro, no seas tan duro con él.\n";
+                cout<<"ONEPACK: Vale, vale, de cualquier forma. Hoy sabremos quien fue el verdadero culpable en esta mesa, todos aqui estamos\n";
+                cout<<"\tcomprometidos con nuestro señor PRINGLES, que apesar de que hoy no esté ya con nosotros siempre lo atesoraremos\n";
+                cout<<"\tsi bien es facil decir que despues de su muerte el culto perdió a su lider, él confió en que si encontrabamos\n";
+                cout<<"\ttodos los fragmentos de la piedra con ella podríamos revivirlo, traerlo de nuevo a la vida y por fin tomar lo que\n";
+                cout<<"\tsiempre fue nuestro, revivir a nuestro amo y señor CTHULHU que traerá paz al mundo entero\n ";
+                cout<<"\tbueno, basta de tanta charla, FOUR PACK, tu eras el encargado de mantener todo lo más seguro posible, dejando\n";
+                cout<<"\tque nuestro secreto salga a la luz eres el principal sospechoso\n\n";
+                cout<<"FOUR PACK: pues yo he de admitir que ...\n\n";
+                cout<<"ONE PACK, le ha disparado..\n\n";
+                cout<<"ONE PACK: Eso es todo lo que necesitaba, sin embargo, tambien moriras tú...\n\n";
+                cout<<"ONE PACK, le dispara a FIVE PACK, soloquedas tu, ONE PACK y THREE PACK.\n\n";
+                cout<<"ONE PACK: Finalmente, ahora solo uno de nosotros quedará, de cualquier forma el fragmento de la FILOSOFAL\n";
+                cout<<"\tse encuentra resguardado bajo llave en la caja fuerte, esa llave la tiene el segundo al mando jaja\n";
+                cout<<"\tpero no se van a ir tan facil... para no desperdiciar esta arma tan futurista que encontré en el contrabando\n";
+                cout<<"\tjugaremos un pequeño juego, el ultimo en pie puede quedarse con el arma jajaja...\n";
+                cout<<"-----------------------------------------------------------------------------------------------\n";
+                while (true){
+                    cout<<"Qué te gustaría hacer??\n[1] Jugar\t[2] Intentar escapar\t[2] NO jugar\n";
+                    cin >> op2;
+                    switch (op2){
+                    case 1:
+                        //Jugar
+                        if(jugarRuletaRusa(personaje,"ONE PACK","THRE PACK")){
+                            cout<<"Felicidades, has ganado el juego de la ruleta rusa, a parecer los otros dos estan muertos y sin más balas\n";
+                            cout<<"de esta manera no es de mucha ayuda el arma, la dejas sobre la mesa, en donde tambien llasen las cabezas\n";
+                            cout<<"con miradas perplejas de los matones...\n";
+                            cout<<"Finalmente, decides ir tras esa dichosa caja fuerte . . . Sales del bar\n";
+                            cout<<"Una vez afuera decides ir a la iglesia del Necronomicon, hogar del culto\n";
+                            cout<<"LLegando al lugar encuentras a varios miembros del culto adorando estatuas de masas con tentaculos\n";
+                            cout<<"finalmente en lo más profundo de la sala esta un sujeto con una tunica diferente, pues es de color morada\n";
+                            cout<<"el se presenta como el siguiente iluminado\n";
+                            cout<<"Procede a mandar a sus guerreros más fuertes pues sabe de tus intenciones . . . \n";
+                            cout<<"estas determinado, no piesas morir\n";
+                            if (batallaPorTurnos(personaje,"Iluminado Tercero",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Latigo de tentaculos")){
+                                cout<<"Felicidades has logrado terminar con el primero, pero siguen otros dos, te preparas para la pelea...\n";
+                                if (batallaPorTurnos(personaje,"Iluminado Segundo",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Espada de tentaculo")){
+                                    cout<<"Muy bien, has logrado vencer a Iluminado Segundo, ahora solo queda vencer a Iluminado Primero\n";
+                                    if (batallaPorTurnos(personaje,"Iluminado Primero",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Tentaculo de tentaculos")){
+                                        cout<<"Una vez derrotados los tres iluminados, empiezas a notar que el sujeto de la tunica morada se revela a si mismo\n";
+                                        cout<<"No si no mas que otra persona de la mitad del cuerpo hacia arriba, pues de los limites de la tunica\n";
+                                        cout<<"empizan a sobresalir tentaculos que forman una estabilidad en la linea de accion del ser\n";
+                                        cout<<"y su rostro es si no un esqueleto semihumano con una elasticidad que permite modificarse su estructura\n";
+                                        cout<<"este ser, proclama tu sangre y tus emociones como suyas y se te abalanza \n";
+                                        cout<<"-----------------------------------------------------------------------------------------------\n";
+                                        while (true){
+                                            cout<<"Qué te gustaría hacer??\n[1] Pelear\t[2] Retar\t[3] Escapar\n";
+                                            cin>>op3;
+                                            switch (op3)
+                                            {
+                                            case 1:
+                                                //Pelear
+                                                cout<<"Te acercas determinado...\n";
+                                                if(batallaPorTurnos(personaje,"SER ANCESTRAL",dificultad,pociones,pocionesMax,escudos,ataqueMortal,"Maldicion Profana")){
+                                                    cout<<"Has ganado la pelea, y de sus pegagosas entrañas le quitas la llave de la caja fuerte\n";
+                                                    cout<<"sigues avanzando por el sagrado lugar, blasfemando la religión de aquellos cuerpos sin vida\n";
+                                                    cout<<"Eventualmente llegas a una recamara y en la mitad del cuarto hay una tortuga, en su caparazon\n";
+                                                    cout<<"Estan escritas algunas runas extrañas\n";
+                                                    cout<<"De repente la tortuga empieza a brillar y en un abrir y cerrar de ojos, estas dentro de la torturga\n";
+                                                    cout<<"y es solo ahí en donde te percatas que está la caja fuerte, más que caja fuerte en en si\n";
+                                                    cout<<"parece ser otra dimención dentro de la propia tortuga, dentro parece ser que constantemente caen\n";
+                                                    cout<<"hojas rosas de un arbol de cereso y en el tronco hay alguien aparentemente crucificado\n";
+                                                    cout<<"un cuerpo de algun ser alieneigena, con una gran herida que va desde la traquea a la pelvis, pero\n";
+                                                    cout<<"una luz roja se haya ahí dentro entre las entrañas,y de repente el ser colgado revive tras un profundo respiro\n";
+                                                    cout<<"-----------------------------------------------------------------------------------------------\n";
+                                                    while (true){
+                                                        cout<<"Que te gustaría hacer??\n[1] Hablar\t[2] Abrir por la fuerza al sujeto en la herida\t[3] Pelear\n";
+                                                        cin>>op4;
+                                                        switch (op4){
+                                                        case 1:
+                                                            //Hablar
+                                                            cout<<"Decides hablar con aquel ser, decides preguntar por la piedra, a pesar de haber visto la pequeña luz tintinante.\n";
+                                                            cout<<"Aquel crucificado, sabe porqué estas ahí, como llegaste, a donde vas. Sabe lo que quieres preguntar antes de \n";
+                                                            cout<<"si quiera pensarlo, pero al preguntarle sobre la piedra se puede ver una gran descepción en su cara\n\n";
+                                                            cout<<"ABRAHAM: Aquello que buscas no es realmente lo que quieres, no es más que otra vanalidad del mundo terrenal\n";
+                                                            cout<<"\tpero si es lo que realmente buscas tendré que ponerte a prueba...\n";
+                                                            cout<<"\trealmente es algo muy sensillo pero vamos, solo soy un tipo crucificado, no me hagas mucho caso...\n\n";
+                                                            cout<<"Tienes sentimientos encontrados pero te hacer valer por ti mismo.\n";
+                                                            if (hangman(2)){
+                                                                cout<<"\nABRAHAM: Está bien, aqui tienes el fragmento, espero nunca nos tengamos que volver a ver, nada personal.\n";
+                                                                cout<<"\tesa cosa solo me trajo muchos problemas en aquella vida, espero ser el ultimo en esta posición.\n";
+                                                                cout<<"\tel día en que mi alma se purifique, por fin podré vela otra vez, decirle cuanto la he extrañado y que sin\n";
+                                                                cout<<"ella no puedo morir, pues solo ella concede ese deseo\n";
+                                                                return true;
+
+                                                            }else{
+                                                                cout<<"\nYa veo, así que no fuiste capaz de hacerlo, no te preocupes, las cosas estaran bien, pero para mi . . .\n\n";
+                                                                cout<<"Llega una mujer con ropas blancas y olgadas, con la cara tapada por una especie de velo, y baja al alien crucificado\n";
+                                                                cout<<"y el arbol se empieza a incendiar, junto con las ramas que se extienden por kilometros y kilometros\n";
+                                                                cout<<"el arbol se hace cenizas, el ambiente se ha convertido en un averno de llamas, luego, la crucificadora\n";
+                                                                cout<<"te toma de la mano, tus ojos pierden las pupilas y regresan a ti una vez crucificado, ahora el ambiente es diferente\n";
+                                                                cout<<"ya no caen más hojas del cerezo que alguna vez estubo, ahora solo hay nieve blanca, que cae y cubre todo\n";
+                                                                cout<<"lo visible, un gran manto blanco tambien cubre al arbol de castañas que ahora se ha convertido en todo lo que necesitas\n";
+                                                                cout<<"la mujer y el alien te miran por ultima vez, saben por lo que tendrás que pasar, pero está bien, a veces eso\n";
+                                                                cout<<"ayuda a los peores en los peores momentos. Ambos cortan la mirada unanimemente y se van caminando a travez de la niela helada\n\n";
+                                                                cout<<"Victima de tus pecados, pereses en un arbol olviado, en un abismo de eternidad, pero eres el fin de un mal\n";
+                                                                cout<<"la nueva oportunidad del mañana, la esperanza del perdido, el pan del hambriento, y el retoño de la nueva vida\n";
+                                                                return false;
+                                                            }
+                                                            break;
+                                                        case 2:
+                                                            //Abrir por la fuerza
+                                                            cout<<"Te hacercas decidido sobre tus acciones, te hacercas al ser, este te implora que no es necesario este\n";
+                                                            cout<<"sacrificio, no sabes de lo que habla, así que continuas cortando cada fibra de piel, tejido y organos\n";
+                                                            cout<<"al parecer esto te causa cierta adrenalida nunca antes experimentada, terminas de hacer el corte y luego \n";
+                                                            cout<<"procedes a desencofrarle las costillas, rompiedo con ello organos vitales y perdiendo muchas sangre\n";
+                                                            cout<<"puedes ver que al abri al ser no parece tener una anatomía muy difernte de la humana, pues comparten ciertos\n";
+                                                            cout<<"lugares en común en el orden del como se secciona, una vez abierto el cuerpo, te percadas de que el cuerpo\n";
+                                                            cout<<"tiene un brillo proveniente del corazon, lo arrancas del ser y lo desgarras con tus propias manos\n";
+                                                            cout<<"finalmente has encontrado el fragmento de la piedra FILOSOFA, pronto al agarrarla, esta piedra deja de\n";
+                                                            cout<<"brillar, y se comienza a escuchar un eco de una voz femenina, es una lengua antigua y muerta, y la piedra vuelve\n";
+                                                            cout<<"a brillar, de repente, tus manos empiezan a tornarse del mismo color que el fragmento de la piedra\n";
+                                                            cout<<"y pronto todo tu cuerpo lo hace tambien. . . \n\n";
+                                                            cout<<"Un sonido constante golpea tu subconsiente, logras abrir los ojos, no quieres levantarte de la cama\n";
+                                                            cout<<"a pesar del molesto sonido de la alarma, te levantas, vas al baño y tomas una ducha, sales del cuarto y comienzas\n";
+                                                            cout<<"a preparate para ir al trabajo, en aquella oficina, donde pasas más de 8 horas frente a un monitor en un\n";
+                                                            cout<<"cubiculo. Al terminar de alistarte sales a la cocina, tu esposa te ha preparado un plato de hotcakes con mermelada\n";
+                                                            cout<<"de fresa, algunas fresas cortadas por mitades frescas ademas de algunos arandanos, tambien hay un cuenco de yogurt\n";
+                                                            cout<<"con cereal y frutos rojos, y como platillo principal huevos fritos con tostadas y aguacate, todo acompañado de\n";
+                                                            cout<<"un batido keto de coco y frambuesas. Terminas de desayunar, llevas a tus hijos a la escuela, y antes de regresar\n";
+                                                            cout<<"el menor de ellos te dice que no quire irse sin que le des un abrazo, eso ablanda tu corazon y termina por hacer\n";
+                                                            cout<<"tu mañana practicamente perfecta. LLegas a tu empleo, laboras por 8 horas, y de camino a casa en la carretera\n";
+                                                            cout<<"hay una curva que está muy empinada, y un trailer de cinco ejes que lleba gasolina choca con otro carro, tomando mal\n";
+                                                            cout<<"la curva y provocando que se voltee, un fallo en el mantenimiento por 6 años hace que la bateria comienze a fallar\n";
+                                                            cout<<"probocando una explocion, en donde termina creando un efecto dominó que hace que todos los demas carros se volteen\n";
+                                                            cout<<"incluyendo al tuyo, debido a que estabas muy cerca del accidente, terminas sufriendo muchos daños, tanto fisicos\n";
+                                                            cout<<"como psicologicos, tu familia se preocupa por ti, en especial porque el accidente te ha dejado paraplejico, eso \n";
+                                                            cout<<"te ha quitado una buena parte de tu vida, eventualemente la situación empeora cuando te enteras de que tu\n";
+                                                            cout<<"esposa esta viendo a otras personas y tus hijos empiezan a dejar de verte como el heroe que alguna vez fuiste\n";
+                                                            cout<<"los años pasan y finalmente debido a una falla del corazon, terminas muriendo...\n\n";
+                                                            cout<<"Despiertas, sudado y lleno de panico, alguien en la oscuridad te pregunta si todo está bien...decides responder que si\n";
+                                                            cout<<"crees haber tenido una pesadilla, tan real, que no terminas de olvidarla, hasta que decides prender la luz, la persona\n";
+                                                            cout<<"que esta a un lado de ti no es una persona, es una cucaracha de tres metros, te aterras por lo que ves, hasta que \n";
+                                                            cout<<"decides ver tus manos, ahora son patas de insecto. Pegas un grito al cielo, y finalmente entiendes lo que está pasando\n";
+                                                            cout<<"ESTAS ATRAPADO EN UN BUCLE EN DONDE NO PUEDES MORIR, pues en cada vida que vives y pereces, vuelve a haber otra en la que\n";
+                                                            cout<<"regresas\nSuspirando, la crucificadora ve el fragmento de la PIEDRA FILOSOFAL, ahora te has comvertido en una parte de\n";
+                                                            cout<<"ella y estas condenado a vivir eternamente atrapado en un bucle infinito de muertes de diferentes formas y expresiones\n\n";
+                                                            cout<<"Conseguiste la eternidad, pero, a que precio??\n";
+
+                                                            break;
+                                                        case 3:
+                                                            //Pelear
+                                                            cout<<"Decides pelear contra un sujeto colgado y crucificado en un arbol de cereso\n";
+                                                            cout<<"el alien te pide que te detengas, él no quiere pelear, no quire hacerte daño\n";
+                                                            cout<<"ignoras sus suplicas, sacas tu espada y entre la cuarta y quinta costilla le entierras una espada\n";
+                                                            cout<<"Parece ser algo completamente irreal, la espada se comienza a liquar, de alguna forma\n";
+                                                            cout<<"esto no parece ser la opcion, eventualmente el alienigena baja del arbol arrancandose partes de su cuerpo\n";
+                                                            cout<<"en el proceso, aquellos clavos de oro no lo detienen, te quedas boquiabierto, no entiendes\n";
+                                                            cout<<"aún como lo hizo y retrocedes unos pasos, el ser baja del arbol y empieza a caminar hacia ti\n";
+                                                            cout<<"intimidado y casi anonadado terminas callendo de espaldas, este extraño ser te pone uno\n";
+                                                            cout<<"de lo que parece ser sus dedos en tu cabeza y se comienza  a iluminar, tus ojos se nublan\n";
+                                                            cout<<"y empiezas a tener visiones sobre tu vida pasada, cada una de tus muertes, en distintos tiempos\n";
+                                                            cout<<"en distintos momentos, cambiando de cuerpo, cambiando de destino. Regresas a ti, solo puedes ver\n";
+                                                            cout<<"como el cuerpo se vuelve a colgar y llega alguien a volver a crucificarlo, estas tan sorprendido que\n";
+                                                            cout<<"apenas te percatas de las manchas rojas en el piso, aquella persona que volvió a crucificar el cuerpo\n";
+                                                            cout<<"quedó impregnada por las más profundas marcas de vida en su ropa, por un momento logras entrever\n";
+                                                            cout<<"un rostro, simplemente bizarro, pero femenino, la crucificadora empieza a caminar hacia ti y\n";
+                                                            cout<<"te toma del cabello, sientes una sensacion de ligeres hasta que intentas moverte y tu cuerpo no responde\n";
+                                                            cout<<"tu cabeza se ha separado por completo con tu cuerpo, de ahí los charcos de sangre de los que apenas\n";
+                                                            cout<<"te percatas, empiezas a asustarte pero la crucificadora cuelga en una de las ramas del arbol\n";
+                                                            cout<<"tu cabeza, escurriendo sangre,para despues llevar tu cuerpo cada vez más lejos, intentas gritarle\n";
+                                                            cout<<"pero solo con el rabillo de la mirada logra desearte una feliz eternidad\n\n";
+                                                            cout<<"has sido inmortalizado, pero no de la forma que te gustaría . . .\n";
+                                                            return false;
+                                                            break;
+                                                        default:
+                                                            cout<<"Repuesta no valida\n";
+                                                            break;
+                                                        }
+                                                    }
+                                                    
+                                                }else{
+                                                    cout<<"El ser celestial, te termina agarrando desprevenido y obsorbe tu alma\n";
+                                                    cout<<"has muerto\n";
+                                                    return false;
+                                                }
+                                                break;
+                                            case 2:
+                                                //Retar
+                                                cout<<"Lo retas, el ser ancestral no entiende que intentas lograr con esto pero sabe que moriras\n";
+                                                cout<<"Decides retarlo  juego de la ruleta rusa\n";
+                                                cout<<"El ser entiende a donde quieres ir pero te da el veneficio de la duda, sin embargo te avisa que el arma\n";
+                                                cout<<"empleada para esto no solo es mortal para los humanos si no tambien para la existencia misma de la galaxia\n";
+                                                cout<<"es un arma similar a un revolver pero mucho más grande, ademas, usa un hechizo par crear la ilusion\n";
+                                                cout<<"de ser un humana, hecha por lo futuros humanos, decides aceptar sus condiciones. . .\n";
+                                                cout<<"sin embargo uno de los iluminados aun sigue con vida, intenta apuñalarte por la espalda pero el ser\n";
+                                                cout<<"lo detiene y le pide que arriesgue su vida en ese momento, él ascepta si dudarlo un poco\n";
+                                                if(jugarRuletaRusa(personaje,"SER ANCESTRAL","ILUMINADO 1")){
+                                                    cout<<"Has derrotado a ambos seres, tienes mucha suerte, de no ser porque en realidad el arma al estar\n";
+                                                    cout<<"en contacto con tu cabeza, ha desancadenado una reaccion radiactiva pues la radiación, provoca mutaciones\n";
+                                                    cout<<"en tu cuerpo, rapidamente tus corazones se empiezan a multiplicar, tu velocidad aumenta, tu fuerza tambien\n";
+                                                    cout<<"tu agilidad tambien aumenta, pero todo esto es en vano pues pronto esos mismos corazones empiezan\n";
+                                                    cout<<"a agrandarse inimaginablemente, terminan explotando en tu pecho y tu vida acaba en esos instantes\n";
+                                                    cout<<"has muerto . . .\n";
+                                                    return false;
+                                                }else{
+                                                    cout<<"Tu vida, ha acabado en ese instante...has muerto. . . \n";
+                                                    return false;
+                                                }
+                                                break;
+                                            case 3:
+                                                //Escapar
+                                                cout<<"Intentas escapar pero. . .  con uno de sus tentaculos logra agarrarte del tobillo, entras en panico\n";
+                                                cout<<"el ser se aprobecha de esto y te alza por el cielo y te deja caer formando una parabola con tu cabeza\n";
+                                                cout<<"la fuerza empleada para este movimiento fue tanta que al tocar tu cabeza con el suelo, esta ultima\n";
+                                                cout<<"termina por reventar, has muerto....\n";
+                                                return false;
+                                                break;
+                                            default:
+                                                cout<<"Opcion no valida, intentalo de nuevo\n";
+                                                break;
+                                            }
+                                        }
+                                    }else{
+                                        cout<<"Debilitado por las dos batallas anteriores, y derrotado por esta ultima, comienzas a disociar tu realidad\n";
+                                        cout<<"de repente Iluminado Primero da una vuelta en el aire sobre ti, se trasforma en una aberración tentacular\n";
+                                        cout<<"y con sus ventosas te sostiene y jala hacia él, su boca se trasforma en la de un tiburon blanco, sus\n";
+                                        cout<<"ojos se tornan en un color rojo muy sangriento y en el aire te arranca la cabeza. . . \n";
+                                        cout<<"has muerto . . .\n";
+                                        return false;
+                                    }
+                                    
+                                }else{
+                                    cout<<"Has perdido contra el Iluminado Segundo, no hay vuelta atras, el otro iluminado (Primero)\n";
+                                    cout<<"te sujetan fuertemente, Iluminado Segundo, se abalanza sobre ti, de repente su forma humanoide desaparece mostrando\n";
+                                    cout<<"una boca obalada y llena dientes como si de un tiburon se tratase, su ojos se tornan rojos y te logra\n";
+                                    cout<<"encajar una mordida, profundamente mortal, continua mordiendote como desesperado, acabando con todos tus\n";
+                                    cout<<"corazones y dejandote en el suelo tirado, desangrandote....\n";
+                                    cout<<"has muerto. . . \n";
+                                    return false;
+                                }
+                                
+                            }else{
+                                cout<<"Has perdido contra el Iluminado tercero, no hay vuelta atras, los otros dos ilumindas (primero y segundo)\n";
+                                cout<<"te sujetan fuertemente, Iluminado Tercero, se abalanza sobre ti, de repente su forma humanoide desaparece mostrando\n";
+                                cout<<"una boca obalada y llena dientes como si de un tiburon se tratase, su ojos se tornan rojos y te logra\n";
+                                cout<<"encajar una mordida, profundamente mortal, continua mordiendote como desesperado, acabando con todos tus\n";
+                                cout<<"corazones y dejandote en el suelo tirado, desangrandote....\n";
+                                cout<<"has muerto. . . \n";
+                                return false;
+                            }
+                            
+                            
+
+                        }else{
+                            cout<<"Una bala entra directamente a tu cabeza, perfora tu cerebro \n";
+                            cout<<"No hay mucho que hacer, has muerto...a pesar de tener varios corazones, cerebro solo tines uno...\n";
+                            return false;
+                        }
+                        break;
+                    case 2:
+                        //Intentar escapar
+                        cout<<"Intentas escapar... ONE PACK encuentra tus actos muy sospechosos, alinea la bala en el tambor y dispara\n";
+                        cout<<"un disparo certero en la cabeza . . . has muerto...\n";
+                        return false;
+                        break;
+                    case 3:
+                        //NO jugar
+                        cout<<"Prefieres no jugar ... ONE PACK encuentra tus actos muy sospechosos, alinea la bala en el tambor y dispara\n";
+                        cout<<"un disparo certero en la cabeza . . . has muerto...\n";
+                        return false;
+                        break;
+                    default:
+                        cout<<"Opcion no valida, intentalo de nuevo...\n";
+                        break;
+                    }
+                }
             }else{
                 cout<<"Aun no cuentas con suficientes fichas para pasar la puerta VIP, regresa al cuarto de juegos y sigue apostando\n";
                 cout<<"no deberías quedarte sin fichas...\n";
@@ -3366,27 +3701,51 @@ bool RuinasDelAbismo(string personaje, int dificultad, int pociones, int pocione
             }  
         }
     }
-    
-    
 }
 
 void finalHistoria(){
-    cout<<"F I N A L ";
+    cout<<"-----------------------------------------------------------------------------------------------\n";
+    cout<<"\tF I N A L \n";
+    cout<<"-----------------------------------------------------------------------------------------------\n\n";
+    cout<<"Una vez completado por fin todas las partes de la PIEDRA FILOSOFAL, decides reunirlas en una sola\n";
+    cout<<"-bling bling- la piedra ha sido restaurada a su forma completa. Extrañamente se empieza a nublar\n";
+    cout<<"el clima, a decir verdad es algo muy extraño pues el día parecía ser muy soleado. Una vez que tienes\n";
+    cout<<"la PIEDRA FILOSOFAL estas camino a venderla, llegas al edificio de gobierno, una señorita te pregunta\n";
+    cout<<"sobre si hiciste cita en linea y llenaste el forma A2, trajiste las 2 copias del acta nacimiento, tu CURP\n";
+    cout<<"certificada por la RENAPO, otras dos copias de una identificación oficial vigente, el formulario A23\n";
+    cout<<"y 1000 monedas para agilizar el proceso (?)\n";
+    cout<<"Una vez pasadas todas esas formalidades, llegas a la oficina de SAT, les llevara poco más de 7 días\n";
+    cout<<"habiles analizas si realmente se trata de una autentica PIEDRA FILOSOFAL o solo es otra varatija que ya\n";
+    cout<<"han intentado antes ofrecer en ese lugar. Terminado el proceso de validación se te hace acredor de \n";
+    cout<<"de $1,000,000,000,000,000,000,000,000,000,000,000,000,000.00\n";
+    cout<<"Felicidades, pudiste comprobar que la piedra FILOSOFAL es autentica y finalmente decides descansar\n";
+    cout<<"Con el dinero, compras toda clase de exentricidades, lujos y demas cosas que el cuerpo quiere\n";
+    cout<<"Todo parecía ir bien, hasta que llegando la noche de un jueves 30 de Noviembre, la Luna se tornó roja\n";
+    cout<<"el aquelarre de las brujas está en su habitual caza de niños, sin embargo, logras mirar algo en el centro\n";
+    cout<<"de la Luna que eventualemente se va hacercando más y más grande, se está acercando alguna criatura\n";
+    cout<<"Hasta que llega a la ventana de tu puerta, y no es más que una masa amorfa de burbujas iridiscentes en\n";
+    cout<<"continua creacion y autodestrución. Este ser ancestral responde al nombre de Yog-Sothoth.\n\n";
+    cout<<"DIOS YOG: Así que fuiste tú el que terminó el trabajo de Merlin?? Bueno, no me quedará más que \n";
+    cout<<"darte las consecuencias, debiste hacerle caso a algunos de los tipos que custodiaban los fragmentos. . .\n\n";
+    cout<<"Tan pronto como el Dios Yog termina por decir esto, todo el mundo se comprime en una rosa roja con un centro\n";
+    cout<<"amarillo tan intenso como el Sol mismo.\n\n";
+    cout<<"DIOS YOG: Sabía que este día llegaría, solo pidanle a Ronal Deschain, que los cuide tanto como al resto\n";
+    cout<<"\tde rosas rojas que custodia esta torre oscura.\n\n";
+    cout<<"FIN.";
 }
 
 
 int main(){   
-    // vector<string> palabras={"platano","tact","else"};
-    // string palabra =choose_palabra(palabras);
     //Fragmentos de la piedra filosofal
-    int fragmentoPiedra = 0;
+    int fragmenteoBosque = 0;
+    int fragmentoZora = 0;
+    int frgmentoRuinas = 0;
     //Nombre del jugador
     string jugador = nomPlayer();
-    //string nEnemy = "Empanada";
     //Variables
     int corazones = 3;
     int dificultad = 1; //Dificultad facil
-    int monedas=1000;
+    int monedas=100000;
     //Items
     int pociones = 0;
     int pocionesMax = 0;
@@ -3417,7 +3776,9 @@ int main(){
                 cout<<"Facil\n";
             }else{cout<<"Dificil\n";}
             cout<<"Monedas: \t\t\t\t"<<monedas<<"\n";
-            cout<<"Fragmentos de la piedra Filosofal: \t"<<fragmentoPiedra<<endl;
+            cout<<"Fragmento del Bosque: "<<fragmenteoBosque<<endl;
+            cout<<"Fragmento del Reino Zora: "<<fragmentoZora<<endl;
+            cout<<"Fragmento del Ruinas: "<<frgmentoRuinas<<endl;
             cout<<"\n____________________________________________________________\n";
             cout<<"\tAlgunos objetos disponibles de: "<<jugador<<"\n";
             cout<<"____________________________________________________________\n";
@@ -3447,8 +3808,10 @@ int main(){
                             cout<<"por un viejo hechizero que conocia el poder de la piedra, he aqui solo un fragmento\n";
                             cout<<"encuentra los otros dos y obtendras la piedra completa...\n\n";
                             cout<<jugador<<" ha encontrado un fragmento de  LA PIEDRA FILOSOFAL!!!\n\n";
-                            fragmentoPiedra+=1;
-                            cout<<"Fragmentos de la piedra filosofal: "<<fragmentoPiedra<<endl;
+                            if(fragmenteoBosque==0){
+                                fragmenteoBosque++;
+                            }
+                            cout<<"Fragmentos de la piedra filosofal: "<<fragmenteoBosque + fragmentoZora + frgmentoRuinas<<endl;
                             if (dificultad==1){
                                 cout<<"Has recibido 300 monedas\n";
                                 monedas+=300;
@@ -3473,8 +3836,11 @@ int main(){
                             cout<<"Despues de haber vuelto todo a la normalidad\n";
                             cout<<"te das cuenta de que el fragmento sigue contigo, estas cada vez más cerca de lograrlo\n";
                             cout<<"cada vez más cerca de conseguir la PIEDRA FILOSOFAL\n";
-                            fragmentoPiedra++;
-                            cout<<"Fragmentos de la piedra filosofal: "<<fragmentoPiedra<<endl;
+                            if (fragmentoZora == 0){
+                                fragmentoZora++;
+                            }
+                            
+                            cout<<"Fragmentos de la piedra filosofal: "<<fragmentoZora+fragmenteoBosque+frgmentoRuinas<<endl;
                             cout<<"Reinos Zora superados\n";
                             if (dificultad==1){
                                 cout<<"Has recibido 300 monedas\n";
@@ -3522,14 +3888,21 @@ int main(){
                             monedas-=300;
                             cout<<"Monedas actuales: "<<monedas<<endl;
                             if (RuinasDelAbismo(jugador, dificultad, pociones, pocionesMax, escudos, ataqueMortal)){
-                            cout<<"Ruinas del Abismo superadas\n";
-                            if (dificultad == 1){
-                                cout<<"Has recibido 300 monedas\n";
-                                monedas+=300;
-                            }else{
-                                cout<<"Has recibido 500 monedas\n";
-                                monedas+=500;
-                            }
+                                cout<<"Finalmente, has conseguido otro fragmento de la PIEDRA FILOSOFAL, cada vez estás más cerca de unirlo todo\n";
+                                cout<<"En un abrir y cerrar de ojos, sales de la tortuga, y te asomsas por la entrada principal, hay\n";
+                                cout<<"saqueadores robando por doquier, no eres un heroe, no te corresponde. . .\n";
+                                cout<<"Ruinas del Abismo superadas\n";
+                                if (frgmentoRuinas == 0){
+                                    frgmentoRuinas++;
+                                }
+                                
+                                if (dificultad == 1){
+                                    cout<<"Has recibido 300 monedas\n";
+                                    monedas+=300;
+                                }else{
+                                    cout<<"Has recibido 500 monedas\n";
+                                    monedas+=500;
+                                }
                             break;
                             }else{
                                 cout<<"Ruinas del Abismo no superadas\n";
@@ -3564,14 +3937,15 @@ int main(){
                     }
                 
                 }
-                if (fragmentoPiedra == 3){
+                if (fragmenteoBosque+fragmentoZora+frgmentoRuinas == 3){
                     finalHistoria();
-                    cout<<"Felicidades por completar el juego, has recibido 1000 para cada item del juego ";
+                    cout<<"Felicidades por completar el juego, has recibido 1000 para cada item del juego\n ";
                     pociones+=1000;
                     pocionesMax+=1000;
                     escudos+=1000;
                     ataqueMortal+=1000;
                     monedas+=1000;
+                    corazones+=1000;
                 }
                 
                 
@@ -3890,20 +4264,20 @@ int main(){
             cout<<"es necesario pasar los 3 capitulos.\n";
             cout<<"____________________________________________________________\n";
             cout<<"\t\t\tPROGRESO: \n\n";
-            if (fragmentoPiedra == 0){
+            if ((fragmenteoBosque+fragmentoZora+frgmentoRuinas) == 0){
                 cout<<"Aun no has jugado lo suficiente. Prueba usar items de la\n";
                 cout<<"tienda para facilitar la aventura.\n";
-                cout<<"Fragmentos de la PIEDRA FILOSOFAL encontrados: \t"<<fragmentoPiedra<<endl;
-            }else if (fragmentoPiedra==3){
+                cout<<"Fragmentos de la PIEDRA FILOSOFAL encontrados: \t"<<(fragmenteoBosque+fragmentoZora+frgmentoRuinas)<<endl;
+            }else if ((fragmenteoBosque+fragmentoZora+frgmentoRuinas)==3){
                 cout<<"Felicidades, has completado el juego por completo\n";
                 cout<<"en verdad, no fue facil hacerlo pero si lo has\n";
                 cout<<"disfrutado, valio la pena...\n";
-                cout<<"Fragmentos de la PIEDRA FILOSOFAL encontrados: \t"<<fragmentoPiedra<<endl;
+                cout<<"Fragmentos de la PIEDRA FILOSOFAL encontrados: \t"<<(fragmenteoBosque+fragmentoZora+frgmentoRuinas)<<endl;
             }else{
                 cout<<"Estas cada vez más cerca del final del juego, itenta pasar\n";
-                cout<<"los otros "<<3-fragmentoPiedra<<" capitulos restantes para\n";
+                cout<<"los otros "<<3-(fragmenteoBosque+fragmentoZora+frgmentoRuinas)<<" capitulos restantes para\n";
                 cout<<"terminar el juego\n";
-                cout<<"Fragmentos de la PIEDRA FILOSOFAL encontrados: \t"<<fragmentoPiedra<<endl;
+                cout<<"Fragmentos de la PIEDRA FILOSOFAL encontrados: \t"<<fragmenteoBosque+fragmentoZora+frgmentoRuinas<<endl;
             }
             break;
         case 5:
