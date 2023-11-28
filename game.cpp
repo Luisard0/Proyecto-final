@@ -3220,7 +3220,7 @@ bool ReinosZora(string personaje, int dificultad, int pociones, int pocionesMax,
 
 //Ruinas del Abismo //478 lineas
 bool RuinasDelAbismo(string personaje, int dificultad, int pociones, int pocionesMax, int escudos, int ataqueMortal){
-    int fichas = 1000;
+    int fichas = 0;
     int op,op1,op2,op3,op4;
     cout<<"-----------------------------------------------------------------------------------------------\n";
     cout<<"DENTRO DE: ----R U I N A S  D E L  A B I S M O \n\n";
@@ -3745,7 +3745,7 @@ int main(){
     //Variables
     int corazones = 3;
     int dificultad = 1; //Dificultad facil
-    int monedas=100000;
+    int monedas=200;
     //Items
     int pociones = 0;
     int pocionesMax = 0;
